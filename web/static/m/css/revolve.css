@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+div.orbit-wrapper { 
+	position: relative; 
+	overflow: visible; 
+	width: 6.9rem; 
+	margin: 0 auto;
+}
+div.orbit { 
+	position: relative; 
+	overflow: hidden;
+	width:6.9rem; 
+	padding-bottom: 10px;
+	/*height: 3.16rem;*/
+/*	margin-top: 40px;*/
+}
+div.orbit span { display:none;}
+div.orbit a{display: block;}
+div.orbit ul{
+	width: 6.4rem;
+	margin: 0 auto;
+	height: 3.8rem;
+	padding: 0.1rem 0px;
+	overflow: hidden;
+}
+div.orbit li{ 
+	position: absolute;
+/*	width: 2.73rem!important;
+	height: 4.34rem; */
+	background: #F4EEE9;
+}
+div.orbit-wrapper{margin: 0 auto;}
+div.orbit-wrapper h4{ display: none; }
+div.timer {
+	display: none;
+}
+div.slider-nav { 
+	display: block; 
+}
+div.slider-nav span { 
+	width: 17px; 
+	height: 17px;  
+	color: #fff; 
+	text-align: center; 
+	position: absolute; 
+	z-index: 100;
+	cursor: pointer; 
+	text-indent:-9999px;}
+div.slider-nav span.right {  
+	top: 350px; 
+	left: 457px;
+	position: absolute; 
+	background:url('../img/pic_38.png') no-repeat right; 
+}
+div.slider-nav span.left { 
+	top: 350px; 
+	left: 420px;
+	position: absolute; 
+	background:url('../img/pic_37.png') no-repeat left;  }
+div.slider-nav span.right:hover {
+	background:url('../img/pic_38.png') no-repeat left ; transition: all 0.5s;  }
+div.slider-nav span.left:hover {
+	background:url('../img/pic_37.png') no-repeat right ;transition: all 0.5s; 
+}
+.message{
+	text-align: center;
+	font-size: 30px;
+	color: #d3ac5f;
+	margin-top: 90px;
+}
+/*.message-sw{
+	display: none;
+}
+*/
