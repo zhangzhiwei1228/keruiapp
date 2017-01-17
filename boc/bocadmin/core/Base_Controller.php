@@ -122,8 +122,6 @@ class Base_Controller extends CI_Controller
 	 */
 	protected function _vdata(&$vdata)
 	{
-		var_dump($vdata);
-		die();
 		// 判定 method 条件
 	}
 	

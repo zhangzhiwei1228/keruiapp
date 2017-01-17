@@ -61,7 +61,6 @@ class Log_model extends MY_Model{
 		$this->db->group_by('TO_DAYS(FROM_UNIXTIME(`timeline`))');
 
 		$query = $this->db->get();
-			var_dump($this->db->last_query());
 		return $query->result_array();
 
 	}
