@@ -6,9 +6,6 @@ class Account extends Modules_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('coltypes_model','mctypes');
-		$this->load->model('district_model','mdistrict');
-
 		$this->rules = array(
 			"rule" => array(
 				array(
@@ -21,73 +18,17 @@ class Account extends Modules_Controller
 					"label" => lang('time'),
 					"rules" => "trim|strtotime"
 				)
+			),
+			"edit" => array(
+				array(
+					"field" => "phone",
+					"label" => '手机',
+					"rules" => "trim|xss_clear|callback_phone_check"
+				)
 			)
 		);
 
 	}
-	protected function _vdata(&$vdata)
-  {
-		$vdata['title'] = '会员管理';
-		$ctypes_tmp = $this->mctypes->get_all(array('name'=>'industry', 'show'=>1), 'id, title');
-		$ctypes = array();
-		if ($ctypes_tmp) {
-			foreach ($ctypes_tmp as $k => $v) {
-				$ctypes[$v['id']] = $v;
-			}
-		}
-
-		if (in_array($this->method, array('index','search'))) {
-			if ($vdata['list']) {
-				foreach ($vdata['list'] as $key => &$item) {
-					$this->_parseAidInfo($item);
-				}
-			}
-		} else if (in_array($this->method, array('edit'))) {
-			$this->_parseAidInfo($vdata['it']);
-		}
-
-		$vdata['ctypes'] = $ctypes;
-		// 对图片文件进行处理
-		if ($this->method == 'edit') {
-			$where=array('uid'=>$vdata['it']['id']);
-			$this->db->order_by('id desc');
-		}
-  }
-  // 获取需求用户信息
-  private function _parseAidInfo(&$target = false, $field='aid')
-  {
-    if ($target && isset($target[$field]) && $target[$field]) {
-			if (isset($this->aid_info_cache[$target[$field]])) {
-      	$target[$field.'_info'] = $this->aid_info_cache[$target[$field]];
-			} else if ($aidInfo = $this->macc->get_one(array('id'=>$target[$field]), 'id, photo, nickname, timeline, level')) {
-	      photo2url($aidInfo, 'false', 'false');
-	      $this->_parseTimeline($aidInfo);
-	      if ($aidLevel = $this->mctypes->get_one(array('id'=>$aidInfo['level'], 'name'=>'level'), 'id, title, identify')) {
-	        $aidInfo['level_title'] = $aidLevel['title'];
-	        $aidInfo['level_identify'] = $aidLevel['identify'];
-	      } else {
-	        $aidInfo['level_title'] = "普通会员";
-	        $aidInfo['level_identify'] = "0";
-	      }
-	      $target[$field.'_info'] = $aidInfo;
-				$this->aid_info_cache[$target[$field]] = $aidInfo;
-			} else {
-				$target[$field.'_info'] = array();
-			}
-    } else {
-			$target[$field.'_info'] = array();
-		}
-  }
-
-	// 时间格式化
-  private function _parseTimeline(&$target = false)
-  {
-    if (isset($target['timeline']) && $target['timeline'] && $target['timeline'] > 0) {
-      $target['timeline'] = date("Y-m-d", $target['timeline']);
-    } else {
-      $target['timeline'] = "";
-    }
-  }
 
 	//用户搜索
 	public function search($page = 1) {
@@ -109,14 +50,24 @@ class Account extends Modules_Controller
 		$this->_display($vdata, 'account_index');
 	}
 	// 验证tel是否被使用
-     public function phone_check($name = FALSE)
+	public function phone_check($name = FALSE)
     {
-       if ($name and $mid = $this->model->find_phone($name)) {
-            $this->form_validation->set_message('phone_check', '%s : '.$name.'已经被使用。');
-            return FALSE;
-        }else{
-            return TRUE;
-        }
+		if(!is_mobile($name)) {
+			$this->form_validation->set_message('phone_check', '%s : '.$name.'格式错误');
+			return FALSE;
+		}
+		if ($name and $mid = $this->model->find_phone($name)) {
+			$this->form_validation->set_message('phone_check', '%s : '.$name.'已经被使用。');
+			return FALSE;
+		}else{
+			return TRUE;
+		}
     }
+	protected function _create_data(){
+		$form=$this->input->post();
+		$form['pwd'] = passwd($form['pwd']);
+		$form['nickname'] = $form['phone'];
+		return $form;
+	}
 
 }

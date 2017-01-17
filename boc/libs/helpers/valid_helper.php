@@ -20,7 +20,7 @@ if ( ! function_exists('valid_email'))
  */
 function is_mail($email) {
     // filter_var ($email, FILTER_VALIDATE_EMAIL ) ?  FALSE : TRUE;
-    return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
+    return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email)) ? FALSE : TRUE;
 }
 
 /**
@@ -32,7 +32,7 @@ function is_mobile($phone) {
     if (strlen($phone) !== 11) {
         return FALSE;
     }
-    return (bool) (!preg_match('/^[(86)|0]?(13\d{9})|(15\d{9})|(18\d{9})$/', $str)) ? FALSE : TRUE;
+    return (bool) (!preg_match('/^[(86)|0]?(13\d{9})|(17\d{9})|(15\d{9})|(18\d{9})$/', $phone)) ? FALSE : TRUE;
 }
 
 /**

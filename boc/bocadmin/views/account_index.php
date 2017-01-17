@@ -1,3 +1,6 @@
+<div class="btn-group">
+	<a href="<?php echo site_urlc('account/create')?>" class='btn btn-primary'> <i class="fa fa-plus"></i> <?php echo $title; ?> </a>
+</div>
 <?php $use_tree=get_lang('cfg','users_level'); ?>
 <p></p>
 
