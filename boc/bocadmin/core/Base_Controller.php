@@ -89,6 +89,7 @@ class Base_Controller extends CI_Controller
 	 * @return 输出或false
 	 */
 	protected function _display($vdata = array(),$view=false){
+
 		$view = $view ? $view : $this->view;
 
 		if (!$view) {
@@ -106,6 +107,7 @@ class Base_Controller extends CI_Controller
 			echo $this->load->view('ajax_drag.php','',TRUE);
 			echo $this->load->view($view,$vdata,TRUE);
 		}else{
+
 			$vdata['breadcrumb'] = $this->breadcrumb;
 			$this->load->view('inc_header.php',$vdata);
 			$this->load->view($view);
@@ -120,6 +122,8 @@ class Base_Controller extends CI_Controller
 	 */
 	protected function _vdata(&$vdata)
 	{
+		var_dump($vdata);
+		die();
 		// 判定 method 条件
 	}
 	

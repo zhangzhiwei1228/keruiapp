@@ -1,12 +1,8 @@
 <?php $use_tree=get_lang('cfg','users_level'); ?>
-
-<div class="btn-group">
-	<a  class='btn btn-primary'> 会员管理 </a>
-</div>
 <p></p>
 
 <?php include_once 'inc_ui_limit.php'; ?>
-<form class="form-inline" action="<?php echo site_url($this->class.'/search'); ?>" method="GET">
+<form class="form-inline" action="<?php echo site_url($this->class.'/search/'.$this->cid); ?>" method="GET">
 <input type="text" name="phone" width="50px" value="" placeholder="手机"/>
 <?php
 $industries = list_coltypes(0,0,'industry');
@@ -17,7 +13,6 @@ if (isset($_GET['industry']) AND is_numeric($_GET['industry']) AND $_GET['indust
 }
 ?>
 <input class="btn" type="submit" value="检索">
-<a href="<?php echo site_url('coltypes/index').'?c=0&field=industry&rc='.$this->class; ?>" class="btn"><i class="fa fa-plus"></i> 行业管理</a>
 </form>
 
 <div class="clearfix"><p></p></div>
@@ -30,22 +25,17 @@ if (isset($_GET['industry']) AND is_numeric($_GET['industry']) AND $_GET['indust
 	<thead>
 		<tr>
 			<th class="width-small"><input id='selectbox-all' type="checkbox" > </th>
-			<th>会员</th>
 			<th>头像</th>
 			<th>手机</th>
 			<th>昵称</th>
-			<th>省市</th>
-			<th>行业</th>
 			<th>注册时间</th>
 			<th>操作</th>
-			<th class="span1">删除</th>
 		</tr>
 	</thead>
 	<tbody class="sort-list">
 		<?php foreach ($list as $v):?>
 		<tr data-id="<?php echo $v['id'] ?>" data-sort="<?php echo $v['sort_id'] ?>">
 			<td><input class="select-it" type="checkbox" value="<?php echo $v['id']; ?>" ></td>
-			<td>【<?php if($v['level']<4){ echo $use_tree[$v['level']];}?>】</td>
 			<td>
                 <?php if ($v['photo'] && $photo_info = one_upload($v['photo'])){?>
                <a class="fancybox-img" href="<?php echo UPLOAD_URL.$photo_info['url'] ?>" title="<?php echo $v['phone'] ?>">
@@ -59,17 +49,11 @@ if (isset($_GET['industry']) AND is_numeric($_GET['industry']) AND $_GET['indust
              </td>
 			<td><?php echo $v['phone']; ?>  </td>
 			<td><?php echo $v['nickname']; ?></td>
-			<td><?php echo $v['addr_str']?$v['addr_str']:'无' ?></td>
-			<td><?php echo ui_btns_type($v['industry']); ?></td>
 			<td> <?php echo date("Y/m/d H:i:s",$v['timeline']); ?> </td>
 			<td>
 				<div class="btn-group">
 					<?php include 'inc_ui_audit.php'; ?>
-					<a class='btn btn-small' href=" <?php echo site_url( $this->router->class.'/edit/'.$v['id']) ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> </a>
-				</div>
-			</td>
-			<td>
-				<div class="btn-group">
+					<a class='btn btn-small' href=" <?php echo site_urlc( $this->router->class.'/edit/'.$v['id']) ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> </a>
 					<a class='btn btn-danger btn-small btn-del' data-id="<?php echo $v['id'] ?>" href="#"  title="<?php echo lang('del') ?>"> <i class="fa fa-times"></i> </a>
 				</div>
 			</td>

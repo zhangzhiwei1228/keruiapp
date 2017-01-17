@@ -154,6 +154,7 @@ class CRUD_Controller extends Base_Controller
 		}
 		$this->form_validation->set_rules($this->_get_rule('edit'));
 		if ($this->form_validation->run() == false) {
+
 			$vdata['it'] = $this->model->get_one($key);
 
 			if (!$vdata['it']) {

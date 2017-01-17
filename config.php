@@ -13,7 +13,7 @@ define('DB_PREFIX', 'boc_');
 
 # 全局URL路径
 // 主域名 保留最后的 /
-define('GLOBAL_URL', 'http://www.kerui.com/');
+define('GLOBAL_URL', 'http://'.$_SERVER['HTTP_HOST'].'/');
 //define('GLOBAL_URL'  , 'http://localhost:8089/');
 // 提供给后台做链接用的
 define('STATIC_URL', GLOBAL_URL . 'static/');

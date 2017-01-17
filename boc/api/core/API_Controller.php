@@ -166,7 +166,7 @@ class API_Controller extends MY_Controller
         if (is_numeric($phone) && $this->info = $this->macc->get_one(array('phone' => $phone))) {
             $this->phone = $phone;
             return true;
-        } elseif (!is_numeric($email) && $this->info = $this->macc->get_one(array('email' => $phone))) {
+        } elseif (!is_numeric($phone) && $this->info = $this->macc->get_one(array('email' => $phone))) {
             $this->phone = $this->info['phone'];
             return true;
         }

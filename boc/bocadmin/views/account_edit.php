@@ -2,7 +2,7 @@
 
 <div class="btn-group">
 
-<a href="<?php echo site_url('account'); ?>" class="btn"> <i class="fa fa-arrow-left"></i> <?php echo lang('back_list') ?> </a>
+<a href="<?php echo site_urlc('account'); ?>" class="btn"> <i class="fa fa-arrow-left"></i> <?php echo lang('back_list') ?> </a>
 
 </div>
 <?php include_once 'inc_form_errors.php';?>
@@ -27,14 +27,6 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="status">会员类别：</label>
-				<div class="controls">
-					【<?php echo $use_tree[$it['level']];?>】
-					<?php if(!empty($it['buytimeline'])) {?>会员时间 <?php echo $it['buytimeline']; ?><?php } ?>
-					<span class="help-inline"></span>
-				</div>
-			</div>
-			<div class="control-group">
 				<label for="phone" class="control-label">手机号码：</label>
 				<div class="controls">
 					<?php echo $it['phone']; ?>
@@ -47,48 +39,11 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="title" class="control-label">个性签名</label>
-				<div class="controls">
-					<?php echo $it['autograph']; ?>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="title" class="control-label">省市</label>
-				<div class="controls">
-					<?php echo $it['addr_str']?$it['addr_str']:'无' ?>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="title" class="control-label">行业</label>
-				<div class="controls">
-					<?php echo ui_btns_type($it['industry']); ?>
-				</div>
-			</div>
-			<div class="control-group">
 				<label for="title" class="control-label">是否关联第三方</label>
 				<div class="controls">
 					<?php echo $it['sid'] ?>
 				</div>
 			</div>
-			<div class="control-group">
-				<label for="title" class="control-label">综合评分</label>
-				<div class="controls">
-					<?php echo $it['score'] ?>
-				</div>
-			</div>
-			<?php if(!empty($orderdata)){ ?>
-			<div class="control-group">
-				<label for="title" class="control-label">购买会员记录</label>
-				<div class="controls">
-					<?php foreach ($orderdata as $key => $v): ?>
-						<?php if($v['pay']==1){echo "【已付】";} ?>订单号:<?php echo $v['title']; ?>; ￥<?php echo $v['price']; ?> 时间:<?php echo date("Y-m-d H:i:s",$v['timeline']);?>;<br/>
-					<?php endforeach ?>
-				</div>
-			</div>
-			<?php } ?>
-
-
-
 	</div>
 
 		<div class="boxed-footer">

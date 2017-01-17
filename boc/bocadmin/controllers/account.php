@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Account extends CRUD_Controller
+class Account extends Modules_Controller
 {
 
 	function __construct()
@@ -8,7 +8,6 @@ class Account extends CRUD_Controller
 		parent::__construct();
 		$this->load->model('coltypes_model','mctypes');
 		$this->load->model('district_model','mdistrict');
-		$this->load->model('account_order_model', 'maorder');
 
 		$this->rules = array(
 			"rule" => array(
@@ -41,21 +40,17 @@ class Account extends CRUD_Controller
 			if ($vdata['list']) {
 				foreach ($vdata['list'] as $key => &$item) {
 					$this->_parseAidInfo($item);
-					$item['addr_str'] = $this->mdistrict->transIds($item['province'], $item['city']);
 				}
 			}
 		} else if (in_array($this->method, array('edit'))) {
 			$this->_parseAidInfo($vdata['it']);
-			$vdata['it']['addr_str'] = $this->mdistrict->transIds($vdata['it']['province'], $vdata['it']['city']);
 		}
 
 		$vdata['ctypes'] = $ctypes;
-		dump($vdata);
 		// 对图片文件进行处理
 		if ($this->method == 'edit') {
 			$where=array('uid'=>$vdata['it']['id']);
 			$this->db->order_by('id desc');
-			$vdata['orderdata']=$this->maorder->get_all($where);
 		}
   }
   // 获取需求用户信息
@@ -96,6 +91,7 @@ class Account extends CRUD_Controller
 
 	//用户搜索
 	public function search($page = 1) {
+		if(isset($this->reg[0])){$page=$this->reg[0];}else{$page=1;}
 		$vdata['title'] = '用户搜索';
 		$limit = 10;
 		$this->input->get('limit') and is_numeric($this->input->get('limit')) and $limit = $this->input->get('limit');
