@@ -83,9 +83,11 @@ class API_Controller extends MY_Controller
             if ($this->usertoken) {
                 $this->userinfo = $this->macc->get_one(array('id' => $this->usertoken['accountId']));
             } else {
-                $re = array('returnCode' => '401',
+                $re = array(
+                    'returnCode' => '401',
                     'returnInfo' => '身份验证失败，请重新登录！',
-                    'timeline' => time());
+                    'timeline' => time()
+                );
                 $re = array_merge($this->vdata, $re);
                 header("Content-Type: application/json; charset=utf-8");
                 echo json_encode($this->_send_json_befor($re));
@@ -106,18 +108,18 @@ class API_Controller extends MY_Controller
     {
         $vdata = $this->_send_json_befor($data);
         if ((ENVIRONMENT == "development") && false) {
-          $querys = array();
-          if (count($this->db->queries) > 0)
-    			{
-    				foreach ($this->db->queries as $key => $val)
-    				{
-              $item['time'] = number_format($this->db->query_times[$key], 4);
-              $item['content'] = $val;
-              $querys[] = $item;
-    				}
-    			}
-          $vdata['query_count'] = count($querys);
-          $vdata['querys'] = $querys;
+            $querys = array();
+            if (count($this->db->queries) > 0)
+                {
+                    foreach ($this->db->queries as $key => $val)
+                    {
+                        $item['time'] = number_format($this->db->query_times[$key], 4);
+                        $item['content'] = $val;
+                        $querys[] = $item;
+                    }
+                }
+            $vdata['query_count'] = count($querys);
+            $vdata['querys'] = $querys;
         }
 
         $this->output->set_content_type('application/json')->set_output(json_encode($vdata));

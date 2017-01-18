@@ -32,6 +32,15 @@
 				</div>
 			</div>
 			<div class="control-group">
+				<label class="control-label" for="title"> 平台 </label>
+				<div class="controls">
+					<select name="terminalNo">
+						<option value="1" <?php echo $it['terminalNo'] == 1 ? 'selected' : ''?> >IOS</option>
+						<option value="2" <?php echo $it['terminalNo'] == 2 ? 'selected' : ''?>>Android</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
 				<label for="phone" class="control-label">手机号码：</label>
 				<div class="controls">
 					<?php echo $it['phone']; ?>

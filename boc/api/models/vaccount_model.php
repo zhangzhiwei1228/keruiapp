@@ -3,7 +3,7 @@
 }
 
 class vaccount_model extends MY_Model {
-	protected $table = 'vaccount';
+	protected $table = 'account';
 
 	// 个人信息
 	public function get_info($where, $fresh = 'nofresh', $terminalNo = 0) {

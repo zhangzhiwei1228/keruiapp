@@ -23,6 +23,15 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="title"> 平台 </label>
+                <div class="controls">
+                    <select name="terminalNo">
+                        <option value="1">IOS</option>
+                        <option value="2">Android</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
                 <label for="title" class="control-label">时间:</label>
                 <div class="controls">
                     <div class="input-append date timepicker">

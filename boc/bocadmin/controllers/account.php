@@ -25,7 +25,7 @@ class Account extends Modules_Controller
 				array(
 					"field" => "phone",
 					"label" => '手机',
-					"rules" => "trim|xss_clear|callback_phone_check"
+					"rules" => "trim|xss_clear|mobile"
 				)
 			)
 		);
@@ -76,14 +76,14 @@ class Account extends Modules_Controller
 			!!$data['tags'] and $this->mtags->add(str_replace(array('，',' ','　','|'), ',', $data['tags']),$this->cid,$data['id']);
 		}
 		$token = genToken();
-		$this->maccount->gettoken($token, $data['id']);
+		$this->maccount->gettoken($token, $data['id'],false,$data['terminalNo']);
 	}
 	protected function _edit_after($data){
 		if (isset($data['tags'])) {
 			!!$data['tags'] and $this->mtags->add(str_replace(array('，',' ','　','|'), ',', $data['tags']),$this->cid,$data['id']);
 		}
 		$token = genToken();
-		$this->maccount->gettoken($token, $data['id'],true);
+		$this->maccount->gettoken($token, $data['id'],true,$data['terminalNo']);
 	}
 	protected function _del_after($data){
 		$this->mtoken->delete($data);

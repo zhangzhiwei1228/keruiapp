@@ -152,9 +152,11 @@ class account_model extends MY_Model {
      * @param $token
      * @param $accountId
      * @param string $fresh
-     * @return mixed   用户token
+     * @param int $terminalNo
+     * @return mixed
+     * 用户token
      */
-    public function gettoken($token, $accountId, $fresh = 'nofresh') {
+    public function gettoken($token, $accountId, $fresh = 'nofresh',$terminalNo = 1) {
         if (!isset($this->maccount_token)) {
             $this->load->model('manager_token_model', 'maccount_token');
         }
@@ -165,10 +167,10 @@ class account_model extends MY_Model {
             if ($fresh === 'nofresh') {
                 $token = $token_now['token'];
             } else {
-                $this->maccount_token->update(array('token' => $token), array('accountId' => $accountId));
+                $this->maccount_token->update(array('token' => $token, 'expiretime'=>TOKEN_TIME_EXPIRE+time(), 'terminalNo'=>$terminalNo), array('accountId' => $accountId));
             }
         } else {
-            $this->maccount_token->create(array('token' => $token, 'accountId' => $accountId));
+            $this->maccount_token->create(array('token' => $token, 'accountId' => $accountId, 'expiretime'=>TOKEN_TIME_EXPIRE+time(),'terminalNo'=>$terminalNo));
         }
 
         return $token;

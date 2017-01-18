@@ -69,16 +69,6 @@ class login extends API_Controller
             // 获取用户数据
             if ($res = $this->macc->setlogin($this->info['id'])) {
                 $info = $this->mvacc->get_info($this->info['id'], 'fresh', $this->data['terminalNo']);
-                $info['provincename']=get_addr($info['province']);
-                $info['cityname']=get_addr($info['city']);
-                $info['industryname']=get_industry($info['industry']);
-                if(!empty($info['endtimeline'])&&$info['endtimeline']<time()){
-                    $info['level'] = -1;
-                }
-                if(!empty($info['endtimeline'])){
-                    $info['endtimeline'] =date("Y-m-d", $info['endtimeline']);
-                }
-                unset($info['store_id']);
                 //返回用户详细数据
                 $this->vdata['returnCode']   = '200';
                 $this->vdata['returnInfo'] = '操作成功';

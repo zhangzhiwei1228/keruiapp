@@ -1,0 +1,171 @@
+
+ [2017-01-18 14:13:23] URI: login
+ [2017-01-18 14:13:23] Post Data: 
+ [2017-01-18 14:27:42] URI: login
+ [2017-01-18 14:27:42] Post Data: Array
+(
+    [token] => oiOhSqC3kA6I1q6yFA4OpcKACIkn26SZJzs13lb3gjtNQpCWp6kVYvVa47Dv3VKC
+)
+
+ [2017-01-18 14:42:15] URI: login
+ [2017-01-18 14:42:15] Post Data: 
+ [2017-01-18 15:00:45] URI: login
+ [2017-01-18 15:00:45] Post Data: 
+ [2017-01-18 15:02:43] URI: login
+ [2017-01-18 15:02:43] Post Data: 
+ [2017-01-18 15:03:16] URI: login
+ [2017-01-18 15:03:16] Post Data: 
+ [2017-01-18 15:03:51] URI: login
+ [2017-01-18 15:03:51] Post Data: 
+ [2017-01-18 15:04:08] URI: login
+ [2017-01-18 15:04:08] Post Data: 
+ [2017-01-18 15:04:43] URI: login
+ [2017-01-18 15:04:43] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:05:01] URI: login
+ [2017-01-18 15:05:01] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:17:21] URI: login
+ [2017-01-18 15:17:21] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:19:34] URI: login
+ [2017-01-18 15:19:34] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:20:15] URI: login
+ [2017-01-18 15:20:15] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:20:39] URI: login
+ [2017-01-18 15:20:39] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:21:47] URI: login
+ [2017-01-18 15:21:47] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:23:20] URI: login
+ [2017-01-18 15:23:20] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-01-18 15:32:43] URI: login
+ [2017-01-18 15:32:43] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:32:47] URI: login
+ [2017-01-18 15:32:47] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:32:49] URI: login
+ [2017-01-18 15:32:49] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:36:44] URI: webcfg/uGet_ctype
+ [2017-01-18 15:36:44] Post Data: Array
+(
+    [name] => industry
+)
+
+ [2017-01-18 15:36:44] URI: messages/interact
+ [2017-01-18 15:36:44] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-01-18 15:38:03] URI: messages/interact
+ [2017-01-18 15:38:03] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-01-18 15:38:03] URI: regist/go
+ [2017-01-18 15:38:03] Post Data: Array
+(
+    [phone] => 18100000006
+    [pwd] => 123456
+    [smscode] => 333133
+    [province] => 1
+    [city] => 2
+    [industry] => 2
+    [terminalNo] => 0
+)
+
+ [2017-01-18 15:39:56] URI: regist/go
+ [2017-01-18 15:39:56] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:39:56] URI: messages/interact
+ [2017-01-18 15:39:56] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-01-18 15:41:34] URI: /login
+ [2017-01-18 15:41:34] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:41:34] URI: messages/interact
+ [2017-01-18 15:41:34] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-01-18 15:43:39] URI: /login
+ [2017-01-18 15:43:39] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:43:40] URI: messages/interact
+ [2017-01-18 15:43:40] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-01-18 15:55:29] URI: /login
+ [2017-01-18 15:55:29] Post Data: Array
+(
+    [phone] => 17826865111
+    [pwd] => 123123
+)
+
+ [2017-01-18 15:55:29] URI: messages/interact
+ [2017-01-18 15:55:29] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
