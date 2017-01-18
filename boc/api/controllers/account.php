@@ -12,73 +12,73 @@ class account extends API_Controller {
 		parent::__construct();
 	}
 
-protected $rules = array(
-    "edit_head" => array(
-        array(
-            'field' => 'photo',
-            'label' => '头像',
-            'rules' => 'trim|required|numeric',
+    protected $rules = array(
+        "edit_head" => array(
+            array(
+                'field' => 'photo',
+                'label' => '头像',
+                'rules' => 'trim|required|numeric',
+            ),
+            array(
+                "field" => "token",
+                "label" => "Token",
+                "rules" => "trim|required",
+            )
         ),
-        array(
-            "field" => "token",
-            "label" => "Token",
-            "rules" => "trim|required",
-        )
-    ),
-    "edit_title" => array(
-        array(
-            "field" => "title",
-            "label" => "商户名称",
-            "rules" => "trim|required",
+        "edit_title" => array(
+            array(
+                "field" => "title",
+                "label" => "商户名称",
+                "rules" => "trim|required",
+            ),
+            array(
+                "field" => "token",
+                "label" => "Token",
+                "rules" => "trim|required",
+            )
         ),
-        array(
-            "field" => "token",
-            "label" => "Token",
-            "rules" => "trim|required",
-        )
-    ),
-    "edit_pwd" => array(
-        array(
-            "field" => "token",
-            "label" => "Token",
-            "rules" => "trim|required",
+        "edit_pwd" => array(
+            array(
+                "field" => "token",
+                "label" => "Token",
+                "rules" => "trim|required",
+            ),
+            array(
+                'field' => 'oldpassword',
+                'label' => '原始密码',
+                'rules' => 'trim|required|min_length[6]|callback_oldpassword_check',
+            )
+            , array(
+                'field' => 'password',
+                'label' => '密码',
+                'rules' => 'trim|required|min_length[6]',
+            )
+            , array(
+                'field' => 'password_re',
+                'label' => '确认密码',
+                'rules' => 'trim|required|min_length[6]|matches[password]',
+            )
         ),
-        array(
-            'field' => 'oldpassword',
-            'label' => '原始密码',
-            'rules' => 'trim|required|min_length[6]|callback_oldpassword_check',
-        )
-        , array(
-            'field' => 'password',
-            'label' => '密码',
-            'rules' => 'trim|required|min_length[6]',
-        )
-        , array(
-            'field' => 'password_re',
-            'label' => '确认密码',
-            'rules' => 'trim|required|min_length[6]|matches[password]',
-        )
-    ),
-    "get_update" => array(
-        array(
-            "field" => "nickname",
-            "label" => "昵称",
-            "rules" => "trim",
+        "get_update" => array(
+            array(
+                "field" => "nickname",
+                "label" => "昵称",
+                "rules" => "trim",
+            ),
+            array(
+                "field" => "token",
+                "label" => "Token",
+                "rules" => "trim|required",
+            ),
         ),
-        array(
-            "field" => "token",
-            "label" => "Token",
-            "rules" => "trim|required",
-        ),
-    ),
-    "get_token" => array(
-        array(
-            "field" => "id",
-            "label" => "编号ID",
-            "rules" => "trim|required",
+        "get_token" => array(
+            array(
+                "field" => "id",
+                "label" => "编号ID",
+                "rules" => "trim|required",
+            )
         )
-    )
-);
+    );
 // 会员详细信息
     public function info() {
         // 验证

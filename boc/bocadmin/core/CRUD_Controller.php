@@ -218,6 +218,10 @@ class CRUD_Controller extends Base_Controller
 	 * @brief 编辑结束后的处理
 	 */
 	protected function _edit_after($data){}
+	/**
+	 * @brief 删除结束后的处理
+	 */
+	protected function _del_after($data){}
 
 
 
@@ -237,6 +241,7 @@ class CRUD_Controller extends Base_Controller
 		if (!isset($vdata['status'])) {
 			$this->_rm_file($key);
 			if ($this->model->del($key)) {
+				$this->_del_after($key);
 				$vdata = array('status'=>1,'msg'=>"成功的删除数据！");
 				if (is_array($key)) {
 					$this->mlogs->add('delete','删除数据id:'.$this->input->get('ids'));

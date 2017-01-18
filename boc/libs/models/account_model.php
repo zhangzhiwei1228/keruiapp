@@ -147,5 +147,30 @@ class account_model extends MY_Model {
         ->get()
         ->row_array();
     }
-    
+
+    /**
+     * @param $token
+     * @param $accountId
+     * @param string $fresh
+     * @return mixed   用户token
+     */
+    public function gettoken($token, $accountId, $fresh = 'nofresh') {
+        if (!isset($this->maccount_token)) {
+            $this->load->model('manager_token_model', 'maccount_token');
+        }
+
+        $token_now = $this->maccount_token->get_one(array('accountId' => $accountId));
+
+        if (!empty($token_now)) {
+            if ($fresh === 'nofresh') {
+                $token = $token_now['token'];
+            } else {
+                $this->maccount_token->update(array('token' => $token), array('accountId' => $accountId));
+            }
+        } else {
+            $this->maccount_token->create(array('token' => $token, 'accountId' => $accountId));
+        }
+
+        return $token;
+    }
 }

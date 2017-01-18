@@ -6,6 +6,8 @@ class Account extends Modules_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('account_model', 'maccount');
+		$this->load->model('account_token_model', 'mtoken');
 		$this->rules = array(
 			"rule" => array(
 				array(
@@ -68,6 +70,23 @@ class Account extends Modules_Controller
 		$form['pwd'] = passwd($form['pwd']);
 		$form['nickname'] = $form['phone'];
 		return $form;
+	}
+	protected function _create_after($data){
+		if (isset($data['tags'])) {
+			!!$data['tags'] and $this->mtags->add(str_replace(array('，',' ','　','|'), ',', $data['tags']),$this->cid,$data['id']);
+		}
+		$token = genToken();
+		$this->maccount->gettoken($token, $data['id']);
+	}
+	protected function _edit_after($data){
+		if (isset($data['tags'])) {
+			!!$data['tags'] and $this->mtags->add(str_replace(array('，',' ','　','|'), ',', $data['tags']),$this->cid,$data['id']);
+		}
+		$token = genToken();
+		$this->maccount->gettoken($token, $data['id'],true);
+	}
+	protected function _del_after($data){
+		$this->mtoken->delete($data);
 	}
 
 }

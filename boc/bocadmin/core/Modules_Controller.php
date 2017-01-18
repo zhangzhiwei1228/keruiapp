@@ -178,7 +178,7 @@ class Modules_Controller extends CRUD_Controller
 		if (!isset($vdata['status'])) {
 			// 附带文件删除
 			$this->_rm_file($key);
-
+			$this->_del_after($key);
 			if ($where) {
 				$res = $this->model->del($key,$where);
 			}else{
@@ -209,6 +209,10 @@ class Modules_Controller extends CRUD_Controller
 	protected function _rm_file(){
 		return TRUE;
 	}
+	/**
+	 * @brief 删除结束后的处理
+	 */
+	protected function _del_after($data){}
 
 	// 配置
 	public function configs(){

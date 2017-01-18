@@ -56,7 +56,7 @@ define('TOKEN_TIME_EXPIRE', 3600 * 24 * 7); // APP TOKEN 过期时间
 define('EXPIRES_TIME', strtotime('2017-03-31')); // 优惠到期时间
 
 // API 加密密钥
-define('KEY', 'JiaoDao');
+define('KEY', 'KeRuiApp');
 
 // 短信
 define('SMS_ACCOUNT', '111111111');

@@ -28,7 +28,7 @@ class API_Controller extends MY_Controller
         //验证数据安全
         $data = $this->input->post();
         if (isset($headers['token']) && $headers['token']) {
-          $data['token'] = $headers['token'];
+            $data['token'] = $headers['token'];
         }
 
         // 请求类型
@@ -64,7 +64,7 @@ class API_Controller extends MY_Controller
                 exit;
             }
         } else if(isset($data['content']) && !empty($data['content']) && is_array($data['content'])) {
-          $this->data = array_merge($data, $data['content']);
+            $this->data = array_merge($data, $data['content']);
         } else {
             $this->data = $data;
         }

@@ -2,7 +2,7 @@
 
 $autoload['packages']  = array();
 $autoload['libraries'] = array('database','session','form_validation');
-$autoload['helper']    = array('funs','url','form','language','cookie','date','uiadmin','data','string','api','valid');
+$autoload['helper']    = array('funs','url','form','language','cookie','date','uiadmin','data','string','api','valid','gen');
 $autoload['config']    = array('boc_msgs');
 $autoload['language']  = array('adminer');
 $autoload['model']     = array();
