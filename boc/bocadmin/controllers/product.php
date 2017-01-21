@@ -10,7 +10,7 @@ class Product extends Modules_Controller{
             array(
                 "field" => "title",
                 "label" => "标题",
-                "rules" => "trim|required|min_length[6]"
+                "rules" => "trim|required"
             )
             ,array(
                 "field" => "content",
@@ -49,4 +49,96 @@ class Product extends Modules_Controller{
         // adminer funs helpers
         unlink_upload($fids);
     }
+    public function index($cid=false,$page=1)
+    {
+        // 栏目路径
+        $vdata['cpath']= $this->mcol->get_path_more($this->cid);
+        $vdata['cchildren'] = $this->mcol->get_cols($this->cid);
+        $title = $this->mcol->get_one($this->cid,"title");
+        $vdata['title'] = $title['title'];
+
+        $limit = $this->page_limit;
+        $this->input->get('limit',TRUE) and is_numeric($this->input->get('limit')) AND $limit = $this->input->get('limit');
+
+        $order = $this->_index_orders();
+        if ($this->input->get('order',TRUE)) {
+            // TODO: order
+            // $orders = explode("-",$this->input->get('order',TRUE));
+            $order = $this->input->get('order',TRUE);
+        }
+        $where_in = array("cid"=>$this->cid,"ccid"=>$this->ccid);
+        // 条件必须
+        $where = array_merge($this->_index_where(),$where_in);
+        $vdata['pages'] = $this->_pages(site_url($this->class.'/index/'.$this->cid.'/'),$limit,$where,4);
+        $vdata['list'] = $this->model->get_list($limit,$limit*($page-1),$order,$where);
+        $this->_display($vdata);
+    }
+    public function create(){
+        $this->form_validation->set_rules($this->_get_rule('create'));
+        if ($this->form_validation->run() == false) {
+            if ($this->input->is_ajax_request() AND is_post()) {
+                $vdata['status'] = 0;
+                $vdata['msg'] = validation_errors();
+                $this->output->set_content_type('application/json')->set_output(json_encode($vdata));
+            }else{
+                $vdata = array();
+                if($this->cid != 22) {
+                    $where = array(
+                        'cid' => $this->cid - 1,
+                        'audit' => 1,
+                        'show' => 1,
+                    );
+                    $vdata['data'] = $this->model->get_all($where,'id,title');
+                }
+                $this->_display($vdata);
+            }
+        }else{
+            $this->_create();
+        }
+    }
+    protected function _get_rule($rule){
+        $rule = parent::_get_rule($rule);
+        $rule_cid = array(
+            'field'   => 'cid',
+            'label'   => lang('modules_cid_change'),
+            'rules'   => 'required|numeric|callback_checkcid'
+        );
+        if($this->cid != 22) {
+            $rule_pid = array(
+                'field'   => 'pid',
+                'label'   => '上级产品ID',
+                'rules'   => 'required|numeric|callback_checkpid'
+            );
+            array_push($rule, $rule_pid);
+        }
+        array_push($rule, $rule_cid);
+        return $rule;
+    }
+    public function checkpid($pid) {
+        if(!$pid) {
+            $this->form_validation->set_message('checkpid','请先选择上级产品ID');
+            return false;
+        }
+        $product = $this->model->get_one(array('cid'=>$this->cid - 1,'audit'=>1),'id');
+        if(!$product) {
+            $this->form_validation->set_message('checkpid','此产品ID不存在，请重新选择');
+            return false;
+        } else {
+            return true;
+        }
+    }
+    protected function _del_after($data){
+        $this->model->delete_pids($data);
+    }
+    protected function _index_where(){
+        $arr =array();
+        if (isset($_GET['ctype'])) {
+            $arr['ctype'] = $_GET['ctype'];
+        }
+        if (isset($_GET['pid'])) {
+            $arr['pid'] = $_GET['pid'];
+        }
+        return $arr;
+    }
+
 }

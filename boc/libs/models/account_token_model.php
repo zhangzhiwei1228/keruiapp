@@ -26,7 +26,7 @@ class account_token_model extends MY_Model {
 	}
 	public function delete($key,$where=false) {
 		if (is_numeric($key)) {
-			$this->db->where(array('accountId'=>$where));
+			$this->db->where(array('accountId'=>$key));
 		}
 
 		if (is_array($key)) {

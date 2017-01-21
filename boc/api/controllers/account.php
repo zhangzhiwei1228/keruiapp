@@ -13,7 +13,7 @@ class account extends API_Controller {
 	}
 
     protected $rules = array(
-        "edit_head" => array(
+        "edit" => array(
             array(
                 'field' => 'photo',
                 'label' => '头像',
@@ -23,17 +23,10 @@ class account extends API_Controller {
                 "field" => "token",
                 "label" => "Token",
                 "rules" => "trim|required",
-            )
-        ),
-        "edit_title" => array(
-            array(
-                "field" => "title",
-                "label" => "商户名称",
-                "rules" => "trim|required",
             ),
             array(
-                "field" => "token",
-                "label" => "Token",
+                "field" => "nickname",
+                "label" => "姓名",
                 "rules" => "trim|required",
             )
         ),
@@ -58,18 +51,6 @@ class account extends API_Controller {
                 'label' => '确认密码',
                 'rules' => 'trim|required|min_length[6]|matches[password]',
             )
-        ),
-        "get_update" => array(
-            array(
-                "field" => "nickname",
-                "label" => "昵称",
-                "rules" => "trim",
-            ),
-            array(
-                "field" => "token",
-                "label" => "Token",
-                "rules" => "trim|required",
-            ),
         ),
         "get_token" => array(
             array(
@@ -105,20 +86,21 @@ class account extends API_Controller {
     }
 
 	// // 个人中心-设置头像
-	public function edit_head() {
+	public function edit() {
 		// 返回服务器时间以及预定义参数
 		$this->vdata['timeline'] = time();
 		$this->vdata['content'] = '';
 		$this->vdata['secure'] = 0;
 		// 验证
-		$this->form_validation->set_rules($this->rules['edit_head']);
+
+		$this->form_validation->set_rules($this->rules['edit']);
 		// validate验证结果
 		if ($this->form_validation->run('', $this->data) == false) {
 			// 返回失败
 			$this->vdata['returnCode'] = '0011';
 			$this->vdata['returnInfo'] = $this->trim_validation_errors();
 		} else {
-			if ($res = $this->macc->set($this->userinfo['id'], array('photo' => $this->data['photo'],'uptimeline'=>time()))) {//更新会员表
+			if ($res = $this->macc->set($this->userinfo['id'], array('photo' => $this->data['photo'],'nickname' => $this->data['nickname'],'uptimeline'=>time()))) {//更新会员表
                 $it = one_upload($this->data['photo'], 'id, url');
                 if ($it) {
                   $it['url'] = UPLOAD_URL.$it['url'];

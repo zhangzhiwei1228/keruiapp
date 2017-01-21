@@ -11,7 +11,21 @@
 
         <div class="boxed-inner seamless">
             <div class="control-group">
-                <label class="control-label" for="title"> 语种 </label>
+                <label class="control-label" for="title">
+                <?php $cid = $this->cid ? $this->cid : $_GET['c']; switch($cid) {
+                    case 18:
+                        $title = '语种';
+                        break;
+                    case 19:
+                        $title = '地区名';
+                        break;
+                    default:
+                        $title = '';
+                        break;
+
+                } echo $title;
+                ?>
+                </label>
                 <div class="controls">
                     <input type="text" id="title" name="title" value="<?php echo set_value("title") ?>" x-webkit-speech>
                     <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal"><?php echo lang('seo') ?></a>

@@ -89,6 +89,12 @@
 		</div>
 		<?php } ?>
 
+		<div class="control-group uefull">
+			<label for="intro"  class="control-label">简介</label>
+			<div class="controls">
+				<textarea id="content" name="content"> <?php echo set_value('content',$it['content']); ?></textarea>
+			</div>
+		</div>
 
 		<!-- 图片上传 -->
 		<div class="control-group">

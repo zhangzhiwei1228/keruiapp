@@ -17,6 +17,7 @@ $cid=$this->cid;
 			<thead>
 				<tr>
 					<th class="width-small"><input id='selectbox-all' type="checkbox" > </th>
+					<th>序号</th>
 					<th>图</th>
 					<th>标题</th>
 					<th>更新时间</th>
@@ -27,6 +28,7 @@ $cid=$this->cid;
 				<?php foreach ($list as $v):?>
 					<tr data-id="<?php echo $v['id'] ?>" data-sort="<?php echo $v['sort_id'] ?>">
 						<td><input class="select-it" type="checkbox" value="<?php echo $v['id']; ?>" ></td>
+						<td> <input type="text" class="sortid" value="<?php echo $v['sort_id']?>" data-id="<?php echo $v['id'] ?>"></td>
 						<td>
 							<?php if ($v['thumb']): ?>
 								<a class="fancybox-img" href="<?php echo UPLOAD_URL. str_replace('thumbnail/', '', $v['thumb']); ?>" title="<?php echo $v['title'] ?>">
@@ -34,8 +36,7 @@ $cid=$this->cid;
 								</a>
 							<?php endif ?>
 						</td>
-						<td> <input type="text" class="sortid" value="<?php echo $v['sort_id']?>" data-id="<?php echo $v['id'] ?>"> <?php echo $v['title'] ?></td>
-
+						<td> <?php echo $v['title'] ?></td>
 						<td> <?php echo date("Y/m/d H:i:s",$v['timeline']); ?> </td>
 						<td>
 							<div class="btn-group">

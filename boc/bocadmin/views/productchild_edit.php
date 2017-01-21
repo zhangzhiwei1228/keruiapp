@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <?php if($this->cid != 22) {?>
+
         <div class="control-group uefull">
             <textarea id="editor_id" name="content"> <?php echo set_value('content',$it['content']); ?></textarea>
         </div>
@@ -79,7 +79,7 @@
         <div id="js-photo-show" class="js-img-list-f"></div>
         <div class="clear"></div>
         <!-- 图片上传 -->
-        <?php }?>
+
     </div>
     <div class="boxed-footer">
         <?php if ($this->ccid): ?>
@@ -93,11 +93,11 @@
 </form>
 </div>
 
-<?php if($this->cid) { include_once 'inc_ui_media.php'; }?>
+<?php include_once 'inc_ui_media.php'; ?>
 <script type="text/javascript">
     require(['jquery','adminer/js/ui','adminer/js/media'],function($,ui,media){
         ui.editor_create('editor_id');
-        var products_photos = <?php echo json_encode(one_upload($it['photo'])) ?>;
+        var product_photos = <?php echo json_encode($ps) ?>;
         media.show(product_photos,'photo');
         media.sort('photo');
     });

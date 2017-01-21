@@ -6,9 +6,9 @@ class vaccount_model extends MY_Model {
 	protected $table = 'account';
 
 	// 个人信息
-	public function get_info($where, $fresh = 'nofresh', $terminalNo = 0) {
+	public function get_info($where, $fresh = 'nofresh', $terminalNo = 0,$field ='*') {
 
-		$this->db->select('*')->from($this->table);
+		$this->db->select($field)->from($this->table);
 
     if (!is_numeric($where)) {
 			$this->db->where($where);

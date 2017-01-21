@@ -10,7 +10,20 @@
         <div class="boxed-inner seamless">
 
             <div class="control-group">
-                <label for="title" class="control-label">语种:</label>
+                <label for="title" class="control-label">
+                    <?php $cid = $this->cid ? $this->cid : $_GET['c']; switch($cid) {
+                        case 18:
+                            $title = '语种';
+                            break;
+                        case 19:
+                            $title = '地区名';
+                            break;
+                        default:
+                            $title = '';
+                            break;
+
+                    } echo $title;
+                    ?></label>
                 <div class="controls">
                     <input type="text" name="title" id="title" value="<?php echo set_value('title',$it['title']); ?>"  placeholder="栏目名称" required=1>
                     <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal">SEO</a>

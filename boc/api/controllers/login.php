@@ -68,7 +68,7 @@ class login extends API_Controller
             }
             // 获取用户数据
             if ($res = $this->macc->setlogin($this->info['id'])) {
-                $info = $this->mvacc->get_info($this->info['id'], 'fresh', $this->data['terminalNo']);
+                $info = $this->mvacc->get_info($this->info['id'], 'fresh', $this->data['terminalNo'], $this->userInfoFields);
                 //返回用户详细数据
                 $this->vdata['returnCode']   = '200';
                 $this->vdata['returnInfo'] = '操作成功';
@@ -83,103 +83,15 @@ class login extends API_Controller
         // 返回json数据
         $this->_send_json($this->vdata);
     }
-
-    // // 用户免密码登录
-    // public function withCode()
-    // {
-    //     // 返回服务器时间以及预定义参数
-    //     $vdata['timeline']   = time();
-    //     $vdata['content']    = '';
-    //     $vdata['secure']     = 0;
-    //
-    //     // 验证
-    //     $this->form_validation->set_rules($this->rules['withCode']);
-    //
-    //     // validate验证结果
-    //     if ($this->form_validation->run('', $this->data) == false) {
-    //         // 返回失败
-    //         $vdata['returnCode']   = '0011';
-    //         $vdata['returnInfo'] = $this->trim_validation_errors();
-    //     } else {
-    //         // 获取用户数据
-    //         if ($accountId = $this->macc->setlogin($this->info['id'], $this->userInfoFields)) {
-                // $info = $this->mvacc->get_info(array('phone'=>$this->data['phone']), 'fresh', $this->data['terminalNo']);
-    //
-    //             //返回用户详细数据
-    //             $vdata['returnCode']   = '0000';
-    //             $vdata['returnInfo'] = '操作成功';
-    //             $vdata['secure']     = JSON_SECURE;
-    //             $vdata['content']['userinfo']    = $info;
-    //         } else {
-    //             $vdata['returnCode']   = '0050';
-    //             $vdata['returnInfo'] = '操作失败';
-    //         }
-    //     }
-    //
-    //     // 返回json数据
-    //     $this->_send_json($vdata);
-    // }
-
-    // // 发送验证码(创建用户时用)
-    // public function smsCode()
-    // {
-    //     // 返回服务器时间以及预定义参数
-    //     $vdata['timeline']   = time();
-    //     $vdata['content']    = '';
-    //     $vdata['secure']     = 0;
-    //
-    //     // 验证
-    //     $this->form_validation->set_rules($this->rules['smsCode']);
-    //
-    //     // validate验证结果
-    //     if ($this->form_validation->run('', $this->data) == false) {
-    //
-    //         // 返回失败
-    //         $vdata['returnCode']   = '0011';
-    //         $vdata['returnInfo'] = $this->trim_validation_errors();
-    //     } else {
-    //         $this->load->model('smscode_model', 'msmscode');
-    //
-    //         if ($content = $this->msmscode->sendCode($this->data['phone'])) {
-    //             if ($content['code']) {
-    //                 // 返回成功
-    //                 $vdata['returnCode']   = '0101';
-    //                 $vdata['returnInfo'] = $content['msg'];
-    //                 $vdata['secure']     = JSON_SECURE;
-    //                 $vdata['content'] = $content;
-    //             } else {
-    //                 // 返回成功
-    //                 $vdata['returnCode']   = '0000';
-    //                 $vdata['returnInfo'] = '操作成功';
-    //                 $vdata['secure']     = JSON_SECURE;
-    //                 $vdata['content'] = $content;
-    //             }
-    //         } else {
-    //             // 返回成功
-    //             $vdata['returnCode']   = '0101';
-    //             $vdata['returnInfo'] = '短信发送失败';
-    //             $vdata['secure']     = JSON_SECURE;
-    //             $vdata['content'] = $content;
-    //         }
-    //     }
-    //
-    //     // 返回json数据
-    //     $this->_send_json($vdata);
-    // }
-
-    //////////////////////////////////////
-    ///////////////规则验证////////////////
-    //////////////////////////////////////
-
     // 检验找回密码账户
     public function account_check($account)
     {
         // 查找用户
-        if ($info = $this->macc->get_one(array('phone' => $account))) {
+        if ($info = $this->macc->get_one(array('phone' => $account,'audit' => 1))) {
             $this->info = $info;
             return true;
         } else {
-            $this->form_validation->set_message('account_check', '该账号不存在！');
+            $this->form_validation->set_message('account_check', '该账号不存在或已被禁用！');
             return false;
         }
     }

@@ -1,5 +1,5 @@
 <div class="btn-group">
-    <a href="<?php echo site_urlc('product/create')?>" class='btn btn-primary'> <i class="fa fa-plus"></i> <?php echo $title; ?> </a>
+    <a href="<?php echo site_urlc('productchild/create')?>" class='btn btn-primary'> <i class="fa fa-plus"></i> <?php echo $title; ?> </a>
 </div>
 
 <?php include_once 'inc_modules_path.php'; ?>
@@ -11,14 +11,8 @@
     <thead>
         <tr>
             <th class="width-small"><input id='selectbox-all' type="checkbox" > </th>
-            <?php if($this->cid != 22) {?>
             <th>图</th>
-            <?php }?>
             <th>标题</th>
-            <?php if($this->cid != 22) {?>
-            <th>浏览量</th>
-            <th>收藏量</th>
-            <?php }?>
             <th>更新时间</th>
             <th class="span1">操作</th>
         </tr>
@@ -27,20 +21,14 @@
         <?php foreach ($list as $v):?>
         <tr data-id="<?php echo $v['id'] ?>" data-sort="<?php echo $v['sort_id'] ?>">
             <td><input class="select-it" type="checkbox" value="<?php echo $v['id']; ?>" ></td>
-            <?php if($this->cid != 22) {?>
             <td>
                 <?php if ($v['thumb']): ?>
                 <a class="fancybox-img" href="<?php echo UPLOAD_URL. str_replace('thumbnail/', '', $v['thumb']); ?>" title="<?php echo $v['title'] ?>">
                     <img src="<?php echo UPLOAD_URL.$v['thumb'] ?>" alt="<?php echo $v['title'];?>">
                 </a>
                 <?php endif ?>
-            </td>
-            <?php }?>
+             </td>
             <td> <?php echo $v['title'] ?></td>
-            <?php if($this->cid != 22) {?>
-            <td> <?php echo $v['click'] ?></td>
-            <td> <?php echo $v['collection'] ?></td>
-            <?php }?>
             <td> <?php echo  date("Y/m/d H:i:s",$v['timeline']); ?> </td>
             <td>
                 <div class="btn-group">
@@ -70,17 +58,17 @@
 
 <script>
 require(['adminer/js/ui'],function(ui){
-  var product = {
-    url_del: "<?php echo site_urlc('product/delete'); ?>"
-    ,url_audit: "<?php echo site_urlc('product/audit'); ?>"
-    ,url_flag: "<?php echo site_urlc('product/flag'); ?>"
-    ,url_sortid: "<?php echo site_urlc('product/sortid'); ?>"
+  var productchild = {
+    url_del: "<?php echo site_urlc('productchild/delete'); ?>"
+    ,url_audit: "<?php echo site_urlc('productchild/audit'); ?>"
+    ,url_flag: "<?php echo site_urlc('productchild/flag'); ?>"
+    ,url_sortid: "<?php echo site_urlc('productchild/sortid'); ?>"
   };
 
   ui.fancybox_img();
-  ui.btn_delete(product.url_del);     // 删除
-  ui.btn_audit(product.url_audit);    // 审核
-  ui.btn_flag(product.url_flag);      // 推荐
-  ui.sortable(product.url_sortid);    // 排序
+  ui.btn_delete(productchild.url_del);     // 删除
+  ui.btn_audit(productchild.url_audit);    // 审核
+  ui.btn_flag(productchild.url_flag);      // 推荐
+  ui.sortable(productchild.url_sortid);    // 排序
 });
 </script>

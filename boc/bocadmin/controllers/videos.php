@@ -55,5 +55,20 @@ class videos extends Modules_Controller
         }
         $this->output->set_content_type('application/json')->set_output(json_encode($vdata));
     }
+	protected function _rm_file($ids){
+		$fids = array() ;
+		if (is_numeric($ids)) {
+			$tmp = $this->model->get_one($ids,'photo,files');
+			$fids = explode(',',$tmp['photo']);
+		}else if(is_array($ids)){
+			// 使用 字符串where时
+			$tmp = $this->model->get_all("`id` in (".implode(',', $ids).")",'photo,files');
+			foreach ($tmp as $key => $v) {
+				$fids = array_merge($fids, explode(',',$v['photo']),explode(',',$v['files']));
+			}
+		}
+		// adminer funs helpers
+		unlink_upload($fids);
+	}
 
 }
