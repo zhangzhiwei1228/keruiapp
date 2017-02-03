@@ -24,11 +24,13 @@
             <td> <?php echo  date("Y/m/d H:i:s",$v['timeline']); ?> </td>
             <td>
                 <div class="btn-group">
-                    <?php /*include 'inc_ui_flag.php'; */?><!--
-                    --><?php /*include 'inc_ui_audit.php'; */?>
-                    <a class='btn btn-small' href=" <?php echo site_urlc( $this->router->class.'/edit/'.$v['id']) ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> <?php // echo lang('edit') ?></a>
-                    <!--<a class='btn btn-danger btn-small btn-del' data-id="<?php /*echo $v['id'] */?>" href="#"  title="<?php /*echo lang('del') */?>"> <i class="fa fa-times"></i> <?php /*// echo lang('del') */?></a>-->
-                </div>
+                    <?php if(ENVIRONMENT == 'development') {?>
+                        <?php include 'inc_ui_flag.php'; ?>
+                        <?php include 'inc_ui_audit.php'; ?>
+                        <a class='btn btn-danger btn-small btn-del' data-id="<?php echo $v['id'] ?>" href="#"  title="<?php echo lang('del') ?>"> <i class="fa fa-times"></i> <?php echo lang('del') ?></a>
+                    <?php }?>
+                    <a class='btn btn-small' href=" <?php echo site_urlc( $this->router->class.'/edit/'.$v['id']) ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> <?php  echo lang('edit') ?></a>
+                 </div>
             </td>
         </tr>
         <?php endforeach;?>
@@ -37,14 +39,15 @@
 
     </div>
 </div>
-
-<!--<div class="btn-group">
-    <a id='select-all' class='btn' href="#"> <i class=""></i> <?php /*echo lang('select_all') */?> </a>
-    <a id='unselect-all' class='btn hide' href="#"> <i class=""></i> <?php /*echo lang('unselect') */?> </a>
-    <a id="btn-del" class='btn btn-danger' href="#"> <i class="fa fa-times"></i> <?php /*echo lang('del') */?> </a>
-    <a id="btn-audit" class='btn' href="#" data-audit='1'><?php /*echo lang('audit') */?></a>
+<?php if(ENVIRONMENT == 'development') {?>
+<div class="btn-group">
+    <a id='select-all' class='btn' href="#"> <i class=""></i> <?php echo lang('select_all') ?> </a>
+    <a id='unselect-all' class='btn hide' href="#"> <i class=""></i> <?php echo lang('unselect') ?> </a>
+    <a id="btn-del" class='btn btn-danger' href="#"> <i class="fa fa-times"></i> <?php echo lang('del') ?> </a>
+    <a id="btn-audit" class='btn' href="#" data-audit='1'><?php echo lang('audit') ?></a>
     <a id="btn-audit" class='btn' href="#"  data-audit='0'>取消审核</a>
-</div>-->
+</div>
+<?php } ?>
 
 <?php echo $pages; ?>
 

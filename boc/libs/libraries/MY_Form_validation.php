@@ -55,8 +55,21 @@ class MY_Form_validation extends CI_Form_validation
         return (bool) (!$str) ? FALSE : TRUE;
     }
     public function is_phone_numeric($str) {
-        $this->set_message('is_phone_numeric',"%s 手机号不能为空.");
+        $this->set_message('is_phone_numeric',"%s 手机号只能为数字.");
         return (bool) (!preg_match( '/^[\-+]?[0-9]*\.?[0-9]+$/', $str)) ? FALSE : TRUE;
+    }
+    public function is_pwd_required($str) {
+        $this->set_message('is_pwd_required',"%s 密码不能为空不能为空.");
+        return (bool) (!$str) ? FALSE : TRUE;
+    }
+    public function is_pwd_min_length($str) {
+        $this->set_message('is_pwd_min_length',"%s 密码长度小于六位.");
+        if (function_exists('mb_strlen'))
+        {
+            return (mb_strlen($str) < 6) ? FALSE : TRUE;
+        }
+
+        return (strlen($str) < 6) ? FALSE : TRUE;
     }
 
     /**

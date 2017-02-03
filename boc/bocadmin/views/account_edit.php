@@ -40,12 +40,12 @@
 					</select>
 				</div>
 			</div>
-			<div class="control-group">
+			<!--<div class="control-group">
 				<label for="phone" class="control-label">手机号码：</label>
 				<div class="controls">
-					<?php echo $it['phone']; ?>
+					<?php /*echo $it['phone']; */?>
 				</div>
-			</div>
+			</div>-->
 			<div class="control-group">
 				<label for="title" class="control-label">昵称</label>
 				<div class="controls">

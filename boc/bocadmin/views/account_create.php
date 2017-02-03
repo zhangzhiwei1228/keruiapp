@@ -19,7 +19,7 @@
             <div class="control-group">
                 <label class="control-label" for="title"> 密码 </label>
                 <div class="controls">
-                    <input type="password" id="pwd" name="pwd" value="<?php echo set_value("pwd") ?>" x-webkit-speech>
+                    <input type="password" id="pwd" name="pwd" value="<?php echo set_value("pwd") ?>" maxlength="12" required=1 x-webkit-speech>
                 </div>
             </div>
             <div class="control-group">

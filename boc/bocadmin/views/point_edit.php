@@ -12,7 +12,7 @@
         <div class="control-group">
             <label for="title" class="control-label">标识:</label>
             <div class="controls">
-                <input type="text" name="title" id="title" value="<?php echo set_value('title',$it['title']); ?>"  class='span7' readonly>
+                <input type="text" name="title" id="title" value="<?php echo set_value('title',$it['title']); ?>"  class='span7' <?php echo ENVIRONMENT != 'production' ? '' : 'readonly'   ?>>
                 <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal"><?php echo lang('seo') ?></a>
                 <span class="help-inline"></span>
             </div>

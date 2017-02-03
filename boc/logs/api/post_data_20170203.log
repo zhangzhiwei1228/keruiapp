@@ -981,3 +981,45 @@
     [pwd] => 123123
     [language] => ZH
 )
+
+ [2017-02-03 17:59:52] URI: login/index
+ [2017-02-03 17:59:52] Post Data: Array
+(
+    [phone] => 18100000001
+    [pwd] => 123123
+    [language] => ZH
+)
+
+ [2017-02-03 17:59:52] URI: messages/interact
+ [2017-02-03 17:59:52] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-03 18:00:03] URI: login/index
+ [2017-02-03 18:00:03] Post Data: Array
+(
+    [phone] => 181000000011
+    [pwd] => 123123
+    [language] => ZH
+)
+
+ [2017-02-03 18:00:03] URI: messages/interact
+ [2017-02-03 18:00:03] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-03 18:01:12] URI: login/index
+ [2017-02-03 18:01:12] Post Data: Array
+(
+    [phone] => 181000000011
+    [pwd] => 123123
+    [language] => ZH
+)
+
+ [2017-02-03 18:01:12] URI: messages/interact
+ [2017-02-03 18:01:12] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)

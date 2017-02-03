@@ -23,7 +23,7 @@ class login extends API_Controller
             array(
                 "field" => "pwd",
                 "label" => "登录密码",
-                "rules" => "trim|required|min_length[6]|max_length[16]|callback_pwd_verify"
+                "rules" => "trim|is_pwd_required|is_pwd_min_length|callback_pwd_verify"
             ),
             array(
                 "field" => "terminalNo",
