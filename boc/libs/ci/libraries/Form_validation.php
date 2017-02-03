@@ -27,6 +27,7 @@
 class CI_Form_validation {
 
 	protected $CI;
+	protected $language;
 	protected $_field_data			= array();
 	protected $_config_rules		= array();
 	protected $_error_array			= array();
@@ -42,7 +43,7 @@ class CI_Form_validation {
 	public function __construct($rules = array())
 	{
 		$this->CI =& get_instance();
-
+		$this->language = isset($_POST['language']) && $_POST['language'] ? $_POST['language'] : 'ZH';
 		// Validation rules can be stored in a config file.
 		$this->_config_rules = $rules;
 
@@ -164,6 +165,10 @@ class CI_Form_validation {
 	 */
 	public function set_message($lang, $val = '')
 	{
+		$CI = & get_instance ();
+		$CI->load->model ( 'point_model','pmodel' );
+		$msg = $CI->pmodel->get_one(array('cid'=>28,'title'=>$lang),$this->language.'_content');
+		$val = $msg ? $msg[$this->language.'_content'] : $val;
 		if ( ! is_array($lang))
 		{
 			$lang = array($lang => $val);

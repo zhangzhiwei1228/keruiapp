@@ -19,7 +19,10 @@ function get_code($type) {
     switch($type) {
         case 'ZH':
             return array(
-
+                'Login_fail'=>array(
+                    'code' => 10001,
+                    'msg' => '登录失败'
+                ),
             );
             break;
         case 'EN':
