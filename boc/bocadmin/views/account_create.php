@@ -11,9 +11,9 @@
 
         <div class="boxed-inner seamless">
             <div class="control-group">
-                <label class="control-label" for="title"> 手机号 </label>
+                <label class="control-label" for="title"> 帐号 </label>
                 <div class="controls">
-                    <input type="text" id="phone" name="phone" value="<?php echo set_value("phone") ?>" maxlength="11" x-webkit-speech>
+                    <input type="text" id="phone" name="phone" value="<?php echo set_value("phone") ?>" maxlength="20" required=1 x-webkit-speech>
                 </div>
             </div>
             <div class="control-group">

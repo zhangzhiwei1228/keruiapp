@@ -29,7 +29,7 @@ if (isset($_GET['industry']) AND is_numeric($_GET['industry']) AND $_GET['indust
 		<tr>
 			<th class="width-small"><input id='selectbox-all' type="checkbox" > </th>
 			<th>头像</th>
-			<th>手机</th>
+			<th>帐号</th>
 			<th>昵称</th>
 			<th>注册时间</th>
 			<th>操作</th>

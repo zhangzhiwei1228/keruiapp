@@ -12,8 +12,8 @@ class Account extends Modules_Controller
 			"rule" => array(
 				array(
 					"field" => "phone",
-					"label" => '手机',
-					"rules" => "trim|xss_clear|callback_phone_check"
+					"label" => '帐号',
+					"rules" => "trim|xss_clear|min_length[1]|max_length[20]|callback_phone_check"
 				)
 				,array(
 					"field" => "timeline",
@@ -24,8 +24,8 @@ class Account extends Modules_Controller
 			"edit" => array(
 				array(
 					"field" => "phone",
-					"label" => '手机',
-					"rules" => "trim|xss_clear|mobile"
+					"label" => '帐号',
+					"rules" => "trim|xss_clear|min_length[1]|max_length[20]|callback_phone_check"
 				)
 			)
 		);
@@ -54,10 +54,10 @@ class Account extends Modules_Controller
 	// 验证tel是否被使用
 	public function phone_check($name = FALSE)
     {
-		if(!is_mobile($name)) {
+		/*if(!is_mobile($name)) {
 			$this->form_validation->set_message('phone_check', '%s : '.$name.'格式错误');
 			return FALSE;
-		}
+		}*/
 		if ($name and $mid = $this->model->find_phone($name)) {
 			$this->form_validation->set_message('phone_check', '%s : '.$name.'已经被使用。');
 			return FALSE;

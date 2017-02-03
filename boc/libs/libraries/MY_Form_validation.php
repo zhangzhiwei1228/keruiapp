@@ -50,6 +50,14 @@ class MY_Form_validation extends CI_Form_validation
         $this->set_message('is_mobile',"%s 手机格式有误.");
         return (bool) (!preg_match('/^[(86)|0]?(13\d{9})|(15\d{9})|(18\d{9})|(17\d{9})$/', $str)) ? FALSE : TRUE;
     }
+    public function is_phone_required($str){
+        $this->set_message('is_phone_required',"%s 手机号不能为空.");
+        return (bool) (!$str) ? FALSE : TRUE;
+    }
+    public function is_phone_numeric($str) {
+        $this->set_message('is_phone_numeric',"%s 手机号不能为空.");
+        return (bool) (!preg_match( '/^[\-+]?[0-9]*\.?[0-9]+$/', $str)) ? FALSE : TRUE;
+    }
 
     /**
      * 验证邮政编码

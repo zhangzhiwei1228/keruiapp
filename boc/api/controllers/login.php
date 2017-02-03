@@ -17,8 +17,8 @@ class login extends API_Controller
         "withPWD" => array(
             array(
                 "field" => "phone",
-                "label" => "手机号码",
-                "rules" => "trim|required|numeric|min_length[11|max_length[11]|is_mobile|callback_account_check"
+                "label" => "帐号",
+                "rules" => "trim|is_phone_required|callback_account_check"
             ),
             array(
                 "field" => "pwd",

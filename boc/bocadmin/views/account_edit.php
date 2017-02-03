@@ -13,9 +13,9 @@
 	<div class="row-fluid">
 		<div class="boxed-inner seamless " >
 			<div class="control-group">
-				<label for="title" class="control-label">手机:</label>
+				<label for="title" class="control-label">帐号:</label>
 				<div class="controls">
-					<input type="text" name="phone" id="phone" value="<?php echo set_value('phone',$it['phone']); ?>"  placeholder="栏目名称" required=1 maxlength="11">
+					<input type="text" name="phone" id="phone" value="<?php echo set_value('phone',$it['phone']); ?>"  placeholder="栏目名称" required=1 maxlength="20">
 				</div>
 			</div>
 
