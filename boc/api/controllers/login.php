@@ -68,6 +68,8 @@ class login extends API_Controller
             // 获取用户数据
             if ($res = $this->macc->setlogin($this->info['id'])) {
                 $info = $this->mvacc->get_info($this->info['id'], 'fresh', $this->data['terminalNo'], $this->userInfoFields);
+                $token = genToken();
+                $this->macc->gettoken($token, $this->info['id'],true,$this->info['terminalNo']);
                 //返回用户详细数据
                 $this->vdata['returnCode']   = '200';
                 $this->vdata['returnInfo'] = '操作成功';
