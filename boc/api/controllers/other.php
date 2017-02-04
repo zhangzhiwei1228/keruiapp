@@ -175,4 +175,14 @@ class other extends API_Controller {
         // 返回json数据
         $this->_send_json($this->vdata);
     }
+    //语言选择
+    public function language() {
+        $this->load->model('language_model', 'mlanguage');
+        $language = $this->mlanguage->get_all(array('audit' => 1));
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $language ;
+        $this->_send_json($this->vdata);
+    }
 }
