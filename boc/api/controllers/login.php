@@ -9,8 +9,7 @@ class login extends API_Controller
     public function __construct()
     {
       parent::__construct();
-
-      $this->userInfoFields = 'id,audit,phone,nickname,photo,language';
+      $this->userInfoFields = 'id,audit,phone,nickname,photo,language,area';
     }
 
     protected $rules = array(
