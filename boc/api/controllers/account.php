@@ -25,7 +25,7 @@ class account extends API_Controller {
                 "rules" => "trim|required",
             ),
             array(
-                "field" => "nickname",
+                "field" => "realname",
                 "label" => "姓名",
                 "rules" => "trim|required",
             ),
@@ -105,7 +105,7 @@ class account extends API_Controller {
 			$this->vdata['returnCode'] = '0011';
 			$this->vdata['returnInfo'] = $this->trim_validation_errors();
 		} else {
-			if ($res = $this->macc->set($this->userinfo['id'], array('photo' => $this->data['photo'],'nickname' => $this->data['nickname'],'uptimeline'=>time(),'area' => $this->data['area']))) {//更新会员表
+			if ($res = $this->macc->set($this->userinfo['id'], array('photo' => $this->data['photo'],'realname' => $this->data['realname'],'uptimeline'=>time(),'area' => $this->data['area']))) {//更新会员表
                 $it = one_upload($this->data['photo'], 'id, url');
                 if ($it) {
                   $it['url'] = UPLOAD_URL.$it['url'];
