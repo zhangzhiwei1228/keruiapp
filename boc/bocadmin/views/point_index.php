@@ -11,7 +11,7 @@
     <thead>
         <tr>
             <th class="width-small"><input id='selectbox-all' type="checkbox" > </th>
-            <th>表示</th>
+            <th>标识</th>
             <th>更新时间</th>
             <th class="span1">操作</th>
         </tr>

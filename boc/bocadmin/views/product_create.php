@@ -25,11 +25,55 @@
     <?php echo form_open(current_urlc(),array("class"=>"form-horizontal","id"=>"frm-create")); ?>
 
     <div class="boxed-inner seamless">
-        <div class="control-group">
-            <label class="control-label" for="title"> <?php echo lang('title') ?> </label>
-            <div class="controls">
-                <input type="text" id="title" name="title" class='span7'>
-                <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal"><?php echo lang('seo') ?></a>
+
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab6" data-toggle="tab">ZH标题</a></li>
+                <li class=""><a href="#tab7" data-toggle="tab">FR标题</a></li>
+                <li class=""><a href="#tab8" data-toggle="tab">ES标题</a></li>
+                <li class=""><a href="#tab9" data-toggle="tab">RU标题</a></li>
+                <li class=""><a href="#tab10" data-toggle="tab">EN标题</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab6">
+                    <div class="control-group">
+                        <div class="controls">
+
+                            <input type="text" id="title" name="title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab7">
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="text" id="FR_title" name="FR_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab8">
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="text" id="ES_title" name="ES_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab9">
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="text" id="RU_title" name="RU_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab10">
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="EN_title" name="EN_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <?php if($this->cid !=22 ) {?>

@@ -8,13 +8,54 @@
     <?php echo form_open(current_urlc(), array('class' => 'form-horizontal', 'id' => 'frm-edit')); ?>
 
     <div class="boxed-inner seamless">
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab6" data-toggle="tab">ZH标题</a></li>
+                <li class=""><a href="#tab7" data-toggle="tab">FR标题</a></li>
+                <li class=""><a href="#tab8" data-toggle="tab">ES标题</a></li>
+                <li class=""><a href="#tab9" data-toggle="tab">RU标题</a></li>
+                <li class=""><a href="#tab10" data-toggle="tab">EN标题</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab6">
+                    <div class="control-group">
+                        <div class="controls">
 
-        <div class="control-group">
-            <label for="title" class="control-label"><?php echo lang('title') ?>:</label>
-            <div class="controls">
-                <input type="text" name="title" id="title" value="<?php echo set_value('title',$it['title']); ?>"  class='span7'>
-                <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal"><?php echo lang('seo') ?></a>
-                <span class="help-inline"></span>
+                            <input type="text" id="title" value="<?php echo set_value('title',$it['title']); ?>" name="title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab7">
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="text" id="FR_title" value="<?php echo set_value('FR_title',$it['FR_title']); ?>" name="FR_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab8">
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="text" id="ES_title" value="<?php echo set_value('ES_title',$it['ES_title']); ?>" name="ES_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab9">
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="text" id="RU_title" value="<?php echo set_value('RU_title',$it['RU_title']); ?>" name="RU_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab10">
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="EN_title" value="<?php echo set_value('EN_title',$it['EN_title']); ?>" name="EN_title" class='span7'>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

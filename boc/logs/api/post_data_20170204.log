@@ -252,3 +252,15 @@
     [token] => CDuswqVMsqb89lcnyHMxfagQeNDVPHrSLbB8IWK2DlzBMRoBY2y5RVKviOHyWyHi
     [area] => 6
 )
+
+ [2017-02-04 15:48:12] URI: other/area
+ [2017-02-04 15:48:12] Post Data: Array
+(
+    [terminalNo] => 2
+)
+
+ [2017-02-04 15:48:12] URI: messages/interact
+ [2017-02-04 15:48:12] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
