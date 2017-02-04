@@ -1,0 +1,39 @@
+
+ [2017-02-04 10:41:00] UPLOAD: start ------------->
+ [2017-02-04 10:41:00] UPLOAD: $post_data ------------->:Array
+(
+    [name] => industry
+)
+
+ [2017-02-04 10:41:00] UPLOAD: $data ------------->:Array
+(
+    [upload_data] => Array
+        (
+            [file_name] => 20170204104100TNCU8728.jpg
+            [file_type] => image/jpeg
+            [file_path] => /home/zzw/webserver/bocai/keruiapp/web/upload/2017/02/04/
+            [full_path] => /home/zzw/webserver/bocai/keruiapp/web/upload/2017/02/04/20170204104100TNCU8728.jpg
+            [raw_name] => 20170204104100TNCU8728
+            [orig_name] => 20170204104100TNCU8728.jpg
+            [client_name] => mmexport1433863221670.jpg
+            [file_ext] => .jpg
+            [file_size] => 1531.25
+            [is_image] => 1
+            [image_width] => 960
+            [image_height] => 1280
+            [image_type] => jpeg
+            [image_size_str] => width="960" height="1280"
+        )
+
+)
+
+ [2017-02-04 10:41:00] UPLOAD: $files ------------->:Array
+(
+    [name] => 20170204104100TNCU8728.jpg
+    [size] => 1531.25
+    [type] => image/jpeg
+    [upload_path] => /home/zzw/webserver/bocai/keruiapp/web/upload/2017/02/04/
+    [url] => 2017/02/04/20170204104100TNCU8728.jpg
+    [thumbnailUrl] => 2017/02/04/thumbnail/20170204104100TNCU8728.jpg
+    [timeline] => 1486176060
+)

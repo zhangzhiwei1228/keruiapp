@@ -6,7 +6,7 @@
 
 <?php include_once 'inc_ui_limit.php'; ?>
 <form class="form-inline" action="<?php echo site_url($this->class.'/search/'.$this->cid); ?>" method="GET">
-<input type="text" name="phone" width="50px" value="" placeholder="手机"/>
+<input type="text" name="phone" width="50px" value="" placeholder="帐号"/>
 <?php
 $industries = list_coltypes(0,0,'industry');
 if (isset($_GET['industry']) AND is_numeric($_GET['industry']) AND $_GET['industry']) {
@@ -56,7 +56,7 @@ if (isset($_GET['industry']) AND is_numeric($_GET['industry']) AND $_GET['indust
 			<td>
 				<div class="btn-group">
 					<?php include 'inc_ui_audit.php'; ?>
-					<a class='btn btn-small' href=" <?php echo site_urlc( $this->router->class.'/edit/'.$v['id']) ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> </a>
+					<a class='btn btn-small' href=" <?php echo site_urlc( $this->router->class.'/edit/').'&id='.$v['id'] ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> </a>
 					<a class='btn btn-danger btn-small btn-del' data-id="<?php echo $v['id'] ?>" href="#"  title="<?php echo lang('del') ?>"> <i class="fa fa-times"></i> </a>
 				</div>
 			</td>

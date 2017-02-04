@@ -178,7 +178,17 @@ class other extends API_Controller {
     //语言选择
     public function language() {
         $this->load->model('language_model', 'mlanguage');
-        $language = $this->mlanguage->get_all(array('audit' => 1));
+        $language = $this->mlanguage->get_all(array('cid'=>18 ,'audit' => 1),'id,title');
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $language ;
+        $this->_send_json($this->vdata);
+    }
+    //语言选择
+    public function area() {
+        $this->load->model('language_model', 'mlanguage');
+        $language = $this->mlanguage->get_all(array('cid'=>19 ,'audit' => 1),'id,title');
         $this->vdata['returnCode'] = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure'] = JSON_SECURE;

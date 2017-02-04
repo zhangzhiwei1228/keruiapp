@@ -32,6 +32,22 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="title"> 所属地区 </label>
+                <div class="controls">
+                    <select name="area">
+
+                        <?php if(count($areas) > 0) {?>
+                            <?php foreach($areas as $row) {?>
+                                <option value="<?php echo $row['id']?>"><?php echo $row['title']?></option>
+                            <?php }?>
+                        <?php } else {?>
+                            <option value="0">请先设置</option>
+                        <?php }?>
+
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
                 <label for="title" class="control-label">时间:</label>
                 <div class="controls">
                     <div class="input-append date timepicker">

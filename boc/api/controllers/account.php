@@ -28,6 +28,11 @@ class account extends API_Controller {
                 "field" => "nickname",
                 "label" => "姓名",
                 "rules" => "trim|required",
+            ),
+            array(
+                "field" => "area",
+                "label" => "地区",
+                "rules" => "trim|required",
             )
         ),
         "edit_pwd" => array(
@@ -100,7 +105,7 @@ class account extends API_Controller {
 			$this->vdata['returnCode'] = '0011';
 			$this->vdata['returnInfo'] = $this->trim_validation_errors();
 		} else {
-			if ($res = $this->macc->set($this->userinfo['id'], array('photo' => $this->data['photo'],'nickname' => $this->data['nickname'],'uptimeline'=>time()))) {//更新会员表
+			if ($res = $this->macc->set($this->userinfo['id'], array('photo' => $this->data['photo'],'nickname' => $this->data['nickname'],'uptimeline'=>time(),'area' => $this->data['area']))) {//更新会员表
                 $it = one_upload($this->data['photo'], 'id, url');
                 if ($it) {
                   $it['url'] = UPLOAD_URL.$it['url'];

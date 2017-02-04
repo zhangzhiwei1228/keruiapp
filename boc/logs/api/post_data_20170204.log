@@ -114,3 +114,141 @@
 (
     [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
 )
+
+ [2017-02-04 10:30:14] URI: other/language
+ [2017-02-04 10:30:14] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-02-04 10:30:14] URI: messages/interact
+ [2017-02-04 10:30:14] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:30:42] URI: other/language
+ [2017-02-04 10:30:42] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-02-04 10:30:42] URI: messages/interact
+ [2017-02-04 10:30:42] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:31:20] URI: other/language
+ [2017-02-04 10:31:20] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-02-04 10:31:20] URI: messages/interact
+ [2017-02-04 10:31:20] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:31:44] URI: messages/interact
+ [2017-02-04 10:31:44] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:31:44] URI: other/language
+ [2017-02-04 10:31:44] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-02-04 10:32:38] URI: other/area
+ [2017-02-04 10:32:38] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-02-04 10:32:38] URI: messages/interact
+ [2017-02-04 10:32:38] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:32:57] URI: other/area
+ [2017-02-04 10:32:57] Post Data: Array
+(
+    [terminalNo] => 1
+)
+
+ [2017-02-04 10:32:57] URI: messages/interact
+ [2017-02-04 10:32:57] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:41:00] URI: messages/interact
+ [2017-02-04 10:41:00] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:42:20] URI: account/edit
+ [2017-02-04 10:42:20] Post Data: Array
+(
+    [nickname] => 123
+    [photo] => 323
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [area] => 6
+)
+
+ [2017-02-04 10:42:20] URI: messages/interact
+ [2017-02-04 10:42:20] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:43:24] URI: account/edit
+ [2017-02-04 10:43:24] Post Data: Array
+(
+    [nickname] => 123
+    [photo] => 323
+    [token] => RzgVHgD9yv2xAmc86phvmcAReqOeUPIlFo8NLAL0wCxwpQuk6SWivX1QEuYU3AZh
+    [area] => 6
+)
+
+ [2017-02-04 10:43:24] URI: messages/interact
+ [2017-02-04 10:43:24] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:45:14] URI: account/edit
+ [2017-02-04 10:45:14] Post Data: Array
+(
+    [nickname] => 123
+    [photo] => 323
+    [token] => CDuswqVMsqb89lcnyHMxfagQeNDVPHrSLbB8IWK2DlzBMRoBY2y5RVKviOHyWyHi
+    [area] => 6
+)
+
+ [2017-02-04 10:45:14] URI: messages/interact
+ [2017-02-04 10:45:14] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:47:20] URI: messages/interact
+ [2017-02-04 10:47:20] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-04 10:47:20] URI: account/edit
+ [2017-02-04 10:47:20] Post Data: Array
+(
+    [nickname] => 123
+    [photo] => 323
+    [token] => CDuswqVMsqb89lcnyHMxfagQeNDVPHrSLbB8IWK2DlzBMRoBY2y5RVKviOHyWyHi
+    [area] => 6
+)
