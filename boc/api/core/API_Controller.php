@@ -8,6 +8,8 @@
 class API_Controller extends MY_Controller
 {
 
+    public $usertoken = false;
+    public $userinfo = false;
     public function __construct()
     {
         parent::__construct();
@@ -22,6 +24,8 @@ class API_Controller extends MY_Controller
         $this->load->model('account_model', 'macc');
         $this->load->model('account_token_model', 'macctoken');
         $this->load->model('vaccount_model', 'mvacc');
+        //加载提示语
+        $this->load->model('point_model', 'mpoint');
 
         // 获取头部传参数
         $headers = getallheaders();
@@ -79,31 +83,54 @@ class API_Controller extends MY_Controller
             echo json_encode($this->_send_json_befor($re));
             exit;
         } elseif (isset($this->data['token']) && !empty($this->data['token'])) {
-            $this->usertoken = $this->macctoken->get_one(array('token' => $this->data['token'], 'expiretime >'=>time()), 'accountId');
-            if ($this->usertoken) {
-                $this->userinfo = $this->macc->get_one(array('id' => $this->usertoken['accountId']));
+            $this->usertoken = $this->macctoken->get_one(array('token' => $this->data['token']), 'accountId,expiretime');
+            $msg = false;
+            if($this->usertoken) {
+                if($this->usertoken['expiretime'] < time()) {
+                    $msg = $this->mpoint->get_point('expired_token',$this->data['language']);
+                } else {
+                    $this->userinfo = $this->macc->get_one(array('id' => $this->usertoken['accountId']));
+                }
             } else {
+                $msg = $this->mpoint->get_point('invalid_token',$this->data['language']);
+            }
+            if($msg) {
                 $re = array(
                     'returnCode' => '401',
-                    'returnInfo' => '身份验证失败，请重新登录！',
-                    'timeline' => time()
-                );
+                    'returnInfo' => $msg,
+                    'timeline' => time());
                 $re = array_merge($this->vdata, $re);
                 header("Content-Type: application/json; charset=utf-8");
                 echo json_encode($this->_send_json_befor($re));
                 exit;
             }
+
         }
-
-        // if (ENVIRONMENT == "development"){ //开发模式
-        // 	logfile(page_profiler(), 'profiler_');
-        // }
-
-        // test
-        // $this->load->model('action_model', 'maction');
-        // $this->maction->CreateShelfOrder('shelforder');
     }
-
+    protected function _auto() {
+        if(!isset($this->data['token']) || !$this->data['token']) {
+            $msg = $this->mpoint->get_point('token_no_found',$this->data['language']);
+            $re = array(
+                'returnCode' => '401',
+                'returnInfo' => $msg,
+                'timeline' => time());
+            $re = array_merge($this->vdata, $re);
+            header("Content-Type: application/json; charset=utf-8");
+            echo json_encode($this->_send_json_befor($re));
+            exit;
+        }
+    }
+    protected function _error_msg($code) {
+        $msg = $this->mpoint->get_point($code,$this->data['language']);
+        $re = array(
+            'returnCode' => '401',
+            'returnInfo' => $msg,
+            'timeline' => time());
+        $re = array_merge($this->vdata, $re);
+        header("Content-Type: application/json; charset=utf-8");
+        echo json_encode($this->_send_json_befor($re));
+        exit;
+    }
     protected function _send_json($data)
     {
         $vdata = $this->_send_json_befor($data);
