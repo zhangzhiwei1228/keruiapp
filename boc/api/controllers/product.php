@@ -64,4 +64,15 @@ class product extends API_Controller {
         // 返回json数据
         $this->_send_json($this->vdata);
     }
+    //浏览记录
+    public function browse() {
+        $this->load->model('browse_model', 'mbrowse');
+        $data = array(
+            'cid'=>$this->psecond_cid,
+            'uid'=>$this->userinfo['id'],
+            'rid'=>$this->data['id'],
+            'type'=>1,
+        );
+        $result = $this->mbrowse->create_browse($data);
+    }
 }
