@@ -3,7 +3,7 @@
 class Product_model extends MY_Model {
 
 	protected $table = 'product';
-
+	public $data = array();
 	/**
 	 * @param $pid
 	 * @param bool|false $where
@@ -62,5 +62,33 @@ class Product_model extends MY_Model {
 			}
 		}
 		return $this->db->affected_rows();
+	}
+
+	public function get_childs($id) {
+		$query = $this->db
+			->select('id,title')
+			->from($this->table)
+			->where(array('pid'=>$id, 'audit' => 1))
+			->get();
+		$result = $query->result_array();
+		return $result;
+	}
+	public function get_child_ids($pid) {
+		$query = $this->db
+			->select('id,pid')
+			->from($this->table)
+			->where(array('id'=>$pid, 'audit' => 1))
+			->get();
+		$result = $query->result_array();
+		if($result) {
+			foreach($result as $key=>$row) {
+				if($row['pid']) {
+					array_push($this->data,$row['id']);
+					array_push($this->data,$row['pid']);
+					$this->get_child_ids($row['pid']);
+				}
+			}
+		}
+		return array_values(array_unique($this->data));
 	}
 }

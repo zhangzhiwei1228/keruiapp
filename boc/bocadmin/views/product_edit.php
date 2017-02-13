@@ -58,7 +58,45 @@
                 </div>
             </div>
         </div>
+        <?php if($this->cid !=22 ) {?>
+            <div class="control-group">
+                <label class="control-label" for="title"> 关联上级产品 </label>
+                <div class="controls">
+                    <!--<select name="pid">
+                        <?php /*if($data) {*/?>
+                            <?php /*foreach($data as $row) {*/?>
+                                <option value="<?php /*echo $row['id']*/?>" <?php /*echo $it['pid'] == $row['id'] ? 'selected' : '' */?>><?php /*echo $row['title']*/?></option>
+                            <?php /*}*/?>
+                        <?php /*} else {*/?>
+                            <option value="0">请先添加上级产品</option>
+                        <?php /*}*/?>
+                    </select>-->
+                    <?php if($this->cid == 23) {?>
+                        <select name="pid">
+                            <?php if($data) {?>
+                                <?php foreach($data as $row) {?>
+                                    <option value="<?php echo $row['id']?>" <?php echo $row['id'] == $it['pid'] ? 'selected' : '' ?>><?php echo $row['title']?></option>
+                                <?php }?>
+                            <?php } else {?>
+                                <option value="0">请先添加上级产品</option>
+                            <?php }?>
+                        </select>
+                    <?php } elseif($this->cid == 24 || $this->cid == 25) {?>
+                        <select name="pid" id="first">
 
+                        </select>
+                        <select name="pid" id="second">
+
+                        </select>
+                        <?php if($this->cid == 25) {?>
+                            <select name="pid" id="three">
+
+                            </select>
+                        <?php }?>
+                    <?php } ?>
+                </div>
+            </div>
+        <?php }?>
         <!-- 弹出 -->
         <div id="seo-modal" class="modal hide fade">
             <div class="modal-header">
@@ -158,7 +196,7 @@
         <?php if ($this->ccid): ?>
             <input type="hidden" name="ccid" value="<?php echo $this->ccid ?>">
         <?php endif ?>
-        <input type="hidden" name="cid" value="<?php echo $this->cid ?>">
+        <input type="hidden" name="cid" id="cid" value="<?php echo $this->cid ?>">
         <input type="hidden" name="id" value="<?php echo $it['id']?>">
         <input type="submit" value="<?php echo lang('submit') ?>" class="btn btn-primary">
         <input type="reset" value="<?php echo lang('reset') ?>" class="btn btn-danger">
@@ -178,5 +216,115 @@
         media.init();
         var products_photos = <?php echo json_encode(one_upload($it['photo'])) ?>;
         media.show(products_photos,"photo");
+
+        var cid = '<?php echo $this->cid?>';
+        var url = '<?php echo site_url('product/childs/')?>';
+        var pid = '<?php echo $it['pid']?>';
+        var count = '<?php echo $ids_count?>';
+        if(count == 3) {
+            var fid1 = '<?php echo $ids ? (isset($ids[2]) && $ids[2] ? $ids[2] : 0) : 0?>';
+            var fid2 = '<?php echo $ids ? (isset($ids[1]) && $ids[1] ? $ids[1] : 0) : 0?>';
+            var fid3 = '<?php echo $ids ? (isset($ids[0]) && $ids[0] ? $ids[0] : 0) : 0?>';
+        }
+        if(count == 2) {
+            var fid1 = '<?php echo $ids ? (isset($ids[1]) && $ids[1] ? $ids[1] : 0) : 0?>';
+            var fid2 = '<?php echo $ids ? (isset($ids[0]) && $ids[0] ? $ids[0] : 0) : 0?>';
+        }
+        if(count == 1) {
+            var fid1 = '<?php echo $ids ? (isset($ids[0]) && $ids[0] ? $ids[0] : 0) : 0?>';
+        }
+        if(count == 0) {
+            var fid1 = pid;
+        }
+        $.getJSON(url,{pid:0,c:cid}).done(function(rs){
+            var html1='';
+            if(rs) {
+                html1 += '<option class="option" value="-1">请先选择一级产品</option>';
+                $.each(rs, function( key, value ) {
+                    if(value.id == fid1) {
+                        html1+='<option class="option" selected value="'+value.id+'">'+value.title+'</option>';
+                    } else {
+                        html1+='<option class="option" value="'+value.id+'">'+value.title+'</option>';
+                    }
+                });
+            } else {
+                html1+='<option class="option" value="0">请先添加一级产品</option>';
+            }
+            $('#first').html(html1);
+            if(count > 0) {
+                pro_change(fid1);
+            }
+
+        });
+        function p_change(id) {
+            if(id!=-1){
+                $.getJSON(url,{pid:id,c:cid}).done(function(rs){
+                    var html1='';
+                    if(rs) {
+                        html1 += '<option class="option" value="-1">请先选择二级产品</option>';
+                        $.each(rs, function( key, value ) {
+                            if(fid2 == value.id) {
+                                html1+='<option class="option" selected value="'+value.id+'">'+value.title+'</option>';
+                            } else {
+                                html1+='<option class="option" value="'+value.id+'">'+value.title+'</option>';
+                            }
+
+                        });
+
+                    } else {
+                        html1+='<option class="option" value="0">请先添加二级产品</option>';
+                    }
+
+                    if(count == 3 || count == 2) {
+                        $('#cid').val(cid -1);
+                        html1+='<option class="option" value="'+id+'">升到上级</option>';
+                    }
+                    $('#second').html(html1);
+                    pro_change1(fid2);
+                })
+            }
+        }
+        function pro_change(fid1){
+            if(fid1) {
+                p_change(fid1);
+            }
+            $('#first').on('change',function(){
+                var id=$(this).find('option:selected').val();
+                p_change(id);
+            })
+        }
+        function p_change1(id) {
+            if(id!=-1){
+                $.getJSON(url,{pid:id,c:cid}).done(function(rs){
+                    var html1='';
+                    if(rs) {
+                        $.each(rs, function( key, value ) {
+                            if(fid3 == value.id) {
+                                html1+='<option class="option" selected value="'+value.id+'">'+value.title+'</option>';
+                            } else {
+                                html1+='<option class="option" value="'+value.id+'">'+value.title+'</option>';
+                            }
+                        });
+
+                    } else {
+                        html1+='<option class="option" value="0">请先添加三级产品</option>';
+                    }
+                    if(count == 3) {
+                        $('#cid').val(cid -1);
+                        html1+='<option class="option" value="'+id+'">升到上级</option>';
+                    }
+                    $('#three').html(html1);
+                })
+            }
+        }
+        function pro_change1(fid2){
+            if(fid2) {
+                p_change1(fid2);
+            }
+            $('#second').on('change',function(){
+                var id=$(this).find('option:selected').val();
+                p_change1(id);
+            })
+        }
     });
 </script>

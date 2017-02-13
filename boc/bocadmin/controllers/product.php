@@ -140,5 +140,68 @@ class Product extends Modules_Controller{
         }
         return $arr;
     }
-
+    /**
+     * @brief 默认编辑页面
+     */
+    protected function edit($key=false){
+        if (!$key) {
+            $key = $this->input->get_post('id',TRUE);
+            if ($this->input->is_ajax_request()){
+                if (!$key) {
+                    $vdata = array('msg'=>'没有提供标识','status'=>0);
+                    $this->output->set_content_type('application/json')->set_output(json_encode($vdata));
+                }
+            }else{
+                if (!$key) {
+                    if (isset($this->cid)) {
+                        $index = '/index/'.$this->cid;
+                    }else{
+                        $index = '/index';
+                    }
+                    redirect(site_url($this->class.$index));
+                }
+            }
+        }
+        $this->form_validation->set_rules($this->_get_rule('edit'));
+        if ($this->form_validation->run() == false) {
+            $vdata['it'] = $this->model->get_one($key);
+            if($this->cid != 22) {
+                $where = array(
+                    'cid' => $this->cid - 1,
+                    'audit' => 1,
+                    'show' => 1,
+                );
+                $vdata['data'] = $this->model->get_all($where,'id,title');
+            }
+            if (!$vdata['it']) {
+                $vdata = array('msg'=>'提供的标示是不存在的','status'=>0);
+                if ($this->input->is_ajax_request()) {
+                    $this->output->set_content_type('application/json')->set_output(json_encode($vdata));
+                } else {
+                    $this->load->view('msg',$vdata);
+                    return false;
+                }
+            }
+            if ($this->input->is_ajax_request()) {
+                if (is_post()) {
+                    $vdata['status'] = 0;
+                    $vdata['msg'] = validation_errors();
+                }
+                $this->output->set_content_type('application/json')->set_output(json_encode($vdata));
+            }else{
+                $vdata['id'] = $key;
+                $ids = $this->model->get_child_ids($vdata['it']['pid']);
+                $vdata['ids_count'] = count($ids);
+                $vdata['ids'] = $ids ? $ids : 0;
+                $this->_display($vdata);
+            }
+        }else{
+            $this->_edit();
+        }
+    }
+    public function childs() {
+        $data = $this->model->get_childs($this->input->get('pid'));
+        $data = $data ? $data : '';
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
 }

@@ -80,16 +80,29 @@
             <div class="control-group">
                 <label class="control-label" for="title"> 关联上级产品 </label>
                 <div class="controls">
-                    <select name="pid">
-                        <?php if($data) {?>
-                            <?php foreach($data as $row) {?>
-                                <option value="<?php echo $row['id']?>"><?php echo $row['title']?></option>
+                    <?php if($this->cid == 23) {?>
+                        <select name="pid">
+                            <?php if($data) {?>
+                                <?php foreach($data as $row) {?>
+                                    <option value="<?php echo $row['id']?>"><?php echo $row['title']?></option>
+                                <?php }?>
+                            <?php } else {?>
+                                <option value="0">请先添加上级产品</option>
                             <?php }?>
-                        <?php } else {?>
-                            <option value="0">请先添加上级产品</option>
-                        <?php }?>
+                        </select>
+                    <?php } elseif($this->cid == 24 || $this->cid == 25) {?>
+                        <select id="first">
 
-                    </select>
+                        </select>
+                        <select name="pid" id="second">
+
+                        </select>
+                        <?php if($this->cid == 25) {?>
+                            <select name="pid" id="three">
+
+                            </select>
+                        <?php }?>
+                    <?php } ?>
                 </div>
             </div>
         <?php }?>
@@ -219,5 +232,59 @@
         media.init();
         var products_photos = <?php echo json_encode(one_upload(set_value("photo"))) ?>;
         media.show(products_photos,"photo");
+        var cid = '<?php echo $this->cid?>';
+        var url = '<?php echo site_url('product/childs/')?>';
+        $.getJSON(url,{pid:0,c:cid}).done(function(rs){
+            var html1='';
+            if(rs) {
+                html1 += '<option class="option" value="-1">请先选择一级产品</option>';
+                $.each(rs, function( key, value ) {
+                    html1+='<option class="option" value="'+value.id+'">'+value.title+'</option>';
+                });
+            } else {
+                html1+='<option class="option" value="0">请先添加一级产品</option>';
+            }
+            $('#first').html(html1);
+            pro_change();
+        });
+        function pro_change(){
+            $('#first').on('change',function(){
+                var id=$(this).find('option:selected').val();
+                if(id!=-1){
+                    $.getJSON(url,{pid:id,c:cid}).done(function(rs){
+                        var html1='';
+                        if(rs) {
+                            html1 += '<option class="option" value="-1">请先选择二级产品</option>';
+                            $.each(rs, function( key, value ) {
+                                html1+='<option class="option" value="'+value.id+'">'+value.title+'</option>';
+                            });
+                        } else {
+                            html1+='<option class="option" value="0">请先添加二级产品</option>';
+                        }
+                        $('#second').html(html1);
+                        pro_change1();
+                    })
+                }
+            })
+        }
+        function pro_change1(){
+            $('#second').on('change',function(){
+                var id=$(this).find('option:selected').val();
+                if(id!=-1){
+                    $.getJSON(url,{pid:id,c:cid}).done(function(rs){
+                        var html1='';
+                        if(rs) {
+                            $.each(rs, function( key, value ) {
+                                html1+='<option class="option" value="'+value.id+'">'+value.title+'</option>';
+                            });
+                        } else {
+                            html1+='<option class="option" value="0">请先添加三级产品</option>';
+                        }
+                        $('#three').html(html1);
+                    })
+                }
+            })
+        }
+
   });
 </script>

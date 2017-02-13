@@ -82,7 +82,7 @@ $lang['404_message'] = "没有找到您所请求的页面。";
 // Modules
 $lang['modules_no_cid'] = "没有给出CID！";
 $lang['modules_cid_change'] = "所属栏目被改动了!";
-$lang['modules_cid_data_change_re'] = "所属栏目数据被改动,轻重新提交!";
+$lang['modules_cid_data_change_re'] = "所属栏目数据被改动,请重新提交!";
 $lang['modules_no_id'] = "ID不存在";
 $lang['modules_no_col_id'] = "栏目ID不存在";
 $lang['modules_del_ok'] = "成功的删除数据！";

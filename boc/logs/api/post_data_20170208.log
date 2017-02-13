@@ -464,3 +464,273 @@
 (
     [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
 )
+
+ [2017-02-08 14:35:11] URI: product/plist
+ [2017-02-08 14:35:11] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 14:35:11] URI: messages/interact
+ [2017-02-08 14:35:11] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 14:35:54] URI: product/ChildList
+ [2017-02-08 14:35:54] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 14:35:54] URI: messages/interact
+ [2017-02-08 14:35:54] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:21:30] URI: product/browse
+ [2017-02-08 17:21:30] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:21:30] URI: messages/interact
+ [2017-02-08 17:21:30] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:22:10] URI: product/browse
+ [2017-02-08 17:22:10] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:22:10] URI: messages/interact
+ [2017-02-08 17:22:10] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:22:37] URI: product/browse
+ [2017-02-08 17:22:37] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:22:37] URI: messages/interact
+ [2017-02-08 17:22:37] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:23:40] URI: product/browse
+ [2017-02-08 17:23:40] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:23:40] URI: messages/interact
+ [2017-02-08 17:23:40] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:25:24] URI: product/browse
+ [2017-02-08 17:25:24] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:25:24] URI: messages/interact
+ [2017-02-08 17:25:24] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:25:45] URI: product/browse
+ [2017-02-08 17:25:45] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:25:45] URI: messages/interact
+ [2017-02-08 17:25:45] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:26:01] URI: product/browse
+ [2017-02-08 17:26:01] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:26:01] URI: messages/interact
+ [2017-02-08 17:26:01] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:30:24] URI: product/browse
+ [2017-02-08 17:30:24] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:30:24] URI: messages/interact
+ [2017-02-08 17:30:24] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:33:25] URI: product/browse
+ [2017-02-08 17:33:25] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:33:25] URI: messages/interact
+ [2017-02-08 17:33:25] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:33:35] URI: product/browse
+ [2017-02-08 17:33:35] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:33:35] URI: messages/interact
+ [2017-02-08 17:33:35] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:36:32] URI: product/browse
+ [2017-02-08 17:36:32] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:36:32] URI: messages/interact
+ [2017-02-08 17:36:32] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:36:53] URI: product/browse
+ [2017-02-08 17:36:53] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:36:53] URI: messages/interact
+ [2017-02-08 17:36:53] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:37:15] URI: product/browse
+ [2017-02-08 17:37:15] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:37:15] URI: messages/interact
+ [2017-02-08 17:37:15] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:38:40] URI: messages/interact
+ [2017-02-08 17:38:40] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:38:40] URI: product/browse
+ [2017-02-08 17:38:40] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:38:40] URI: product/browse
+ [2017-02-08 17:38:40] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:38:40] URI: messages/interact
+ [2017-02-08 17:38:40] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-08 17:38:40] URI: product/browse
+ [2017-02-08 17:38:40] Post Data: Array
+(
+    [terminalNo] => 1
+    [language] => ZH
+    [token] => HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5
+    [id] => 29
+)
+
+ [2017-02-08 17:38:40] URI: messages/interact
+ [2017-02-08 17:38:40] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
