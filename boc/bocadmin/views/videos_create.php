@@ -10,15 +10,71 @@
 	<?php echo form_open(current_urlc(),array("class"=>"form-horizontal","id"=>"frm-create")); ?>
 
 	<div class="boxed-inner seamless">
-		<div class="control-group">
-			<label class="control-label" for="title"> <?php echo lang('title') ?> </label>
-			<div class="controls">
-				<input type="text" id="title" class='span7' name="title" value="<?php echo set_value("title") ?>">
-				<a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal"><?php echo lang('seo') ?></a>
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab6" data-toggle="tab">ZH标题</a></li>
+				<li class=""><a href="#tab7" data-toggle="tab">FR标题</a></li>
+				<li class=""><a href="#tab8" data-toggle="tab">ES标题</a></li>
+				<li class=""><a href="#tab9" data-toggle="tab">RU标题</a></li>
+				<li class=""><a href="#tab10" data-toggle="tab">EN标题</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab6">
+					<div class="control-group">
+						<div class="controls">
+
+							<input type="text" id="title" name="title" class='span7'>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab7">
+					<div class="control-group">
+
+						<div class="controls">
+							<input type="text" id="FR_title" name="FR_title" class='span7'>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab8">
+					<div class="control-group">
+
+						<div class="controls">
+							<input type="text" id="ES_title" name="ES_title" class='span7'>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab9">
+					<div class="control-group">
+
+						<div class="controls">
+							<input type="text" id="RU_title" name="RU_title" class='span7'>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab10">
+					<div class="control-group">
+						<div class="controls">
+							<input type="text" id="EN_title" name="EN_title" class='span7'>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-
+		<div class="control-group">
+			<label class="control-label" for="title"> 关联分类 </label>
+			<div class="controls">
+				<select name="vid">
+					<?php if($vclass) {?>
+						<?php foreach($vclass as $row) {?>
+							<option value="<?php echo $row['id']?>"><?php echo $row['title']?></option>
+						<?php }?>
+					<?php } else {?>
+						<option value="0">请先添加分类</option>
+					<?php }?>
+				</select>
+			</div>
+		</div>
 		<div class="control-group">
 			<label class="control-label" for="entitle"> 视频外链 </label>
 			<div class="controls">
@@ -87,10 +143,40 @@
 			</div>
 		</div>
 
-		<div class="control-group uefull">
-			<label for="intro"  class="control-label">简介</label>
-			<div class="controls">
-				<textarea id="content" name="content" ></textarea>
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab">ZH简介</a></li>
+				<li class=""><a href="#tab2" data-toggle="tab">FR简介</a></li>
+				<li class=""><a href="#tab3" data-toggle="tab">ES简介</a></li>
+				<li class=""><a href="#tab4" data-toggle="tab">RU简介</a></li>
+				<li class=""><a href="#tab5" data-toggle="tab">EN简介</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1">
+					<div class="control-group uefull">
+						<textarea id="ZH_content" name="ZH_content" ></textarea>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab2">
+					<div class="control-group uefull">
+						<textarea id="FR_content" name="FR_content" ></textarea>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab3">
+					<div class="control-group uefull">
+						<textarea id="ES_content" name="ES_content" ></textarea>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab4">
+					<div class="control-group uefull">
+						<textarea id="RU_content" name="RU_content" ></textarea>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab5">
+					<div class="control-group uefull">
+						<textarea id="EN_content" name="EN_content" ></textarea>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -154,7 +240,11 @@
 	// timepick
 	$('.timepicker').datetimepicker({'language':'zh-CN','format':'yyyy/mm/dd hh:ii:ss','todayHighlight':true});
 	// ueditor处理
-	ui.editor_create('content');
+	ui.editor_create('ZH_content');
+	ui.editor_create('FR_content');
+	ui.editor_create('ES_content');
+	ui.editor_create('RU_content');
+	ui.editor_create('EN_content');
 
 	// media 上传
 	media.init();

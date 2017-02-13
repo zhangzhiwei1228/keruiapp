@@ -25,7 +25,7 @@ class product extends API_Controller {
         $this->_auto();
         $this->load->model('product_model', 'mproduct');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'].'_title';
-        $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,thumb,click,collection,timeline';
+        $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline';
     }
     public function plist() {
         $first = $this->mproduct->get_all(array('cid'=>$this->pfirst_cid,'audit'=>1),'id,title');
@@ -51,6 +51,7 @@ class product extends API_Controller {
         // 初始化翻页
         $this->_list();
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
+            photo2url($list);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
@@ -74,5 +75,10 @@ class product extends API_Controller {
             'type'=>1,
         );
         $result = $this->mbrowse->create_browse($data);
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $result;
+        $this->_send_json($this->vdata);
     }
 }
