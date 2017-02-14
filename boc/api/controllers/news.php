@@ -2,53 +2,32 @@
 /**
  * Created by PhpStorm.
  * User: zzw
- * Date: 17-2-13
- * Time: 下午3:48
+ * Date: 17-2-14
+ * Time: 上午9:39
  */
-class videos extends API_Controller
+class news extends API_Controller
 {
-
-    protected $cid = 26;
-    protected $fcid = 29;
+    protected $cid = 30;
     protected $Fields = '';
 
     public function __construct()
     {
         parent::__construct();
         $this->_auto();
-        $this->load->model('videos_model', 'mvideos');
-        $this->load->model('videosclass_model', 'mvideosclass');
+        $this->load->model('news_model', 'mnews');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
-        $content = $this->data['language'] . '_content';
-        $this->Fields = 'id,' . $title . ',' . $content . ',photo,click,collection,timeline,files';
+        $this->Fields = 'id,' . $title . ',' . $this->data['language'] . '_content,photo,click,collection,timeline';
     }
-    public function ListClass() {
-        $first = $this->mvideosclass->get_all(array('cid'=>$this->fcid,'audit'=>1),'id,title');
-        $this->vdata['returnCode']   = '200';
-        $this->vdata['returnInfo'] = '操作成功';
-        $this->vdata['secure']     = JSON_SECURE;
-        $this->vdata['content'] = $first;
-        $this->_send_json($this->vdata);
-    }
-    public function ChildList() {
+    public function nlist() {
         $where = array();
         $where['audit'] = 1;
-        $where['cid'] = $this->cid;
         $kw = isset($this->data['kw']) && $this->data['kw'] ? $this->data['kw'] : false;
         if ($kw) {
             $where['like title'] = array('title', $kw);
-        } else {
-            $id = isset($this->data['id']) && $this->data['id'] ? $this->data['id'] : false;
-            if(!$id) {
-                $this->_error_msg('missing_required_parameter');
-            }
-            $where['vid'] = $id;
         }
-        // 初始化翻页
         $this->_list();
-        if ($list = $this->mvideos->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
+        if ($list = $this->mnews->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             photo2url($list);
-            photo2url($list,'false', 'true', 'files');
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
@@ -62,14 +41,13 @@ class videos extends API_Controller
         // 返回json数据
         $this->_send_json($this->vdata);
     }
-    //浏览记录
     public function browse() {
         $this->load->model('browse_model', 'mbrowse');
         $data = array(
             'cid' => $this->cid,
             'uid' => $this->userinfo['id'],
             'rid' => $this->data['id'],
-            'type'=> 2,
+            'type'=> 3,
         );
         $result = $this->mbrowse->create_browse($data);
         $this->vdata['returnCode'] = '200';
