@@ -2,7 +2,7 @@
 
 class News_model extends MY_Model {
 
-	protected $table = 'article';
+	protected $table = 'news';
 
 	public function get_one($where, $fields = "*")
 	{
@@ -13,6 +13,7 @@ class News_model extends MY_Model {
 		} else {
 			$this->db->where('id',$where);
 		}
+		//$this->db->where('audit',1);
 		$query = $this->db->get();
 		$row = $query->row_array();
 
