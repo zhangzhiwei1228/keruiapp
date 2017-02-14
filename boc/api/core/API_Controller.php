@@ -161,9 +161,9 @@ class API_Controller extends MY_Controller
         if ($data['secure'] != '0') {
             //load_AES
             $this->load->library('AES');
-            $vdata['data'] = $data['content'] ? AES::encrypt(json_encode($data['content']), KEY) : '';
+            $vdata['data'] = $data['content'] ? AES::encrypt(json_encode($data['content']), KEY) : null;
         } else {
-            $vdata['data'] = $data['content'];
+            $vdata['data'] = $data['content'] ? $data['content'] : null;
         }
 
         return $vdata;
