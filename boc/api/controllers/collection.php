@@ -33,7 +33,7 @@ class collection extends API_Controller
                 break;
         }
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
-        $this->Fields = $this->join_table.'.id,' . $this->join_table.'.'.$title . ',' . $this->join_table.'.'.$this->data['language'] . '_content,'.$this->join_table.'.photo,'.$this->join_table.'.timeline,collection.latest_time';
+        $this->Fields = 'collection.id,collection.rid,' . $this->join_table.'.'.$title . ',' . $this->join_table.'.'.$this->data['language'] . '_content,'.$this->join_table.'.photo,'.$this->join_table.'.timeline,collection.latest_time';
         $this->join = array(
             $this->join_table,
             $this->join_table.'.id=collection.rid',
@@ -77,6 +77,15 @@ class collection extends API_Controller
             $this->vdata['content'] = '';
         }
         // 返回json数据
+        $this->_send_json($this->vdata);
+    }
+    public function delete() {
+        $id = explode(',',$this->data['id']);
+        $result = $this->mcollection->del($id);
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $result;
         $this->_send_json($this->vdata);
     }
 
