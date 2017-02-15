@@ -52,15 +52,17 @@ class MY_Model extends CI_Model{
 	 * @param  boolean $order 排序
 	 * @return array         数组
 	 */
-	public function get_list($limit=5,$start=0,$order=false,$where=false,$fields="*",$table=FALSE){
+	public function get_list($limit=5,$start=0,$order=false,$where=false,$fields="*",$table=FALSE,$join=false){
 		if (!$table) {
 			$table = $this->table;
 		}
 
 		$this->db
-			->select($fields, '\'')
+			->select($fields)
 			->from($table);
-
+		if($join && is_array($join)) {
+			$this->db->join($join[0],$join[1],$join[2]);
+		}
 		// =0 getall
 		if ($limit) {
 			$this->db->limit($limit,$start);
