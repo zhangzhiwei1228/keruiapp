@@ -68,4 +68,22 @@ class Comment extends Modules_Controller{
         $vdata['list'] = $this->model->get_list($limit,$limit*($page-1),$order,$where);
         $this->_display($vdata);
     }
+    protected function _edit_after($data){
+        $this->load->model('msgs_model','mmsgs');
+        $comment = $this->model->get_one($data['id']);
+        $udata = array(
+            'uid' => $comment['uid'],
+            'rid' => $data['id'],
+            'timeline' => time(),
+            'type' => 2
+        );
+        $msgs = $this->mmsgs->get_one(array('uid'=>$comment['uid'],'type'=>2,'rid'=>$data['id']));
+        if($msgs) {
+            $update_data = array('comment'=>$comment['comment']);
+            $this->mmsgs->update($update_data,'id = '.$msgs['id']);
+        } else {
+            $this->mmsgs->create($udata);
+        }
+
+    }
 }
