@@ -247,5 +247,33 @@ class account extends API_Controller {
         $this->form_validation->set_message('oldpassword_check', '原密码错误！');
         return false;
     }
+    public function feedback() {
+        $this->_auto();
+        $this->load->model('feedback_model', 'mfeedback');
+        $create_data = array(
+            'content'   => $this->data['content'],
+            'tel'       => $this->data['tel'],
+            'timeline'  => time()
+        );
+        // 创建数据
+        if ($id = $this->mfeedback->create($create_data)) {
+            $msgs = array(
+                'timeline'  =>  time(),
+                'type'      =>  2,
+                'uid'       =>  $this->userinfo['id'],
+                'rid'       =>  $id
+            );
+            $this->load->model('msgs_model', 'mmsgs');
+            $this->mmsgs->create($msgs);
+            $this->vdata['returnCode'] = '200';
+            $this->vdata['returnInfo'] = '操作成功';
+            $this->vdata['secure'] = JSON_SECURE;
+            $this->vdata['content'] = $id;
+        } else {
+            $this->vdata['returnCode'] = '0011';
+            $this->vdata['returnInfo'] = '操作失败';
+        }
+        $this->_send_json($this->vdata);
+    }
 
 }
