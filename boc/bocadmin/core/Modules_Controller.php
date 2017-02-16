@@ -118,7 +118,7 @@ class Modules_Controller extends CRUD_Controller
 
 	// 验证规则 验证CID合法
 	public function checkcid(){
-		if ($this->input->post('cid') AND  (($this->input->post('cid') != 24 and $this->input->post('cid') != 25) or $this->input->post('cid') != $this->input->get('c'))  ) {
+		if ($this->input->post('cid') AND $this->input->post('cid') == $this->input->get('c')) {
 			return TRUE;
 		}else{
 			$this->form_validation->set_message('checkcid',lang("modules_cid_data_change_re"));

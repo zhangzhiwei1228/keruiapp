@@ -78,4 +78,23 @@ class videos extends API_Controller
         $this->vdata['content'] = $result;
         $this->_send_json($this->vdata);
     }
+    //发表评论
+    public function comment() {
+        $this->load->model('comment_model', 'mcomment');
+        $data = array(
+            'cid'       => 33,
+            'content'   => $this->data['content'],
+            'timeline'  => time(),
+            'type'      => 2,
+            'rid'       => $this->data['id'],
+            'uid'       => $this->userinfo['id'],
+            'rcid'      => $this->data['cid'],
+        );
+        $result = $this->mcomment->create($data);
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $result;
+        $this->_send_json($this->vdata);
+    }
 }

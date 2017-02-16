@@ -204,4 +204,18 @@ class Product extends Modules_Controller{
         $data = $data ? $data : '';
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
+    // 验证规则 验证CID合法
+    public function checkcid(){
+        if ($this->input->post('cid') AND  (($this->input->post('action') == 'create' and $this->input->post('cid') == $this->input->get('c')) or ($this->input->post('cid') == 24 or $this->input->post('cid') == 25) or $this->input->post('cid') == $this->input->get('c'))  ) {
+            return TRUE;
+        }else{
+            $this->form_validation->set_message('checkcid',lang("modules_cid_data_change_re"));
+            return FALSE;
+        }
+    }
+    protected function _create_data(){
+        $form=$this->input->post();
+        unset($form['action']);
+        return $form;
+    }
 }

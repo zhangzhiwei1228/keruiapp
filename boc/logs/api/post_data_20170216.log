@@ -1,0 +1,85 @@
+
+ [2017-02-16 11:40:09] URI: messages/interact
+ [2017-02-16 11:40:09] URI: product/comment
+ [2017-02-16 11:40:09] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-16 11:40:09] Post Data: Array
+(
+    [token] => h3so6C78POSulQ1E4C7FhmiWXvMOx7wqoaUkdRisf1cHGSMAVIG4voQIacXNYJ4C
+    [terminalNo] => 1
+    [language] => 
+    [content] => 123123
+    [id] => 39
+    [cid] => 25
+)
+
+ [2017-02-16 11:41:37] URI: product/comment
+ [2017-02-16 11:41:37] Post Data: Array
+(
+    [token] => h3so6C78POSulQ1E4C7FhmiWXvMOx7wqoaUkdRisf1cHGSMAVIG4voQIacXNYJ4C
+    [terminalNo] => 1
+    [language] => ZH
+    [content] => 123123
+    [id] => 39
+    [cid] => 25
+)
+
+ [2017-02-16 11:41:37] URI: messages/interact
+ [2017-02-16 11:41:37] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-16 11:42:07] URI: product/comment
+ [2017-02-16 11:42:07] Post Data: Array
+(
+    [token] => Z4FSCeuxOnEq9lUe1vVNn8jFEp7jaz0T6RWZCJopOVnzpIpad4DbcIfIFcrfSrzN
+    [terminalNo] => 1
+    [language] => ZH
+    [content] => 123123
+    [id] => 39
+    [cid] => 25
+)
+
+ [2017-02-16 11:42:07] URI: messages/interact
+ [2017-02-16 11:42:07] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-16 14:23:39] URI: videos/comment
+ [2017-02-16 14:23:39] Post Data: Array
+(
+    [token] => Z4FSCeuxOnEq9lUe1vVNn8jFEp7jaz0T6RWZCJopOVnzpIpad4DbcIfIFcrfSrzN
+    [terminalNo] => 1
+    [language] => ZH
+    [content] => 123123
+    [id] => 1
+    [cid] => 26
+)
+
+ [2017-02-16 14:23:39] URI: messages/interact
+ [2017-02-16 14:23:39] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-16 14:24:33] URI: messages/interact
+ [2017-02-16 14:24:33] Post Data: Array
+(
+    [token] => y1JBu8TDsMZ3Cy4Bz4l7ro4p8KclDcQ2TZ3DWMGFZf9bU2cKvEGdt0IqJlSMEiEY
+)
+
+ [2017-02-16 14:24:33] URI: news/comment
+ [2017-02-16 14:24:33] Post Data: Array
+(
+    [token] => Z4FSCeuxOnEq9lUe1vVNn8jFEp7jaz0T6RWZCJopOVnzpIpad4DbcIfIFcrfSrzN
+    [terminalNo] => 1
+    [language] => ZH
+    [content] => 123123
+    [id] => 1
+    [cid] => 30
+)

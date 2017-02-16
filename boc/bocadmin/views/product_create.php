@@ -213,6 +213,7 @@
             <input type="hidden" name="ccid" value="<?php echo $this->ccid ?>">
         <?php endif ?>
         <input type="hidden" name="cid" value="<?php echo $this->cid ?>">
+        <input type="hidden" name="action" value="create">
         <input type="hidden" name="level" value="<?php echo $level ?>">
         <input type="submit" value=" <?php echo lang('submit'); ?> " class='btn btn-primary'>
         <input type="reset" value=' <?php echo lang('reset'); ?> ' class="btn btn-danger">

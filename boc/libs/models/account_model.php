@@ -175,4 +175,19 @@ class account_model extends MY_Model {
 
         return $token;
     }
+    public function get_ids($area) {
+        $where = array(
+            'audit' => 1,
+            'is_del' => 0
+        );
+        if($area) {
+            $where['area'] = $area;
+        }
+        $query = $this->db
+            ->select('id')
+            ->from($this->table)
+            ->where($where)
+            ->get();
+        return $query->result_array();
+    }
 }
