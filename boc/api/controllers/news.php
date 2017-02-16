@@ -69,6 +69,14 @@ class news extends API_Controller
             'rcid'      => $this->data['cid'],
         );
         $result = $this->mcomment->create($data);
+        $msgs = array(
+            'timeline'  =>  time(),
+            'type'      =>  2,
+            'uid'       =>  $this->userinfo['id'],
+            'rid'       =>  $result
+        );
+        $this->load->model('msgs_model', 'mmsgs');
+        $this->mmsgs->create($msgs);
         $this->vdata['returnCode'] = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure'] = JSON_SECURE;

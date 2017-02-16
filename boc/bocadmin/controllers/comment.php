@@ -79,8 +79,8 @@ class Comment extends Modules_Controller{
         );
         $msgs = $this->mmsgs->get_one(array('uid'=>$comment['uid'],'type'=>2,'rid'=>$data['id']));
         if($msgs) {
-            $update_data = array('comment'=>$comment['comment']);
-            $this->mmsgs->update($update_data,'id = '.$msgs['id']);
+            $update_data = array('comment'=>$comment['comment'],'timeline'=>time());
+            $this->model->update($update_data,'id = '.$msgs['id']);
         } else {
             $this->mmsgs->create($udata);
         }
