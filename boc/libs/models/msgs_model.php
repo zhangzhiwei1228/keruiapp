@@ -14,7 +14,7 @@ class Msgs_model extends MY_Model
 	}
 	public function get_list($limit=5,$start=0,$order=false,$where=false){
 		$this->db
-			->select('msgs.id,msgs.is_read,msgs.rid,msgs.timeline,account.nickname')
+			->select('msgs.id,msgs.is_read,msgs.rid,msgs.type,msgs.timeline,account.nickname')
 			->from('msgs')
 			->join('account', 'account.id = msgs.uid', 'left')
 			->limit($limit,$start)
@@ -23,7 +23,7 @@ class Msgs_model extends MY_Model
 		$query = $this->db->get();
 		$result = $query->result_array();
 		foreach($result as &$row) {
-			switch($where['msgs.type']) {
+			switch($row['type']) {
 				case 1:
 					$msg = $this->db->select('content')->from('msg')->where(array('id'=>$row['rid']))->get()->row_array();
 					$row['content'] = $this->msubstr(strip_tags($msg['content']),0,35);
@@ -48,10 +48,10 @@ class Msgs_model extends MY_Model
 					$row['title'] = $product['title'];
 					break;
 				case 3:
-					$msg = $this->db->select('content,answer,timeline')->from('feedback')->where(array('id'=>$row['rid']))->get()->row_array();
+					$msg = $this->db->select('content,answer,timeline_answer')->from('feedback')->where(array('id'=>$row['rid']))->get()->row_array();
 					$row['content'] = $this->msubstr(strip_tags($msg['content']),0,35);
 					$row['comment'] = $this->msubstr(strip_tags($msg['answer']),0,35);
-					$row['ctime'] = $msg['timeline'];
+					$row['ctime'] = $msg['timeline_answer'];
 					$row['title'] = '意见反馈';
 					break;
 			}

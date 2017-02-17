@@ -19,7 +19,12 @@ class notice extends API_Controller
     public function nlist() {
         $where = array();
         $where['msgs.uid'] = $this->userinfo['id'];
-        $where['msgs.type'] = $this->data['type'];
+        if($this->data['type'] == 4) {
+            $where['in'] =array('msgs.type', array(2,3));
+        } else {
+            $where['msgs.type'] = $this->data['type'];
+        }
+
         $this->_list();
         if ($list = $this->mmsgs->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             //$this->mproduct->get_count_all($where);

@@ -259,7 +259,7 @@ class account extends API_Controller {
         if ($id = $this->mfeedback->create($create_data)) {
             $msgs = array(
                 'timeline'  =>  time(),
-                'type'      =>  2,
+                'type'      =>  3,
                 'uid'       =>  $this->userinfo['id'],
                 'rid'       =>  $id
             );
