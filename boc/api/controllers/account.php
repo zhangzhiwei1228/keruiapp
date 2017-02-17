@@ -54,7 +54,7 @@ class account extends API_Controller {
             , array(
                 'field' => 'password_re',
                 'label' => '确认密码',
-                'rules' => 'trim|required|min_length[6]|matches[password]',
+                'rules' => 'trim|required|min_length[6]|callback_pwd_check',
             )
         ),
         "get_token" => array(
@@ -127,7 +127,7 @@ class account extends API_Controller {
 		$this->_send_json($this->vdata);
 	}
     // 个人中心-更改登录密码
-    public function edit_pwd() {
+    public function editPwd() {
         // 验证
         $this->form_validation->set_rules($this->rules['edit_pwd']);
         // validate验证结果
@@ -141,11 +141,13 @@ class account extends API_Controller {
                 $this->vdata['returnCode'] = '200';
                 $this->vdata['returnInfo'] = '操作成功,请重新登录';
                 $this->vdata['secure'] = JSON_SECURE;
+                $this->vdata['content']= $res;
             } else {
                 // 返回失败
                 $this->vdata['returnCode'] = '0011';
                 $this->vdata['returnInfo'] = '更新失败,请刷新后重试';
                 $this->vdata['secure'] = JSON_SECURE;
+                $this->vdata['content'] = '';
             }
         }
         // 返回json数据
@@ -245,6 +247,13 @@ class account extends API_Controller {
             return true;
         }
         $this->form_validation->set_message('oldpassword_check', '原密码错误！');
+        return false;
+    }
+    public function pwd_check($str) {
+        if (isset($str) && ($str == $this->input->post('password'))) {
+            return true;
+        }
+        $this->form_validation->set_message('pwd_check', '原密码错误！');
         return false;
     }
     public function feedback() {
