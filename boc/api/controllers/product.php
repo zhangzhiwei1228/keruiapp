@@ -109,4 +109,18 @@ class product extends API_Controller {
         $this->vdata['content'] = $result;
         $this->_send_json($this->vdata);
     }
+    //产品详情
+    public function details() {
+        $id = isset($this->data['id']) && $this->data['id'] ? $this->data['id'] : false;
+        if(!$id) {
+            $this->_error_msg('missing_required_parameter');
+        }
+        $data = $this->mproduct->get_one($this->data['id'], $this->Fields);
+        $data['img_url'] = extract_img_src(stripslashes($data[$this->data['language'].'_content']));
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $data;
+        $this->_send_json($this->vdata);
+    }
 }

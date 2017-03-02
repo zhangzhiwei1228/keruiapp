@@ -198,6 +198,7 @@
         <?php endif ?>
         <input type="hidden" name="cid" id="cid" value="<?php echo $this->cid ?>">
         <input type="hidden" name="id" value="<?php echo $it['id']?>">
+        <input type="hidden" name="action" value="edit">
         <input type="submit" value="<?php echo lang('submit') ?>" class="btn btn-primary">
         <input type="reset" value="<?php echo lang('reset') ?>" class="btn btn-danger">
     </div>

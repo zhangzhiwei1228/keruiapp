@@ -717,3 +717,12 @@ if (!function_exists('getallheaders')) {
     return $headers;
   }
 }
+if (!function_exists('extract_img_src')) {
+    // 手机号截取
+    function extract_img_src($str)
+    {
+        $ext = 'gif|jpg|jpeg|bmp|png';
+        preg_match_all("/(href|src)=([\"|']?)([^ \"'>]+\.($ext))\\2/i", $str, $matches);
+        return $matches[3];
+    }
+}

@@ -1,5 +1,5 @@
 <?php
-define('JSON_SECURE', 1); // 提供移动接口解密加密API验证使用
+define('JSON_SECURE', 0); // 提供移动接口解密加密API验证使用
 
 # ERROR REPORTING
 if (defined('ENVIRONMENT')) {

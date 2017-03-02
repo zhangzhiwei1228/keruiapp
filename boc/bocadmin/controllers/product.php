@@ -28,6 +28,8 @@ class Product extends Modules_Controller{
     public function _edit_data()
     {
         $form=$this->input->post();
+        unset($form['action']);
+        $form['cid'] =  $this->input->get('c');
         $form['timeline'] = time();
         return $form;
     }
@@ -206,7 +208,7 @@ class Product extends Modules_Controller{
     }
     // 验证规则 验证CID合法
     public function checkcid(){
-        if ($this->input->post('cid') AND  (($this->input->post('action') == 'create' and $this->input->post('cid') == $this->input->get('c')) or ($this->input->post('cid') == 24 or $this->input->post('cid') == 25) or $this->input->post('cid') == $this->input->get('c'))  ) {
+        if ($this->input->post('cid') AND  ((($this->input->post('action') == 'create' or $this->input->post('action') == 'edit')) or ($this->input->post('cid') == 24 or $this->input->post('cid') == 25) or $this->input->post('cid') == $this->input->get('c'))  ) {
             return TRUE;
         }else{
             $this->form_validation->set_message('checkcid',lang("modules_cid_data_change_re"));
@@ -218,4 +220,5 @@ class Product extends Modules_Controller{
         unset($form['action']);
         return $form;
     }
+
 }
