@@ -47,6 +47,9 @@ class videos extends API_Controller
         // 初始化翻页
         $this->_list();
         if ($list = $this->mvideos->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
+            foreach($list as &$row) {
+                $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+            }
             photo2url($list);
             photo2url($list,'false', 'true', 'files');
             //$this->mproduct->get_count_all($where);
