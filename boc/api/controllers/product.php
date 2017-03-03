@@ -51,6 +51,9 @@ class product extends API_Controller {
         // 初始化翻页
         $this->_list();
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
+            foreach($list as &$row) {
+                $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+            }
             photo2url($list);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
