@@ -55,12 +55,13 @@ class product extends API_Controller {
                 $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
             }
             photo2url($list);
-            $list['count'] = count($list);
+            $data['content'] = array_values($list);
+            $data['count'] = count($list);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
             $this->vdata['secure'] = JSON_SECURE;
-            $this->vdata['content'] = $list;
+            $this->vdata['content'] = $data;
         } else {
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作失败';
