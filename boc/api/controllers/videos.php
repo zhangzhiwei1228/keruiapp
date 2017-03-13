@@ -52,12 +52,13 @@ class videos extends API_Controller
             }
             photo2url($list);
             photo2url($list,'false', 'true', 'files');
-            $list['count'] = count($list);
+            $data['content'] = array_values($list);
+            $data['count'] = $this->mproduct->get_count_all($where);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
             $this->vdata['secure'] = JSON_SECURE;
-            $this->vdata['content'] = $list;
+            $this->vdata['content'] = $data;
         } else {
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作失败';

@@ -56,7 +56,7 @@ class product extends API_Controller {
             }
             photo2url($list);
             $data['content'] = array_values($list);
-            $data['count'] = count($list);
+            $data['count'] = $this->mproduct->get_count_all($where);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
