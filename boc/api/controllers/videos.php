@@ -52,6 +52,7 @@ class videos extends API_Controller
             }
             photo2url($list);
             photo2url($list,'false', 'true', 'files');
+            $list['count'] = count($list);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';

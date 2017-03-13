@@ -55,6 +55,7 @@ class product extends API_Controller {
                 $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
             }
             photo2url($list);
+            $list['count'] = count($list);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
