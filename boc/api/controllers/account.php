@@ -141,7 +141,7 @@ class account extends API_Controller {
                 $this->vdata['returnCode'] = '200';
                 $this->vdata['returnInfo'] = '操作成功,请重新登录';
                 $this->vdata['secure'] = JSON_SECURE;
-                $this->vdata['content']= 'ok';
+                $this->vdata['content']= $res;
             } else {
                 // 返回失败
                 $this->vdata['returnCode'] = '0011';
