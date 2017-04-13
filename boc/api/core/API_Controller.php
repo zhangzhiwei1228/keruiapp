@@ -51,7 +51,7 @@ class API_Controller extends MY_Controller
           $data['limit'] = $headers['limit'];
         }
         if ($this->input->get('language')) {
-            $data['language'] = $headers['language'];
+            $data['language'] = $this->input->get('language');
         }
         if (ENVIRONMENT == 'development') {
           // 接口请求日志
