@@ -34,7 +34,9 @@ class API_Controller extends MY_Controller
         if (isset($headers['token']) && $headers['token']) {
             $data['token'] = $headers['token'];
         }
-
+        if (isset($headers['language']) && $headers['language']) {
+            $data['language'] = $headers['language'];
+        }
         // 请求类型
         if (isset($headers['platform']) && $headers['platform']) {
           $data['terminalNo'] = $headers['platform'];
@@ -48,7 +50,9 @@ class API_Controller extends MY_Controller
         if (is_numeric($this->input->get('limit'))) {
           $data['limit'] = $headers['limit'];
         }
-
+        if ($this->input->get('language')) {
+            $data['language'] = $headers['language'];
+        }
         if (ENVIRONMENT == 'development') {
           // 接口请求日志
           if (isset($this->router) && isset($this->router->uri) && isset($this->router->uri->uri_string)) {
