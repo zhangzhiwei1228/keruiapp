@@ -19,10 +19,12 @@ class notice extends API_Controller
     public function nlist() {
         $where = array();
         $where['msgs.uid'] = $this->userinfo['id'];
-        if($this->data['type'] == 4) {
+        if(isset($this->data['type']) && $this->data['type'] == 4) {
             $where['in'] =array('msgs.type', array(2,3));
-        } else {
+        } elseif(isset($this->data['type']) && $this->data['type'] == 1) {
             $where['msgs.type'] = $this->data['type'];
+        } else {
+            $where['in'] =array('msgs.type', array(1,2,3));
         }
 
         $this->_list();
