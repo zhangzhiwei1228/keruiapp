@@ -25,7 +25,7 @@ class product extends API_Controller {
         $this->_auto();
         $this->load->model('product_model', 'mproduct');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'].'_title';
-        $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline';
+        $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline,cid';
     }
     public function plist() {
         $first = $this->mproduct->get_all(array('cid'=>$this->pfirst_cid,'audit'=>1),'id,title');
