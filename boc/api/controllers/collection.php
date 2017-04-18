@@ -88,5 +88,23 @@ class collection extends API_Controller
         $this->vdata['content'] = $result;
         $this->_send_json($this->vdata);
     }
+    /**
+     * 其他处点击取消收藏
+     */
+    public function update() {
+        $this->_auto();
+        $where = array(
+            'uid'=>$this->userinfo['id'],
+            'rid'=>$this->data['rid'],
+            'type'=>$this->data['type'],
+            'cid'=>$this->data['cid'],
+        );
+        $result = $this->mcollection->del($where);
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $result;
+        $this->_send_json($this->vdata);
+    }
 
 }
