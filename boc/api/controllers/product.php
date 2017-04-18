@@ -135,6 +135,8 @@ class product extends API_Controller {
             $this->_error_msg('missing_required_parameter');
         }
         $data = $this->mproduct->get_one($this->data['id'], $this->Fields);
+        $photo = $data['photo'] ? one_upload($data['photo']) : '';
+        $data['photo'] = $photo ? UPLOAD_URL.$photo['url'] : '';
         $data['img_url'] = extract_img_src(stripslashes($data[$this->data['language'].'_content']));
         $this->vdata['returnCode'] = '200';
         $this->vdata['returnInfo'] = '操作成功';
