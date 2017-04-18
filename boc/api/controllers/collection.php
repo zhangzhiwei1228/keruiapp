@@ -81,7 +81,9 @@ class collection extends API_Controller
     }
     public function delete() {
         $id = explode(',',$this->data['id']);
-        $result = $this->mcollection->del($id);
+        foreach($id as $row) {
+            $result = $this->mcollection->del_collection(array('id'=>$row));
+        }
         $this->vdata['returnCode'] = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure'] = JSON_SECURE;
@@ -99,7 +101,7 @@ class collection extends API_Controller
             'type'=>$this->data['type'],
             'cid'=>$this->data['cid'],
         );
-        $result = $this->mcollection->del($where);
+        $result = $this->mcollection->del_collection($where);
         $this->vdata['returnCode'] = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure'] = JSON_SECURE;

@@ -24,6 +24,7 @@ class product extends API_Controller {
         parent::__construct();
         $this->_auto();
         $this->load->model('product_model', 'mproduct');
+        $this->load->model('collection_model', 'mcollection');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'].'_title';
         $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline,cid';
     }
@@ -67,6 +68,14 @@ class product extends API_Controller {
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             foreach($list as &$row) {
                 $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+                $col_where = array(
+                    'uid'=>$this->userinfo['id'],
+                    'rid'=>$row['id'],
+                    'type'=>1,
+                    'cid'=>$row['cid'],
+                );
+                $col = $this->mcollection->get_one($col_where);
+                $row['is_collection'] = $col ? 1: 0;
             }
             photo2url($list);
             $data['content'] = array_values($list);

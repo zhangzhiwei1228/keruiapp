@@ -51,4 +51,46 @@ class Collection_model extends MY_Model {
             return $this->db->affected_rows();
         }
     }
+    public function del_collection($data) {
+        if(isset($data['id']) && $data['id']) {
+            $query = $this->db
+                ->select('id')
+                ->from($this->table)
+                ->where(array('id'=>$data['id']))
+                ->get();
+            $result = $query->row_array();
+        } else {
+            $where = array('uid'=>$data['uid'],'rid'=>$data['rid'],'cid'=>$data['cid'],'type'=>$data['type']);
+            $query = $this->db
+                ->select('id')
+                ->from($this->table)
+                ->where($where)
+                ->get();
+            $result = $query->row_array();
+        }
+
+        if($result) {
+            $this->db->where(array('id'=>$result['id']));
+            $this->db->delete('collection');
+            //1产品 2视频 3动态
+            switch($data['type']) {
+                case 1:
+                    $this->db->set('collection','collection-1',false)
+                        -> where(array('id'=>$data['rid']))
+                        -> update('product');
+                    break;
+                case 2:
+                    $this->db->set('collection','collection-1',false)
+                        -> where(array('id'=>$data['rid']))
+                        -> update('videos');
+                    break;
+                case 3:
+                    $this->db->set('collection','collection-1',false)
+                        -> where(array('id'=>$data['rid']))
+                        -> update('news');
+                    break;
+            }
+        }
+        return $result;
+    }
 }
