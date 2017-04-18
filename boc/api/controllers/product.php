@@ -28,7 +28,21 @@ class product extends API_Controller {
         $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline,cid';
     }
     public function plist() {
-        $first = $this->mproduct->get_all(array('cid'=>$this->pfirst_cid,'audit'=>1),'id,title');
+        $level = isset($this->data['level']) && $this->data['level'] ? $this->data['level'] : 1;
+        switch($level) {
+            case 1:
+                $cid = $this->pfirst_cid;
+                break;
+            case 2:
+                $cid = $this->psecond_cid;
+                break;
+            case 3:
+                $cid = $this->pthree_cid;
+                break;
+            default:
+                $cid = $this->pfirst_cid;
+        }
+        $first = $this->mproduct->get_all(array('cid'=>$cid,'audit'=>1),'id,title');
         $this->vdata['returnCode']   = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure']     = JSON_SECURE;
