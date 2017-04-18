@@ -1,41 +1,132 @@
 
 <div class="btn-group"><a href="<?php echo site_urlc('language/index');?>" class="btn"> <i class="fa fa-arrow-left"></i> <?php echo lang('back_list')?> </a></div>
 
-<?php include_once 'inc_form_errors.php'; ?>
+<?php
+$cid = $this->cid ? $this->cid : $_GET['c'];
+include_once 'inc_form_errors.php'; ?>
 
 <div class="boxed">
     <h3> <i class="fa fa-pencil"></i> 编辑消息 <span class="badge badge-success pull-right"><?php echo $title; ?></span></h3>
     <?php echo form_open(current_urlc(), array('class' => 'form-horizontal', 'id' => 'frm-edit')); ?>
 
         <div class="boxed-inner seamless">
+            <?php if($cid == 18) {?>
+                <div class="control-group">
+                    <label for="title" class="control-label">
+                        <?php  switch($cid) {
+                            case 18:
+                                $title = '语种';
+                                break;
+                            case 19:
+                                $title = '地区名';
+                                break;
+                            default:
+                                $title = '';
+                                break;
 
-            <div class="control-group">
-                <label for="title" class="control-label">
-                    <?php $cid = $this->cid ? $this->cid : $_GET['c']; switch($cid) {
-                        case 18:
-                            $title = '语种';
-                            break;
-                        case 19:
-                            $title = '地区名';
-                            break;
-                        default:
-                            $title = '';
-                            break;
+                        } echo $title;
+                        ?></label>
+                    <div class="controls">
+                        <input type="text" name="title" id="title" value="<?php echo set_value('title',$it['title']); ?>"  placeholder="栏目名称" required=1>
+                        <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal">SEO</a>
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="title" class="control-label">描述:</label>
+                    <div class="controls">
+                        <textarea id="content" name="content"><?php echo set_value('content',$it['content']); ?></textarea>
+                    </div>
+                </div>
+            <?php } else {?>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab6" data-toggle="tab">ZH地区名</a></li>
+                        <li class=""><a href="#tab7" data-toggle="tab">FR地区名</a></li>
+                        <li class=""><a href="#tab8" data-toggle="tab">ES地区名</a></li>
+                        <li class=""><a href="#tab9" data-toggle="tab">RU地区名</a></li>
+                        <li class=""><a href="#tab10" data-toggle="tab">EN地区名</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab6">
+                            <div class="control-group">
+                                <div class="controls">
 
-                    } echo $title;
-                    ?></label>
-                <div class="controls">
-                    <input type="text" name="title" id="title" value="<?php echo set_value('title',$it['title']); ?>"  placeholder="栏目名称" required=1>
-                    <a href="#seo-modal" role="button" class="btn btn-info" data-toggle="modal">SEO</a>
-                    <span class="help-inline"></span>
+                                    <input type="text" id="title" name="title" value="<?php echo set_value('title',$it['title']); ?>" class='span7'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab7">
+                            <div class="control-group">
+
+                                <div class="controls">
+                                    <input type="text" id="FR_title" name="FR_title" value="<?php echo set_value('FR_title',$it['FR_title']); ?>" class='span7'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab8">
+                            <div class="control-group">
+
+                                <div class="controls">
+                                    <input type="text" id="ES_title" name="ES_title" value="<?php echo set_value('ES_title',$it['ES_title']); ?>" class='span7'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab9">
+                            <div class="control-group">
+
+                                <div class="controls">
+                                    <input type="text" id="RU_title" name="RU_title" value="<?php echo set_value('RU_title',$it['RU_title']); ?>" class='span7'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab10">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <input type="text" id="EN_title" name="EN_title" value="<?php echo set_value('EN_title',$it['EN_title']); ?>" class='span7'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label for="title" class="control-label">描述:</label>
-                <div class="controls">
-                    <textarea id="content" name="content"><?php echo set_value('content',$it['content']); ?></textarea>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">ZH简介</a></li>
+                        <li class=""><a href="#tab2" data-toggle="tab">FR简介</a></li>
+                        <li class=""><a href="#tab3" data-toggle="tab">ES简介</a></li>
+                        <li class=""><a href="#tab4" data-toggle="tab">RU简介</a></li>
+                        <li class=""><a href="#tab5" data-toggle="tab">EN简介</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <div class="control-group uefull">
+                                <textarea id="content" name="content" ><?php echo set_value('content',$it['content']); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <div class="control-group uefull">
+                                <textarea id="FR_content" name="FR_content" ><?php echo set_value('FR_content',$it['FR_content']); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab3">
+                            <div class="control-group uefull">
+                                <textarea id="ES_content" name="ES_content" ><?php echo set_value('ES_content',$it['ES_content']); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab4">
+                            <div class="control-group uefull">
+                                <textarea id="RU_content" name="RU_content" ><?php echo set_value('RU_content',$it['RU_content']); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab5">
+                            <div class="control-group uefull">
+                                <textarea id="EN_content" name="EN_content" ><?php echo set_value('EN_content',$it['EN_content']); ?></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <?php }?>
+
             <!-- 弹出 -->
             <div id="seo-modal" class="modal hide fade">
                 <div class="modal-header">
