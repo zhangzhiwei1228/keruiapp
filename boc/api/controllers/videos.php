@@ -20,7 +20,7 @@ class videos extends API_Controller
         $this->load->model('videosclass_model', 'mvideosclass');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
         $content = $this->data['language'] . '_content';
-        $this->Fields = 'id,' . $title . ',' . $content . ',photo,click,collection,timeline,files';
+        $this->Fields = 'id,' . $title . ',' . $content . ',photo,click,collection,timeline,files,cid';
     }
     public function ListClass() {
         $first = $this->mvideosclass->get_all(array('cid'=>$this->fcid,'audit'=>1),'id,title');
@@ -49,6 +49,14 @@ class videos extends API_Controller
         if ($list = $this->mvideos->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             foreach($list as &$row) {
                 $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+                $col_where = array(
+                    'uid'=>$this->userinfo['id'],
+                    'rid'=>$row['id'],
+                    'type'=>2,
+                    'cid'=>$row['cid'],
+                );
+                $col = $this->mcollection->get_one($col_where);
+                $row['is_collection'] = $col ? 1: 0;
             }
             photo2url($list);
             photo2url($list,'false', 'true', 'files');
