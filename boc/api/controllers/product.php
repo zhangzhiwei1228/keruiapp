@@ -78,7 +78,7 @@ class product extends API_Controller {
                 $row['is_collection'] = $col ? 1: 0;
             }
             photo2url($list);
-            $data['content'] = array_values($list);
+            $data = array_values($list);
             $data['count'] = $this->mproduct->get_count_all($where);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
