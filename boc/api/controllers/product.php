@@ -78,12 +78,12 @@ class product extends API_Controller {
                 $row['is_collection'] = $col ? 1: 0;
             }
             photo2url($list);
-            $list['count'] = $this->mproduct->get_count_all($where);
             $data = array_values($list);
-
+            $count = $this->mproduct->get_count_all($where);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
+            $this->vdata['count'] = $count;
             $this->vdata['secure'] = JSON_SECURE;
             $this->vdata['content'] = $data;
         } else {
