@@ -30,6 +30,7 @@ class product extends API_Controller {
     }
     public function plist() {
         $level = isset($this->data['level']) && $this->data['level'] ? $this->data['level'] : 1;
+        $pid = isset($this->data['pid']) && $this->data['pid'] ? $this->data['pid'] : 0;
         switch($level) {
             case 1:
                 $cid = $this->pfirst_cid;
@@ -43,7 +44,7 @@ class product extends API_Controller {
             default:
                 $cid = $this->pfirst_cid;
         }
-        $first = $this->mproduct->get_all(array('cid'=>$cid,'audit'=>1),'id,title');
+        $first = $this->mproduct->get_all(array('cid'=>$cid,'pid'=>$pid,'audit'=>1),'id,title');
         $this->vdata['returnCode']   = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure']     = JSON_SECURE;
