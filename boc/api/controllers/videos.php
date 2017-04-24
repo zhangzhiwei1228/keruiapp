@@ -21,6 +21,7 @@ class videos extends API_Controller
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
         $content = $this->data['language'] . '_content';
         $this->Fields = 'id,' . $title . ',' . $content . ',photo,click,collection,timeline,files,cid';
+        $this->load->model('collection_model','mcollection');
     }
     public function ListClass() {
         $first = $this->mvideosclass->get_all(array('cid'=>$this->fcid,'audit'=>1),'id,title');
