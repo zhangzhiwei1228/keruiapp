@@ -149,6 +149,14 @@ class product extends API_Controller {
         $photo = $data['photo'] ? one_upload($data['photo']) : '';
         $data['photo'] = $photo ? UPLOAD_URL.$photo['url'] : '';
         $data['img_url'] = extract_img_src(stripslashes($data[$this->data['language'].'_content']));
+        $col_where = array(
+            'uid'=>$this->userinfo['id'],
+            'rid'=>$data['id'],
+            'type'=>1,
+            'cid'=>$data['cid'],
+        );
+        $col = $this->mcollection->get_one($col_where);
+        $data['is_collection'] = $col ? 1: 0;
         $this->vdata['returnCode'] = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure'] = JSON_SECURE;
