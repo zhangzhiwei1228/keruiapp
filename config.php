@@ -5,9 +5,9 @@ define('BOCTAG', '0.9');
 
 # 数据库
 define('DB_TYPE', 'mysqli');
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', '121.41.128.239');
 define('DB_USER', 'root');
-define('DB_PASS', '123456');
+define('DB_PASS', 'boc2009!@#');
 define('DB_NAME', 'zzw_kerui');
 define('DB_PREFIX', 'boc_');
 

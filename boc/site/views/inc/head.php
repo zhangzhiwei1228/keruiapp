@@ -8,9 +8,9 @@
 <meta name="description" content="" />
 <meta name="author" content="杭州博采网络科技股份有限公司-高端网站建设-http://www.bocweb.cn" />
 <meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>德洛斯</title>
-<link href="<?php echo GLOBAL_URL ?>favicon.ico" rel="shortcut icon">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>BOCDEMO</title>
+<link href="<?php //echo static_file('img/favicon.ico'); ?>" rel="shortcut icon">
 <script>
 	var STATIC_URL = "<?php echo STATIC_URL ?>";
 	var GLOBAL_URL = "<?php echo GLOBAL_URL ?>";
@@ -21,14 +21,18 @@
 	echo static_file('m/css/reset.css');
 	echo static_file('m/css/style.css');
 
-	echo static_file('jQuery.js');
+	echo static_file('jquery-1.11.3.js');
+	echo static_file('plugin.js');
 	echo static_file('jquery.easing.1.3.js');
 	echo static_file('jquery.transit.js');
-	echo static_file('prefixfree.min.js');
 	echo static_file('html5.js');
 	echo static_file('bocfe.js');
 	echo static_file('plug.preload.js');
-	
-	echo static_file('m/js/touch.js');
-	// echo static_file('m/js/adaptive-version2.js');
+
+	echo static_file('m/js/adaptive-version2.js');
 ?>
+
+<script>
+window['adaptive'].desinWidth = 750;
+window['adaptive'].init();	
+</script>

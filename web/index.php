@@ -1,3 +1,3 @@
 <?php
 include '../config.php';
-include ROOT.'boc/api/index.php';
+include ROOT.'boc/site/index.php';

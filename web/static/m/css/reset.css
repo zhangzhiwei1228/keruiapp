@@ -13,9 +13,8 @@ html {
   /* 2 */
   overflow-y: scroll;
   /* 0 */
-  -webkit-overflow-scrolling: touch
-  /* 0 */
-}
+  -webkit-overflow-scrolling: touch;
+  /* 0 */ }
 
 /**
  * 1. Remove default margin
@@ -30,9 +29,8 @@ body {
   /* 0 */
   color: #333;
   /* 0 */
-  background-color: #fff
-  /* 0 */
-}
+  background-color: #fff;
+  /* 0 */ }
 
 /* HTML5 display definitions
    ========================================================================== */
@@ -53,8 +51,7 @@ main,
 nav,
 section,
 summary {
-  display: block;
-}
+  display: block; }
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
@@ -71,9 +68,8 @@ video {
   /* 2 */
   *display: inline;
   /* 3 */
-  *zoom: 1
-  /* 3 */
-}
+  *zoom: 1;
+  /* 3 */ }
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
@@ -81,8 +77,7 @@ video {
  */
 audio:not([controls]) {
   display: none;
-  height: 0;
-}
+  height: 0; }
 
 /**
  * Address `[hidden]` styling not present in IE 8/9/10.
@@ -90,8 +85,7 @@ audio:not([controls]) {
  */
 [hidden],
 template {
-  display: none;
-}
+  display: none; }
 
 /* Links
    ========================================================================== */
@@ -105,15 +99,12 @@ a {
   /* 1 */
   /* 0 */
   text-decoration: none;
-  color: #08c;
-}
-a:active, a:hover {
-  outline: 0
-  /* 2 */
-}
-a:hover {
-  color: #006699;
-}
+  color: #08c; }
+  a:active, a:hover {
+    outline: 0;
+    /* 2 */ }
+  a:hover {
+    color: #006699; }
 
 /* Text-level semantics
    ========================================================================== */
@@ -121,38 +112,33 @@ a:hover {
  * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
  */
 abbr[title] {
-  border-bottom: 1px dotted;
-}
+  border-bottom: 1px dotted; }
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
  */
 b,
 strong {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /**
  * Address styling not present in Safari and Chrome.
  */
 dfn {
-  font-style: italic;
-}
+  font-style: italic; }
 
 /**
  * Address styling not present in IE 8/9.
  */
 mark {
   background: #ff0;
-  color: #000;
-}
+  color: #000; }
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
 small {
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
@@ -162,16 +148,13 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
 sup {
-  top: -0.5em;
-}
+  top: -0.5em; }
 
 sub {
-  bottom: -0.25em;
-}
+  bottom: -0.25em; }
 
 /* Embedded content
    ========================================================================== */
@@ -185,16 +168,14 @@ img {
   /* 1 */
   vertical-align: middle;
   /* 0 */
-  -ms-interpolation-mode: bicubic
-  /* 2 */
-}
+  -ms-interpolation-mode: bicubic;
+  /* 2 */ }
 
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
 svg:not(:root) {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 /* Grouping content
    ========================================================================== */
@@ -202,9 +183,9 @@ svg:not(:root) {
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0;
-}
+  height: 0; }
 
 /**
  * 1. Contain overflow in all browsers.
@@ -217,9 +198,8 @@ pre {
   /* 2 */
   white-space: pre-wrap;
   /* 2 */
-  word-wrap: break-word
-  /* 2 */
-}
+  word-wrap: break-word;
+  /* 2 */ }
 
 /**
  * 1. Address odd `em`-unit font size rendering in all browsers.
@@ -233,9 +213,8 @@ samp {
   /* 1 */
   _font-family: 'courier new', monospace;
   /* 1 */
-  font-size: 1em
-  /* 2 */
-}
+  font-size: 1em;
+  /* 2 */ }
 
 /* Forms
    ========================================================================== */
@@ -258,16 +237,14 @@ textarea {
   /* 1 */
   font: inherit;
   /* 2 */
-  margin: 0
-  /* 3 */
-}
+  margin: 0;
+  /* 3 */ }
 
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
 button {
-  overflow: visible;
-}
+  overflow: visible; }
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -277,8 +254,7 @@ button {
  */
 button,
 select {
-  text-transform: none;
-}
+  text-transform: none; }
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -297,17 +273,15 @@ input[type="submit"] {
   /* 2 */
   cursor: pointer;
   /* 3 */
-  *overflow: visible
-  /* 4 */
-}
+  *overflow: visible;
+  /* 4 */ }
 
 /**
  * Re-set default cursor for disabled elements.
  */
 button[disabled],
 html input[disabled] {
-  cursor: default;
-}
+  cursor: default; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
@@ -315,21 +289,18 @@ html input[disabled] {
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 textarea:focus,
 input:focus {
-  outline: none;
-}
+  outline: none; }
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
 input {
-  line-height: normal;
-}
+  line-height: normal; }
 
 /**
  * It's recommended that you don't attempt to style these elements.
@@ -348,9 +319,8 @@ input[type="radio"] {
   /* 2 */
   *height: 13px;
   /* 3 */
-  *width: 13px
-  /* 3 */
-}
+  *width: 13px;
+  /* 3 */ }
 
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
@@ -359,8 +329,7 @@ input[type="radio"] {
  */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
+  height: auto; }
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
@@ -370,9 +339,10 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* 2 */
-  box-sizing: content-box;
-}
+  box-sizing: content-box; }
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
@@ -380,9 +350,9 @@ input[type="search"] {
  * padding (and `textfield` appearance).
  */
 input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+input[type="search"]::-webkit-search-decoration,
+input[type="text"] {
+  -webkit-appearance: none; }
 
 /**
  * Define consistent border, margin, and padding.
@@ -390,8 +360,7 @@ input[type="search"]::-webkit-search-decoration {
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
+  padding: 0.35em 0.625em 0.75em; }
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9/10/11.
@@ -403,9 +372,8 @@ legend {
   /* 1 */
   padding: 0;
   /* 2 */
-  *margin-left: -7px
-  /* 3 */
-}
+  *margin-left: -7px;
+  /* 3 */ }
 
 /**
  * 1. Remove default vertical scrollbar in IE 8/9/10/11.
@@ -414,17 +382,15 @@ legend {
 textarea {
   overflow: auto;
   /* 1 */
-  resize: vertical
-  /* 0 */
-}
+  resize: vertical;
+  /* 0 */ }
 
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
 optgroup {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /* Tables
    ========================================================================== */
@@ -433,95 +399,76 @@ optgroup {
  */
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
 td,
 th {
-  padding: 0;
-}
+  padding: 0; }
 
 /**
  * Address CSS quotes not supported in IE 6/7.
  */
 q {
-  quotes: none;
-}
+  quotes: none; }
 
 html,
 button,
 input,
 select,
 textarea {
-  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-}
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif; }
 
 h1, h2, h3, h4, h5, h6, p, figure, form, blockquote {
-  margin: 0;
-}
+  margin: 0; }
 
 ul, ol, li, dl, dd {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 ul, ol {
-  list-style: none outside none;
-}
+  list-style: none outside none; }
 
 h1, h2, h3 {
   line-height: 2;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 h1 {
-  font-size: 18px;
-}
+  font-size: 18px; }
 
 h2 {
-  font-size: 15.6px;
-}
+  font-size: 15.6px; }
 
 h3 {
-  font-size: 14.04px;
-}
+  font-size: 14.04px; }
 
 h4 {
-  font-size: 12px;
-}
+  font-size: 12px; }
 
 h5, h6 {
   font-size: 10.2px;
-  text-transform: uppercase;
-}
+  text-transform: uppercase; }
 
 input:-moz-placeholder,
 textarea:-moz-placeholder {
-  color: #ccc;
-}
+  color: #ccc; }
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-  color: #ccc;
-}
+  color: #ccc; }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: #ccc;
-}
+  color: #ccc; }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #ccc;
-}
+  color: #ccc; }
 
 .clear {
-  clear: both;
-}
+  clear: both; }
 
 .f-cb {
-  zoom: 1;
-}
+  zoom: 1; }
 
 .f-cb:after {
   display: block;
@@ -529,99 +476,75 @@ textarea::-webkit-input-placeholder {
   clear: both;
   visibility: hidden;
   overflow: hidden;
-  content: ".";
-}
+  content: "."; }
 
 .fl {
   float: left;
-  display: inline;
-}
+  display: inline; }
 
 .fr {
   float: right;
-  display: inline;
-}
+  display: inline; }
 
 .por {
-  position: relative;
-}
+  position: relative; }
 
 .poa {
-  position: absolute;
-}
+  position: absolute; }
 
 .pof {
-  position: fixed;
-}
+  position: fixed; }
 
 .poa-f {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
 .ovh {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 .noselect {
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
-}
+  -ms-user-select: none; }
 
 .z1 {
-  z-index: 1;
-}
+  z-index: 1; }
 
 .z2 {
-  z-index: 2;
-}
+  z-index: 2; }
 
 .z3 {
-  z-index: 3;
-}
+  z-index: 3; }
 
 .dn {
-  display: none;
-}
+  display: none; }
 
 .dib {
-  display: inline-block;
-}
+  display: inline-block; }
 
 .w-f {
-  width: 100%;
-}
+  width: 100%; }
 
 .h-f {
-  height: 100%;
-}
+  height: 100%; }
 
 .fwn {
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 .tac {
-  text-align: center;
-}
+  text-align: center; }
 
 .t-f {
-  -webkit-transition: all 0.5s;
-          transition: all 0.5s;
-}
+  transition: all 0.5s; }
 
 .t-c {
-  -webkit-transition: color 0.5s;
-          transition: color 0.5s;
-}
+  transition: color 0.5s; }
 
 .t-bg {
-  -webkit-transition: background 0.5s;
-          transition: background 0.5s;
-}
+  transition: background 0.5s; }
 
 .loader {
   width: 50px;
@@ -636,37 +559,18 @@ textarea::-webkit-input-placeholder {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   border-left: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  -webkit-animation: spinner 700ms infinite linear;
-          animation: spinner 700ms infinite linear;
-}
+  animation: spinner 700ms infinite linear; }
 
 .loader.white {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-@-webkit-keyframes spinner {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
+  border-left: 1px solid rgba(255, 255, 255, 0.5); }
 
 @keyframes spinner {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
+    transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
+    transform: rotate(360deg); } }
 
 /*# sourceMappingURL=reset.css.map */

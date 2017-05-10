@@ -1,4 +1,4 @@
-/**
+﻿/**
 * IE6PNG: Adds IE6 support: PNG images for CSS background-image and HTML <IMG/>.
 * Author: Drew Diller
 * Email: drew.diller@gmail.com
