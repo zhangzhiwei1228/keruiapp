@@ -39,15 +39,16 @@ class app extends MY_Controller {
         $this->load->view('pro_info',$vdata);
     }
     public function videoInfo() {
+        //http://www.kerui.com/index.php/app/videoInfo?id=1&token=HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5&language=ZH
         $this->load->model('videos_model','mvideos');
         $id = $this->input->get('id');
         $token = $this->input->get('token');
         $account = $this->macctoken->get_one(array('token' => $token), 'accountId,expiretime');
         $data = array(
-            'cid' => 25,
+            'cid' => 26,
             'uid' => $account['accountId'],
             'rid' => $id,
-            'type'=> 1,
+            'type'=> 2,
         );
         $this->mbrowse->create_browse($data);
         $language = $this->input->get('language');
@@ -68,5 +69,8 @@ class app extends MY_Controller {
         //var_dump($videos);die();
         $vdata['videos'] = $videos;
         $this->load->view('video_info',$vdata);
+    }
+    public function news() {
+
     }
 }
