@@ -18,9 +18,19 @@ class news extends API_Controller
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
         $this->Fields = 'id,' . $title . ',' . $this->data['language'] . '_content,photo,click,collection,timeline';
     }
+    public function plist() {
+        $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
+        $plist = $this->mnews->get_all(array('cid'=>34,'audit'=>1),'id,'.$title);
+        $this->vdata['returnCode']   = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure']     = JSON_SECURE;
+        $this->vdata['content'] = $plist;
+        $this->_send_json($this->vdata);
+    }
     public function nlist() {
         $where = array();
         $where['audit'] = 1;
+        $where['ctype'] = $this->data['ctype'];
         $kw = isset($this->data['kw']) && $this->data['kw'] ? $this->data['kw'] : false;
         if ($kw) {
             $where['like title'] = array('title', $kw);

@@ -10,6 +10,7 @@
     <?php echo form_open(current_urlc(),array("class"=>"form-horizontal","id"=>"frm-create")); ?>
 
     <div class="boxed-inner seamless">
+
         <div class="tabbable">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab6" data-toggle="tab">ZH标题</a></li>
@@ -60,7 +61,17 @@
                 </div>
             </div>
         </div>
-
+        <?php if($this->cid == 35) { ?>
+        <div class="control-group">
+            <label for="title" class="control-label">选择分类:</label>
+            <div class="controls">
+                <select name="ctype">
+                    <?php foreach($ctypes as $val){?>
+                        <option value="<?php echo $val['id']?>"><?php echo $val['title']?></option>
+                    <?php }?>
+                </select>
+            </div>
+        </div>
         <!-- 弹出 -->
         <div id="seo-modal" class="modal hide fade">
             <div class="modal-header">
@@ -159,7 +170,7 @@
         <!-- 图片上传 -->
 
     </div>
-
+    <?php }?>
     <div class="boxed-footer">
         <?php if ($this->ccid): ?>
             <input type="hidden" name="ccid" value="<?php echo $this->ccid ?>">

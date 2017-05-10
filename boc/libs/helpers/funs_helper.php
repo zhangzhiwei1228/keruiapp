@@ -921,3 +921,12 @@ if(!function_exists('check_circle'))
 		return $res;
 	}
 }
+function get_ctype_title($ctype) {
+
+	$CI =& get_instance();
+	if (!isset($CI->mcoltypes)) {
+		$CI->load->model('news_model','mnews');
+	}
+	$result = $CI->mnews->get_one_title($ctype,'title');
+	return $result ? $result['title'] : '';
+}

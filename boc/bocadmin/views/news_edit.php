@@ -59,7 +59,17 @@
                 </div>
             </div>
         </div>
-
+        <?php if($this->cid == 35) { ?>
+            <div class="control-group">
+                <label for="title" class="control-label">选择分类:</label>
+                <div class="controls">
+                    <select name="ctype">
+                        <?php foreach($ctypes as $val){?>
+                            <option value="<?php echo $val['id']?>" <?php echo $it['ctype'] == $val['id'] ? 'selected' : ''?>><?php echo $val['title']?></option>
+                        <?php }?>
+                    </select>
+                </div>
+            </div>
         <!-- 弹出 -->
         <div id="seo-modal" class="modal hide fade">
             <div class="modal-header">
@@ -154,7 +164,7 @@
         <div id="js-photo-show" class="js-img-list-f"></div>
         <div class="clear"></div>
         <!-- 图片上传 -->
-
+        <?php }?>
     </div>
     <div class="boxed-footer">
         <?php if ($this->ccid): ?>

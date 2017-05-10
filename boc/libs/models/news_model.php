@@ -46,5 +46,17 @@ class News_model extends MY_Model {
 
 		return $row;
 	}
+	public function get_one_title($where,$fields) {
+		$this->db->select($fields)->from($this->table);
+		if(!is_numeric($where))
+		{
+			$this->db->where($where);
+		} else {
+			$this->db->where('id',$where);
+		}
+		//$this->db->where('audit',1);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 
 }

@@ -3,7 +3,7 @@
 </div>
 
 <?php include_once 'inc_modules_path.php'; ?>
-
+<?php include_once 'inc_ctype_index.php'; ?>
 <div class="boxed">
     <div class="boxed-inner seamless">
 
@@ -11,8 +11,13 @@
     <thead>
         <tr>
             <th class="width-small"><input id='selectbox-all' type="checkbox" > </th>
+            <?php if($this->cid == 35) {?>
             <th>图</th>
+            <?php }?>
             <th>标题</th>
+            <?php if($this->cid == 35) {?>
+            <th>所属分类</th>
+            <?php }?>
             <th>更新时间</th>
             <th class="span1">操作</th>
         </tr>
@@ -21,6 +26,7 @@
         <?php foreach ($list as $v):?>
         <tr data-id="<?php echo $v['id'] ?>" data-sort="<?php echo $v['sort_id'] ?>">
             <td><input class="select-it" type="checkbox" value="<?php echo $v['id']; ?>" ></td>
+            <?php if($this->cid == 35) {?>
             <td>
                 <?php if ($v['thumb']): ?>
                 <a class="fancybox-img" href="<?php echo UPLOAD_URL. str_replace('thumbnail/', '', $v['thumb']); ?>" title="<?php echo $v['title'] ?>">
@@ -28,7 +34,11 @@
                 </a>
                 <?php endif ?>
              </td>
+            <?php }?>
             <td> <?php echo $v['title'] ?></td>
+            <?php if($this->cid == 35) {?>
+            <td> <?php echo get_ctype_title($v['ctype']); ?></td>
+            <?php }?>
             <td> <?php echo  date("Y/m/d H:i:s",$v['timeline']); ?> </td>
             <td>
                 <div class="btn-group">
