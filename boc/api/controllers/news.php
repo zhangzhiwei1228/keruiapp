@@ -16,7 +16,7 @@ class news extends API_Controller
         $this->_auto();
         $this->load->model('news_model', 'mnews');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
-        $this->Fields = 'id,' . $title . ',' . $this->data['language'] . '_content,photo,click,collection,timeline';
+        $this->Fields = 'id,' . $title . ',photo,timeline';
     }
     public function plist() {
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
