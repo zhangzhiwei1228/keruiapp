@@ -65,12 +65,39 @@ class app extends MY_Controller {
         $vdata['video'] = $video['url'];
         //$videos = $this->mvideos->get_all(array('id <>'=>$id,'audit'=>1,'flag'=>1));
         $videos = $this->mvideos->get_list(4, 0, false, array('id <>'=>$id,'audit'=>1,'flag'=>1), '*');
-        photo2url($videos);
+        if($videos) {
+            photo2url($videos);
+        }
         //var_dump($videos);die();
         $vdata['videos'] = $videos;
         $this->load->view('video_info',$vdata);
     }
     public function news() {
-
+        //http://www.kerui.com/index.php/app/news?id=2&token=HjtP1FiDgZsw2O3SyCw2axjNYwDihyqGh78meAJ5t6v9xExz2orRcRf1EiZlWGs5&language=ZH
+        $this->load->model('news_model', 'mnews');
+        $id = $this->input->get('id');
+        $token = $this->input->get('token');
+        $account = $this->macctoken->get_one(array('token' => $token), 'accountId,expiretime');
+        $data = array(
+            'cid' => 35,
+            'uid' => $account['accountId'],
+            'rid' => $id,
+            'type'=> 3,
+        );
+        $this->mbrowse->create_browse($data);
+        $language = $this->input->get('language');
+        $vdata['header'] =array(
+            'title'=> $this->mcfg->get_config('site','title_seo'),
+            'tags'=> $this->mcfg->get_config('site','tags'),
+            'intro' => $this->mcfg->get_config('site','intro')
+        );
+        $pro = $this->mnews->get_one_next($id,"*",$language);
+        $vdata['pro'] = $pro;
+        $videos = $this->mnews->get_list(4, 0, false, array('id <>'=>$id,'cid'=>35,'audit'=>1,'flag'=>1), '*');
+        if($videos) {
+            photo2url($videos);
+        }
+        $vdata['news'] = $videos;
+        $this->load->view('active_info',$vdata);
     }
 }

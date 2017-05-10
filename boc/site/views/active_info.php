@@ -11,22 +11,33 @@
     <div class="video-info active-info">
         <div class="info">
             <div class="tit">
-                <p>这游戏叫谁西安急倒是法搜发动机偶是福克斯粉红色放</p>
+                <p><?php echo $_GET['language'] && $_GET['language'] == 'ZH' ? $pro['title'] : $pro[$_GET['language'].'_title']?></p>
             </div>
             <div class="time">
-                <p>更新时间2016-02-16 <span class="line"></span> 200次浏览</p>
+                <p>更新时间<?php echo date('Y-m-d',$pro['timeline'])?> <span class="line"></span> <?php echo $pro['click']?>次浏览</p>
             </div>
             <div class="con">
-                <p>就死了粉红色肯定会发你肦水电费会发你肦水电费会发你肦水电费会发你肦水电费会发你肦水电费水电费阿斯蒂芬双方都；</p>
-                <p>近似偶奥火服都说多扶你水电费沙发费沙发费沙发费沙发费沙发费沙发费沙发大水电费水电费水电费；</p>
+                <?php echo $pro[$_GET['language'].'_content']?>
             </div>
             <div class="page">
-                <a href="" title="" class="box">
-                    <p><i></i>上一篇：标题</p><i class="icon"></i>
-                </a>
-                <a href="" title="" class="box">
-                    <p><i></i>下一篇：标题</p><i class="icon"></i>
-                </a>
+                <?php if(isset($pro['prev_id']) && $pro['prev_id']) {?>
+                    <a href="<?php echo site_url('app/news?id='.$pro['prev_id'].'&token='.$_GET['token'].'&language='.$_GET['language'])?>" title="" class="box">
+                        <p><i></i>上一篇：<?php echo $pro['prev_title']?></p><i class="icon"></i>
+                    </a>
+                <?php } else {?>
+                    <a class="box">
+                        <p><i></i>暂无</p>
+                    </a>
+                <?php }?>
+                <?php if(isset($pro['next_id']) && $pro['next_id']) {?>
+                    <a href="<?php echo site_url('app/news?id='.$pro['next_id'].'&token='.$_GET['token'].'&language='.$_GET['language'])?>" title="<?php echo $pro['next_title']?>" class="box">
+                        <p><i></i>下一篇：<?php echo $pro['next_title']?></p><i class="icon"></i>
+                    </a>
+                <?php } else {?>
+                    <a class="box">
+                        <p><i></i>暂无</p>
+                    </a>
+                <?php }?>
             </div>
         </div>
     </div>
@@ -36,34 +47,22 @@
         </div>
         <div class="list f-cb">
             <ul>
-                <li>
-                    <a href="" title="" class="box f-cb">
-                        <div class="img">
-                            <img src="<?php echo static_file('m/img/pic1.jpg'); ?>" width="100%" height="100%" alt="">
-                        </div>
-                        <div class="text">
-                            <h3>仪表控制设备仪表控制设备仪表控制设备仪表控制设备</h3>
-                            <div class="bot f-cb">
-                                <p>2017-01-11</p>
-                                <p class="eye">20</p>
+                <?php foreach($news as $val) {?>
+                    <li>
+                        <a href="" title="" class="box f-cb">
+                            <div class="img">
+                                <img src="<?php echo $val['photo']['url']; ?>" width="100%" height="100%" alt="">
                             </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="" title="" class="box f-cb">
-                        <div class="img">
-                            <img src="<?php echo static_file('m/img/pic1.jpg'); ?>" width="100%" height="100%" alt="">
-                        </div>
-                        <div class="text">
-                            <h3>仪表控制设备仪表控制设备仪表控制设备仪表控制设备</h3>
-                            <div class="bot f-cb">
-                                <p>2017-01-11</p>
-                                <p class="eye">20</p>
+                            <div class="text">
+                                <h3><?php echo $_GET['language'] && $_GET['language'] == 'ZH' ? $val['title'] : $val[$_GET['language'].'_title']?></h3>
+                                <div class="bot f-cb">
+                                    <p><?php echo date('Y-m-d',$val['timeline'])?></p>
+                                    <p class="eye"><?php echo $val['click']?></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                <?php }?>
             </ul>
         </div>
     </div>
