@@ -40,10 +40,10 @@ $cid=$this->cid;
 						<td> <?php echo date("Y/m/d H:i:s",$v['timeline']); ?> </td>
 						<td>
 							<div class="btn-group">
-								<?php //include 'inc_ui_flag.php'; ?>
-								<?php if(ENVIRONMENT=="development"){ ?>
-								<a class='btn  btn-small btn-ajax-copy' data-id="<?php echo $v['id'] ?>" href="#"  title="复制"> 复制</a>
-								<?php } ?>
+								<?php include 'inc_ui_flag.php'; ?>
+								<?php /*if(ENVIRONMENT=="development"){ */?><!--
+								<a class='btn  btn-small btn-ajax-copy' data-id="<?php /*echo $v['id'] */?>" href="#"  title="复制"> 复制</a>
+								--><?php /*} */?>
 								<?php include 'inc_ui_audit.php'; ?>
 								<a class='btn btn-small' href=" <?php echo site_urlc( $this->router->class.'/edit/'.$v['id']) ?> " title="<?php echo lang('edit') ?>"> <i class="fa fa-pencil"></i> <?php // echo lang('edit') ?></a>
 								<a class='btn btn-danger btn-small btn-del' data-id="<?php echo $v['id'] ?>" href="#"  title="<?php echo lang('del') ?>"> <i class="fa fa-times"></i> <?php // echo lang('del') ?></a>

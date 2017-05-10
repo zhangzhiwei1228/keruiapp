@@ -930,3 +930,78 @@ function get_ctype_title($ctype) {
 	$result = $CI->mnews->get_one_title($ctype,'title');
 	return $result ? $result['title'] : '';
 }
+if (!function_exists('photo2url')) {
+	/**
+	 * 图片id转url
+	 * @param  string $ids 上传列表值 '1,2,3[...]'
+	 * @return array|false 数组或逻辑false
+	 */
+	function photo2url(&$list, $more='false', $islist='true', $field='photo')
+	{
+		if ($islist == 'true' && !empty($list)) {
+			foreach ($list as $k => $v) {
+				if ($more == 'false') {
+					if (!empty($v[$field])) {
+						$tmp_url = one_upload($v[$field]);
+						$tmp_urls = null;
+						if (!empty($tmp_url)) {
+							$url1=UPLOAD_URL.$tmp_url['url'];
+							if(substr($tmp_url['url'],0,4)=="http"){
+								$url1=$tmp_url['url'];
+							}
+							$tmp_urls = array('id'=>$tmp_url['id'], 'url'=>$url1);
+						}
+					} else {
+						$tmp_urls = null;
+					}
+					// print_r($tmp_urls);
+					$list[$k][$field] = $tmp_urls;
+				} else {
+					if (!empty($v[$field])) {
+						$tmp_list = list_upload($v[$field]);
+						$tmp_urls = array();
+						foreach ($tmp_list as $ks => $vs) {
+							$url2=UPLOAD_URL.$vs['url'];
+							if(substr($vs['url'],0,4)=="http"){
+								$url2=$vs['url'];
+							}
+							array_push($tmp_urls, array('id'=>$vs['id'], 'url'=>$url2));
+						}
+					} else {
+						$tmp_urls = null;
+					}
+					$list[$k][$field] = $tmp_urls;
+				}
+			}
+		} else {
+			if ($more == 'false') {
+				if (!empty($list[$field])) {
+					$tmpInfo = one_upload($list[$field]);
+					if ($tmpInfo) {
+						$url3=UPLOAD_URL.$tmpInfo['url'];
+						if(substr($tmpInfo['url'],0,4)=="http"){
+							$url3=$tmpInfo['url'];
+						}
+						$list[$field] = array('id'=>$tmpInfo['id'],'url'=>$url3);
+					} else {
+						$list[$field] = null;
+					}
+				} else {
+					$list[$field] = null;
+				}
+			} else {
+				$tmp_list = list_upload($list[$field]);
+				$tmp_urls = array();
+
+				foreach ($tmp_list as $ks => $vs) {
+					$url4=UPLOAD_URL.$vs['url'];
+					if(substr($vs['url'],0,4)=="http"){
+						$url4=$vs['url'];
+					}
+					array_push($tmp_urls, array('id'=>$vs['id'], 'url'=> $url4));
+				}
+				$list[$field] = $tmp_urls;
+			}
+		}
+	}
+}
