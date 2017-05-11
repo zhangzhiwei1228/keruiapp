@@ -261,7 +261,7 @@ class account extends API_Controller {
         $this->load->model('feedback_model', 'mfeedback');
         $create_data = array(
             'content'   => $this->data['content'],
-            'tel'       => $this->data['tel'],
+            'tel'       => $this->userinfo['tel'],
             'timeline'  => time()
         );
         // 创建数据
