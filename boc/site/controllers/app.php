@@ -159,4 +159,17 @@ class app extends MY_Controller {
         $vdata['pages'] = $pages;
         $this->load->view('news',$vdata);
     }
+    public function replyDetail(){
+        //http://www.kerui.com/app/replyDetail?id=9
+        $this->load->model('msgs_model','mmsgs');
+        $vdata['header'] =array(
+            'title'=> $this->mcfg->get_config('site','title_seo'),
+            'tags'=> $this->mcfg->get_config('site','tags'),
+            'intro' => $this->mcfg->get_config('site','intro')
+        );
+        $id = $this->input->get('id');
+        $datas = $this->mmsgs->get_detail($id);
+        $vdata['row'] = $datas;
+        $this->load->view('newsdetail',$vdata);
+    }
 }

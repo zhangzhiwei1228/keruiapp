@@ -103,6 +103,50 @@ class Msgs_model extends MY_Model
 		$num = $this->db->select('count(id) as num')->from('msgs')->where( array('is_read'=>0,'uid'=>$mid))->get()->row_array();
 		return $num['num'];
 	}
+	//消息详情
+	public function get_detail($id) {
+		$this->db
+			->select('msgs.id,msgs.is_read,msgs.rid,msgs.type,msgs.timeline,account.nickname')
+			->from('msgs')
+			->join('account', 'account.id = msgs.uid', 'left')
+			->where(array('msgs.id'=>$id));
+		$query = $this->db->get();
+		$row = $query->row_array();
+		switch($row['type']) {
+			case 1:
+				$msg = $this->db->select('content')->from('msg')->where(array('id'=>$row['rid']))->get()->row_array();
+				$row['content'] = $msg['content'];
+				$row['title'] = '管理员通知';
+				break;
+			case 2:
+				$msg = $this->db->select('content,comment,timeline,type,rid')->from('comment')->where(array('id'=>$row['rid']))->get()->row_array();
+				switch($msg['type']) {
+					case 1:
+						$product = $this->db->select('id,title')->from('product')->where(array('id'=>$msg['rid']))->get()->row_array();
+						break;
+					case 2:
+						$product = $this->db->select('id,title')->from('videos')->where(array('id'=>$msg['rid']))->get()->row_array();
+						break;
+					case 3:
+						$product = $this->db->select('id,title')->from('news')->where(array('id'=>$msg['rid']))->get()->row_array();
+						break;
+				}
 
+				$row['content'] = $msg['content'];
+				$row['comment'] = $msg['comment'];
+				$row['ctime'] = $msg['timeline'];
+				$row['title'] = $product['title'];
+				break;
+			case 3:
+				$msg = $this->db->select('content,answer,timeline_answer')->from('feedback')->where(array('id'=>$row['rid']))->get()->row_array();
+				$row['content'] = $msg['content'];
+				$row['comment'] = $msg['answer'];
+				$row['ctime'] = $msg['timeline_answer'];
+				$row['title'] = '意见反馈';
+				break;
+		}
+
+		return $row;
+	}
 }
 
