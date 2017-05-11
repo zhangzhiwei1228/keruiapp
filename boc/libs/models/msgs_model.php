@@ -27,6 +27,7 @@ class Msgs_model extends MY_Model
 				case 1:
 					$msg = $this->db->select('content')->from('msg')->where(array('id'=>$row['rid']))->get()->row_array();
 					$row['content'] = $this->msubstr(strip_tags($msg['content']),0,35);
+					$row['title'] = '管理员通知';
 					break;
 				case 2:
 					$msg = $this->db->select('content,comment,timeline,type,rid')->from('comment')->where(array('id'=>$row['rid']))->get()->row_array();

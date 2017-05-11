@@ -35,10 +35,42 @@
 			</div>
 			<?php }else{ ?>
 
-			<div class="control-group uefull">
-				<textarea id="editor_id" name="content" > <?php echo set_value('content',$it['content']); ?></textarea>
-				<!-- <span class="help-inline"></span> -->
-			</div> 
+				<div class="tabbable">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1" data-toggle="tab">ZH简介</a></li>
+						<li class=""><a href="#tab2" data-toggle="tab">FR简介</a></li>
+						<li class=""><a href="#tab3" data-toggle="tab">ES简介</a></li>
+						<li class=""><a href="#tab4" data-toggle="tab">RU简介</a></li>
+						<li class=""><a href="#tab5" data-toggle="tab">EN简介</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab1">
+							<div class="control-group uefull">
+								<textarea id="ZH_content" name="ZH_content" ><?php echo set_value('ZH_content',$it['ZH_content']); ?></textarea>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab2">
+							<div class="control-group uefull">
+								<textarea id="FR_content" name="FR_content" ><?php echo set_value('FR_content',$it['FR_content']); ?></textarea>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab3">
+							<div class="control-group uefull">
+								<textarea id="ES_content" name="ES_content" ><?php echo set_value('ES_content',$it['ES_content']); ?></textarea>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab4">
+							<div class="control-group uefull">
+								<textarea id="RU_content" name="RU_content" ><?php echo set_value('RU_content',$it['RU_content']); ?></textarea>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab5">
+							<div class="control-group uefull">
+								<textarea id="EN_content" name="EN_content" ><?php echo set_value('EN_content',$it['EN_content']); ?></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
 			<?php } ?>
 
 			<!-- 图片上传 -->
@@ -78,7 +110,11 @@
 
 <script type="text/javascript">
 require(['jquery','adminer/js/ui','adminer/js/media'],function($,ui,media){
-	ui.editor_create('editor_id');
+	ui.editor_create('ZH_content');
+	ui.editor_create('FR_content');
+	ui.editor_create('ES_content');
+	ui.editor_create('RU_content');
+	ui.editor_create('EN_content');
 	var page_photos = <?php echo json_encode(list_upload($it['photo'])) ?>;
 	media.init();
 	media.show(page_photos,'photo');

@@ -100,4 +100,63 @@ class app extends MY_Controller {
         $vdata['news'] = $videos;
         $this->load->view('active_info',$vdata);
     }
+    //保密协议
+    public function secret() {
+        //http://www.kerui.com/index.php/app/secret?language=ZH
+        $this->load->model('page_model','mpage');
+        $vdata['header'] =array(
+            'title'=> $this->mcfg->get_config('site','title_seo'),
+            'tags'=> $this->mcfg->get_config('site','tags'),
+            'intro' => $this->mcfg->get_config('site','intro')
+        );
+        $page = $this->mpage->get_one(array('cid'=>36));
+        $language = $this->input->get('language');
+        $vdata['content'] = $page[$language.'_content'];
+        $this->load->view('safe',$vdata);
+    }
+    //关于我们
+    public function about() {
+        //http://www.kerui.com/index.php/app/about?language=ZH
+        $this->load->model('page_model','mpage');
+        $vdata['header'] =array(
+            'title'=> $this->mcfg->get_config('site','title_seo'),
+            'tags'=> $this->mcfg->get_config('site','tags'),
+            'intro' => $this->mcfg->get_config('site','intro')
+        );
+        $page = $this->mpage->get_one(array('cid'=>37));
+        $language = $this->input->get('language');
+        $vdata['content'] = $page[$language.'_content'];
+        $this->load->view('about',$vdata);
+    }
+    //消息详情(管理员回复)
+    public function reply(){
+        //http://www.kerui.com/app/reply?token=GlqOVKxt8GwAUZYZDzoqAawATXTfSRmY4TmOda9bhvb2K1ROp6qVrqoEAKXSxvMG&language=ZH
+        if(isset($this->reg[0])){$page=$this->reg[0];}else{$page=1;}
+
+        $this->load->model('msgs_model','mmsgs');
+        $vdata['header'] =array(
+            'title'=> $this->mcfg->get_config('site','title_seo'),
+            'tags'=> $this->mcfg->get_config('site','tags'),
+            'intro' => $this->mcfg->get_config('site','intro')
+        );
+        $token = $this->input->get('token');
+        $account = $this->macctoken->get_one(array('token' => $token), 'accountId,expiretime');
+        $where = array();
+        $where['msgs.uid'] = $account['accountId'];
+        if(isset($this->data['type']) && $this->data['type'] == 4) {
+            $where['in'] =array('msgs.type', array(2,3));
+        } elseif(isset($this->data['type']) && $this->data['type'] == 1) {
+            $where['msgs.type'] = $this->data['type'];
+        } else {
+            $where['in'] =array('msgs.type', array(1,2,3));
+        }
+        $limit = 8;
+        $count = $this->mmsgs->get_count_all($where);
+        $pages = _pages(site_url('/app/reply'),$limit,$count,3);
+        $datas = $this->mmsgs->get_list($limit,$limit*($page-1),array('msgs.is_read'=>'asc'),$where);
+        //var_dump($datas);
+        $vdata['notices'] = $datas;
+        $vdata['pages'] = $pages;
+        $this->load->view('news',$vdata);
+    }
 }
