@@ -21,6 +21,7 @@ class collection extends API_Controller
         parent::__construct();
         $this->_auto();
         $this->load->model('collection_model', 'mcollection');
+        $this->load->model('product_model', 'mproduct');
         switch($this->data['type']) {
             case 1:
                 $this->join_table = 'product';
@@ -33,7 +34,7 @@ class collection extends API_Controller
                 break;
         }
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
-        $this->Fields = 'collection.id,collection.rid,' . $this->join_table.'.'.$title . ',' . $this->join_table.'.'.$this->data['language'] . '_content,'.$this->join_table.'.photo,'.$this->join_table.'.timeline,collection.latest_time';
+        $this->Fields = 'collection.id,collection.rid,collection.type,' . $this->join_table.'.'.$title . ',' .$this->join_table.'.photo,'.$this->join_table.'.timeline,collection.latest_time';
         $this->join = array(
             $this->join_table,
             $this->join_table.'.id=collection.rid',
@@ -57,6 +58,7 @@ class collection extends API_Controller
     public function clist() {
         $where = array();
         $where['collection.uid'] = $this->userinfo['id'];
+        $where['collection.type'] = $this->data['type'];
         $where['collection.audit'] = 1;
         $where[$this->join_table.'.audit'] = 1;
         $this->_list();
@@ -64,6 +66,10 @@ class collection extends API_Controller
         if ($list = $this->mcollection->get_list($this->limit, $this->offset, $order,$where,$this->Fields,false,$this->join)) {
             photo2url($list);
             foreach($list as &$row) {
+                if($row['type'] == 1) {
+                    $childs = $this->mproduct->get_all(array('pid'=>$row['rid']));
+                    $row['is_file'] = $childs ? 1 : 0;
+                }
                 $row['is_update'] = $row['timeline'] >= $row['latest_time'] ? 1 : 0;
             }
             //$this->mproduct->get_count_all($where);
