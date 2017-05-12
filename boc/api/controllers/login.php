@@ -72,7 +72,7 @@ class login extends API_Controller
                 $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'].'_title';
                 $info['area'] = $this->mlanguage->get_one($info['area'],'id,'.$title);
                 $info['area']['title'] = $info['area'][$title];
-                unset($info['area'][$title]);
+                //unset($info['area'][$title]);
                 $token = genToken();
                 $this->macc->gettoken($token, $this->info['id'],true,$this->info['terminalNo']);
                 //返回用户详细数据
