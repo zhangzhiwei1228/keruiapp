@@ -20,7 +20,7 @@ class videos extends API_Controller
         $this->load->model('videosclass_model', 'mvideosclass');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
         $content = $this->data['language'] . '_content';
-        $this->Fields = 'id,' . $title . ',' . $content . ',photo,click,collection,timeline,files,cid';
+        $this->Fields = 'id,' . $title . ',' . $content . ',photo,click,collection,timeline,files,cid,playtime';
         $this->load->model('collection_model','mcollection');
     }
     public function ListClass() {

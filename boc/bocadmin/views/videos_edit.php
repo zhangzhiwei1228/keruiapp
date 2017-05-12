@@ -200,7 +200,13 @@
 		</div>
 		<div class="clear"></div>
 		<!-- 图片上传 -->
-
+		<div class="control-group">
+			<label class="control-label" for="playtime"> 视频播放时长 </label>
+			<div class="controls">
+				<input type="text" id="playtime" name="playtime" class='span7' value="<?php echo set_value('playtime',$it['playtime']); ?>" placeholder="00:00:00">
+				<span >如：00:00:00</span>
+			</div>
+		</div>
 		<!-- 图片上传 -->
 		<div class="control-group">
 			<label for="img" class="control-label">视频：</label>

@@ -20,6 +20,7 @@ $cid=$this->cid;
 					<th>序号</th>
 					<th>图</th>
 					<th>标题</th>
+					<th>播放时长</th>
 					<th>更新时间</th>
 					<th class="span1">操作</th>
 				</tr>
@@ -37,6 +38,7 @@ $cid=$this->cid;
 							<?php endif ?>
 						</td>
 						<td> <?php echo $v['title'] ?></td>
+						<td> <?php echo $v['playtime'] ?></td>
 						<td> <?php echo date("Y/m/d H:i:s",$v['timeline']); ?> </td>
 						<td>
 							<div class="btn-group">
