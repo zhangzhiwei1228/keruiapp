@@ -10,6 +10,7 @@ class account extends API_Controller {
 
 	public function __construct() {
 		parent::__construct();
+        $this->userInfoFields = 'id,audit,phone,nickname,photo,language,area,realname';
 	}
 
     protected $rules = array(
@@ -110,12 +111,20 @@ class account extends API_Controller {
                 if ($it) {
                   $it['url'] = UPLOAD_URL.$it['url'];
                 }
+                $info = $this->mvacc->get_info($this->userinfo['id'], 'nofresh', $this->data['terminalNo'], $this->userInfoFields);
+                $this->load->model('language_model','mlanguage');
+                $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'].'_title';
+                $info['area'] = $this->mlanguage->get_one($info['area'],'id,'.$title);
+                $info['area']['title'] = $info['area'][$title];
+                if($this->data['language'] != 'ZH') {
+                    unset($info['area'][$title]);
+                }
 				// 返回成功
 				$this->vdata['returnCode'] = '200';
 				$this->vdata['returnInfo'] = '操作成功';
 				$this->vdata['secure'] = JSON_SECURE;
-				$this->vdata['content']['res'] = (string) $res;
-				$this->vdata['content']['photo_info'] = $it;
+				$this->vdata['content'] = $info;
+				//$this->vdata['content']['photo_info'] = $it;
 			} else {
 				// 返回失败
 				$this->vdata['returnCode'] = '200';

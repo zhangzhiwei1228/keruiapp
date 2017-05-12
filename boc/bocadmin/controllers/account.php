@@ -103,7 +103,7 @@ class Account extends Modules_Controller
 			!!$data['tags'] and $this->mtags->add(str_replace(array('，',' ','　','|'), ',', $data['tags']),$this->cid,$data['id']);
 		}
 		$token = genToken();
-		$this->maccount->gettoken($token, $data['id'],true,$data['terminalNo']);
+		$this->maccount->gettoken($token, $data['id'],'nofresh',$data['terminalNo']);
 	}
 	protected function _del_after($data){
 		$this->mtoken->delete($data);

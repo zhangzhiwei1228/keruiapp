@@ -75,7 +75,7 @@ class login extends API_Controller
                 if($this->data['language'] != 'ZH') {
                     unset($info['area'][$title]);
                 }
-                
+
                 $token = genToken();
                 $this->macc->gettoken($token, $this->info['id'],true,$this->info['terminalNo']);
                 //返回用户详细数据
