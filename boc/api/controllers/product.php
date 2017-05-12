@@ -77,6 +77,16 @@ class product extends API_Controller {
                 );
                 $col = $this->mcollection->get_one($col_where);
                 $row['is_collection'] = $col ? 1: 0;
+                $four = $this->mproduct->get_all(array('pid'=>$row['id'],'audit'=>1),'id');
+                $row['package'] = array();
+                foreach($four as $val) {
+                    $row['package'][] = array(
+                        'id' => $val['id'],
+                        'url' => SITE_URL.('app/proInfo?id='.$val['id'].'&token='.$this->data['token'].'&language='.$this->data['language']),
+                    );
+                }
+                $row['package'] = array_values($row['package']);
+
             }
             photo2url($list);
             $data = array_values($list);
