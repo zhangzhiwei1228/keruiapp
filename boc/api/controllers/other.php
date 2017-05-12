@@ -198,4 +198,35 @@ class other extends API_Controller {
         $this->vdata['content'] = $language ;
         $this->_send_json($this->vdata);
     }
+    //请求的链接
+    public function url() {
+        $type = $this->data['type'];
+        //1 proInfo 2 videoInfo 3 news 4 secret 5 about 6 replyDetail
+        switch($type) {
+            case 1:
+                $url = SITE_URL.('app/proInfo?id='.$this->data['id'].'&token='.$this->data['token'].'&language='.$this->data['language']);
+                break;
+            case 2:
+                $url = SITE_URL.('app/videoInfo?id='.$this->data['id'].'&token='.$this->data['token'].'&language='.$this->data['language']);
+                break;
+            case 3:
+                $url = SITE_URL.('app/news?id='.$this->data['id'].'&token='.$this->data['token'].'&language='.$this->data['language']);
+                break;
+            case 4:
+                $url = SITE_URL.('app/secret?language='.$this->data['language']);
+                break;
+            case 5:
+                $url = SITE_URL.('app/about?language='.$this->data['language']);
+                break;
+            case 6:
+                //http://www.kerui.com/app/replyDetail?id=9
+                $url = SITE_URL.('app/replyDetail?id='.$this->data['id']);
+                break;
+        }
+        $this->vdata['returnCode'] = '200';
+        $this->vdata['returnInfo'] = '操作成功';
+        $this->vdata['secure'] = JSON_SECURE;
+        $this->vdata['content'] = $url ;
+        $this->_send_json($this->vdata);
+    }
 }
