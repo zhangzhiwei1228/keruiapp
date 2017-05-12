@@ -10,7 +10,7 @@ class Videosclass extends Modules_Controller{
             array(
                 "field" => "title",
                 "label" => "标题",
-                "rules" => "trim|required|min_length[6]"
+                "rules" => "trim|required|min_length[2]"
             )
             ,array(
                 "field" => "content",
