@@ -40,6 +40,17 @@ class news extends API_Controller
         $this->_list();
         if ($list = $this->mnews->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             photo2url($list);
+            foreach($list as &$row) {
+                //$row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+                $col_where = array(
+                    'uid'=>$this->userinfo['id'],
+                    'rid'=>$row['id'],
+                    'type'=>3,
+                    'cid'=>$row['cid'],
+                );
+                $col = $this->mcollection->get_one($col_where);
+                $row['is_collection'] = $col ? 1: 0;
+            }
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
             $this->vdata['returnInfo'] = '操作成功';
