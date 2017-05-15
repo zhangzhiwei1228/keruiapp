@@ -15,6 +15,7 @@ class news extends API_Controller
         parent::__construct();
         $this->_auto();
         $this->load->model('news_model', 'mnews');
+        $this->load->model('collection_model', 'mcollection');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'] . '_title';
         $this->Fields = 'id,' . $title . ',photo,timeline,cid';
     }
