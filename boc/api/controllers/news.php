@@ -30,10 +30,12 @@ class news extends API_Controller
     public function nlist() {
         $where = array();
         $where['audit'] = 1;
-        $where['ctype'] = $this->data['ctype'];
+
         $kw = isset($this->data['kw']) && $this->data['kw'] ? $this->data['kw'] : false;
         if ($kw) {
             $where['like title'] = array('title', $kw);
+        } else {
+            $where['ctype'] = $this->data['ctype'];
         }
         $this->_list();
         if ($list = $this->mnews->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
