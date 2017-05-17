@@ -41,7 +41,9 @@ class API_Controller extends MY_Controller
         if (isset($headers['platform']) && $headers['platform']) {
           $data['terminalNo'] = $headers['platform'];
         }
-
+        if (isset($headers['terminalNo']) && $headers['terminalNo']) {
+            $data['terminalNo'] = $headers['terminalNo'];
+        }
         // 翻页相关
         if (is_numeric($this->input->get('page'))) {
           $data['page'] = $headers['page'];
