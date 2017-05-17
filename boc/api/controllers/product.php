@@ -77,7 +77,7 @@ class product extends API_Controller {
             $psecond = explode(',',$this->userinfo['psecond']);
             foreach($list as &$row) {
                 if($row['level'] == 2) {
-                    if(!in_array($row['id'],$psecond))unset($row);
+                    if(!in_array($row['id'],$psecond)){unset($row);}
                 }
                 $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
                 $col_where = array(
