@@ -29,7 +29,7 @@ class API_Controller extends MY_Controller
 
         // 获取头部传参数
         $headers = getallheaders();
-        logfile('Post Data: '.print_r($headers, 1), 'api/post_data_');
+        logfile('headers Data: '.print_r($headers, 1), 'api/post_data_');
         //验证数据安全
         $data = $this->input->post();
         if (isset($headers['token']) && $headers['token']) {
