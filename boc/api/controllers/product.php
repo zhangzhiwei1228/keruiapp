@@ -74,7 +74,11 @@ class product extends API_Controller {
         // 初始化翻页
         $this->_list();
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
+            $psecond = explode(',',$this->userinfo['psecond']);
             foreach($list as &$row) {
+                if($row['level'] == 2) {
+                    if(!in_array($row['id'],$psecond))continue;
+                }
                 $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
                 $col_where = array(
                     'uid'=>$this->userinfo['id'],
