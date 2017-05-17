@@ -61,6 +61,7 @@ class product extends API_Controller {
     public function ChildList() {
         $where = array();
         $where['audit'] = 1;
+        $product = false;
         $kw = isset($this->data['kw']) && $this->data['kw'] ? $this->data['kw'] : false;
         if ($kw) {
             $where['like title'] = array('title', $kw);
@@ -70,13 +71,14 @@ class product extends API_Controller {
                 $this->_error_msg('missing_required_parameter');
             }
             $where['pid'] = $id;
+            $product = $this->mproduct->get_one($id,'id,level');
         }
         // 初始化翻页
         $this->_list();
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             $psecond = explode(',',$this->userinfo['psecond']);
             foreach($list as $key=>&$row) {
-                if($row['level'] == 2) {
+                if($product && $product['level'] == 1) {
                     if(!in_array($row['id'],$psecond)){unset($list[$key]);}
                 } else {
                     $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
