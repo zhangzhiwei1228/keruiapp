@@ -75,9 +75,9 @@ class product extends API_Controller {
         $this->_list();
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             $psecond = explode(',',$this->userinfo['psecond']);
-            foreach($list as &$row) {
+            foreach($list as $key=>&$row) {
                 if($row['level'] == 2) {
-                    if(!in_array($row['id'],$psecond)){unset($row);}
+                    if(!in_array($row['id'],$psecond)){unset($list[$key]);}
                 } else {
                     $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
                     $col_where = array(
@@ -98,8 +98,6 @@ class product extends API_Controller {
                     }
                     $row['package'] = array_values($row['package']);
                 }
-
-
             }
             photo2url($list);
             $data = array_values($list);
