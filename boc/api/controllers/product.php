@@ -78,25 +78,27 @@ class product extends API_Controller {
             foreach($list as &$row) {
                 if($row['level'] == 2) {
                     if(!in_array($row['id'],$psecond)){unset($row);}
-                }
-                $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
-                $col_where = array(
-                    'uid'=>$this->userinfo['id'],
-                    'rid'=>$row['id'],
-                    'type'=>1,
-                    'cid'=>$row['cid'],
-                );
-                $col = $this->mcollection->get_one($col_where);
-                $row['is_collection'] = $col ? 1: 0;
-                $four = $this->mproduct->get_all(array('pid'=>$row['id'],'audit'=>1),'id');
-                $row['package'] = array();
-                foreach($four as $val) {
-                    $row['package'][] = array(
-                        'id' => $val['id'],
-                        'url' => SITE_URL.('app/proInfo?id='.$val['id'].'&token='.$this->data['token'].'&language='.$this->data['language']),
+                } else {
+                    $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+                    $col_where = array(
+                        'uid'=>$this->userinfo['id'],
+                        'rid'=>$row['id'],
+                        'type'=>1,
+                        'cid'=>$row['cid'],
                     );
+                    $col = $this->mcollection->get_one($col_where);
+                    $row['is_collection'] = $col ? 1: 0;
+                    $four = $this->mproduct->get_all(array('pid'=>$row['id'],'audit'=>1),'id');
+                    $row['package'] = array();
+                    foreach($four as $val) {
+                        $row['package'][] = array(
+                            'id' => $val['id'],
+                            'url' => SITE_URL.('app/proInfo?id='.$val['id'].'&token='.$this->data['token'].'&language='.$this->data['language']),
+                        );
+                    }
+                    $row['package'] = array_values($row['package']);
                 }
-                $row['package'] = array_values($row['package']);
+
 
             }
             photo2url($list);
