@@ -77,7 +77,7 @@ require(['adminer/js/ui'],function(ui){
     ui.btn_delete(language.url_del);     // 删除
     ui.btn_audit(language.url_audit);    // 审核
     ui.btn_flag(language.url_flag);      // 推荐
-    // ui.sortable(language.url_sortid); // 排序  拖动排序和序号排序在firefox中有bug
+    ui.sortable(language.url_sortid); // 排序  拖动排序和序号排序在firefox中有bug
     ui.sort_change(language.url_sort_change); // input 排序
     ui.btn_copy(language.url_copy);    // 热门审核
 });

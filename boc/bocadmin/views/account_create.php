@@ -48,6 +48,30 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="title"> 一级产品权限 </label>
+                <div class="controls">
+                    <?php if(count($pfrist) > 0) {?>
+                        <?php foreach($pfrist as $row) {?>
+                            <input class="select-it" type="checkbox" value="<?php echo $row['id']; ?>" name="pfrist[]"><?php echo $row['title']?>
+                        <?php }?>
+                    <?php } else {?>
+                        请先设置
+                    <?php }?>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="title"> 二级产品权限 </label>
+                <div class="controls">
+                    <?php if(count($psecond) > 0) {?>
+                        <?php foreach($psecond as $row) {?>
+                            <input class="select-it" type="checkbox" value="<?php echo $row['id']; ?>" name="psecond[]"><?php echo $row['title']?>
+                        <?php }?>
+                    <?php } else {?>
+                        请先设置
+                    <?php }?>
+                </div>
+            </div>
+            <div class="control-group">
                 <label for="title" class="control-label">时间:</label>
                 <div class="controls">
                     <div class="input-append date timepicker">

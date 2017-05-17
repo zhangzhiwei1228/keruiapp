@@ -56,6 +56,32 @@
 					</select>
 				</div>
 			</div>
+			<div class="control-group">
+				<label class="control-label" for="title"> 一级产品权限 </label>
+				<div class="controls">
+					<?php if(count($pfrist) > 0) {?>
+						<?php foreach($pfrist as $row) {?>
+							<?php $pfrist_ = strstr($it['pfrist'],$row['id']);?>
+							<input class="select-it" type="checkbox" value="<?php echo $row['id']; ?>" <?php if($pfrist_) echo 'checked';?>  name="pfrist[]"><?php echo $row['title']?>
+						<?php }?>
+					<?php } else {?>
+						请先设置
+					<?php }?>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="title"> 二级产品权限 </label>
+				<div class="controls">
+					<?php if(count($psecond) > 0) {?>
+						<?php foreach($psecond as $row) {?>
+							<?php $psecond_ = strstr($it['psecond'],$row['id']);?>
+							<input class="select-it" type="checkbox" value="<?php echo $row['id']; ?>" <?php if($psecond_) echo 'checked';?> name="psecond[]"><?php echo $row['title']?>
+						<?php }?>
+					<?php } else {?>
+						请先设置
+					<?php }?>
+				</div>
+			</div>
 			<!--<div class="control-group">
 				<label for="phone" class="control-label">手机号码：</label>
 				<div class="controls">

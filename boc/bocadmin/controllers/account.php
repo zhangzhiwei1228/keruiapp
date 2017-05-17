@@ -9,6 +9,7 @@ class Account extends Modules_Controller
 		$this->load->model('account_model', 'maccount');
 		$this->load->model('account_token_model', 'mtoken');
 		$this->load->model('language_model', 'mlanguage');
+		$this->load->model('product_model', 'mproduct');
 		$this->rules = array(
 			"rule" => array(
 				array(
@@ -41,6 +42,8 @@ class Account extends Modules_Controller
 				$this->output->set_content_type('application/json')->set_output(json_encode($vdata));
 			}else{
 				$vdata['areas'] = $this->mlanguage->get_all(array('cid'=>19,'audit'=>1),'id,title');
+				$vdata['pfrist'] =$this->mproduct->get_all(array('cid'=>22,'audit'=>1),'id,title');//一级产品
+				$vdata['psecond'] = $this->mproduct->get_all(array('cid'=>23,'audit'=>1),'id,title');//二级产品
 				$this->_display($vdata);
 			}
 		}else{
@@ -87,8 +90,17 @@ class Account extends Modules_Controller
     }
 	protected function _create_data(){
 		$form=$this->input->post();
+		$form['pfrist'] = implode(',',$form['pfrist']);
+		$form['psecond'] = implode(',',$form['psecond']);
 		$form['pwd'] = passwd($form['pwd']);
 		$form['nickname'] = $form['phone'];
+		return $form;
+	}
+	protected function _edit_data(){
+		$form=$this->input->post();
+		$form['pfrist'] = implode(',',$form['pfrist']);
+		$form['psecond'] = implode(',',$form['psecond']);
+		// $form=$this->input->post(NULL,TRUE); // 获得全部并 xss_clean
 		return $form;
 	}
 	protected function _create_after($data){
@@ -150,6 +162,8 @@ class Account extends Modules_Controller
 				$this->output->set_content_type('application/json')->set_output(json_encode($vdata));
 			}else{
 				$vdata['areas'] = $this->mlanguage->get_all(array('cid'=>19,'audit'=>1),'id,title');
+				$vdata['pfrist'] =$this->mproduct->get_all(array('cid'=>22,'audit'=>1),'id,title');//一级产品
+				$vdata['psecond'] = $this->mproduct->get_all(array('cid'=>23,'audit'=>1),'id,title');//二级产品
 				$this->_display($vdata);
 			}
 		}else{

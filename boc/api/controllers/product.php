@@ -26,17 +26,22 @@ class product extends API_Controller {
         $this->load->model('product_model', 'mproduct');
         $this->load->model('collection_model', 'mcollection');
         $title = $this->data['language'] == 'ZH' ? 'title' : $this->data['language'].'_title';
-        $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline,cid';
+        $this->Fields = 'id,'.$title.','.$this->data['language'].'_content,photo,click,collection,timeline,cid,level';
     }
     public function plist() {
+        $pfrist = explode(',',$this->userinfo['pfrist']);
+        $psecond = explode(',',$this->userinfo['psecond']);
         $level = isset($this->data['level']) && $this->data['level'] ? $this->data['level'] : 1;
         $pid = isset($this->data['pid']) && $this->data['pid'] ? $this->data['pid'] : 0;
+        $where = array();
         switch($level) {
             case 1:
                 $cid = $this->pfirst_cid;
+                $where['in'] = array('id',$pfrist);
                 break;
             case 2:
                 $cid = $this->psecond_cid;
+                $where['in'] = array('id',$psecond);
                 break;
             case 3:
                 $cid = $this->pthree_cid;
@@ -44,7 +49,9 @@ class product extends API_Controller {
             default:
                 $cid = $this->pfirst_cid;
         }
-        $first = $this->mproduct->get_all(array('cid'=>$cid,'pid'=>$pid,'audit'=>1),'id,title');
+        $where = array_merge($where,array('cid'=>$cid,'pid'=>$pid,'audit'=>1));
+        $first = $this->mproduct->get_all($where,'id,title');
+        //echo ($this->db->last_query());
         $this->vdata['returnCode']   = '200';
         $this->vdata['returnInfo'] = '操作成功';
         $this->vdata['secure']     = JSON_SECURE;
