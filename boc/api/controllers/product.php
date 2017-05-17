@@ -75,34 +75,34 @@ class product extends API_Controller {
         }
         // 初始化翻页
         $this->_list();
+        $flag = false;
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             $psecond = explode(',',$this->userinfo['psecond']);
             foreach($list as $key=>&$row) {
-                if($product && ($product['level'] == 1 || !$product['pid'])) {
-                    if(!in_array($row['id'],$psecond)){unset($list[$key]);}
-                } else {
-                    $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
-                    $col_where = array(
-                        'uid'=>$this->userinfo['id'],
-                        'rid'=>$row['id'],
-                        'type'=>1,
-                        'cid'=>$row['cid'],
+                $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
+                $col_where = array(
+                    'uid'=>$this->userinfo['id'],
+                    'rid'=>$row['id'],
+                    'type'=>1,
+                    'cid'=>$row['cid'],
+                );
+                $col = $this->mcollection->get_one($col_where);
+                $row['is_collection'] = $col ? 1: 0;
+                $four = $this->mproduct->get_all(array('pid'=>$row['id'],'audit'=>1),'id');
+                $row['package'] = array();
+                foreach($four as $val) {
+                    $row['package'][] = array(
+                        'id' => $val['id'],
+                        'url' => SITE_URL.('app/proInfo?id='.$val['id'].'&token='.$this->data['token'].'&language='.$this->data['language']),
                     );
-                    $col = $this->mcollection->get_one($col_where);
-                    $row['is_collection'] = $col ? 1: 0;
-                    $four = $this->mproduct->get_all(array('pid'=>$row['id'],'audit'=>1),'id');
-                    $row['package'] = array();
-                    foreach($four as $val) {
-                        $row['package'][] = array(
-                            'id' => $val['id'],
-                            'url' => SITE_URL.('app/proInfo?id='.$val['id'].'&token='.$this->data['token'].'&language='.$this->data['language']),
-                        );
-                    }
-                    $row['package'] = array_values($row['package']);
+                }
+                $row['package'] = array_values($row['package']);
+                if( $product && ($product['level'] == 1 || !$product['pid']) && $psecond  ) {
+                    if(!in_array($row['id'],$psecond)){unset($list[$key]);} else {$flag = true;}
                 }
             }
             photo2url($list);
-            $data = array_values($list);
+            $data = $flag ? array_values($list) :'';
             $count = $this->mproduct->get_count_all($where);
             //$this->mproduct->get_count_all($where);
             $this->vdata['returnCode'] = '200';
