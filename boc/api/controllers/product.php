@@ -98,8 +98,9 @@ class product extends API_Controller {
                 }
                 $row['package'] = array_values($row['package']);
                 if( $product && ($product['level'] == 1 || !$product['pid']) && $psecond  ) {
-                    if(!in_array($row['id'],$psecond)){unset($list[$key]);} else {$flag = true;}
+                    if(!in_array($row['id'],$psecond)){unset($list[$key]);} else {}
                 }
+                $flag = true;
             }
             photo2url($list);
             $data = $flag ? array_values($list) :'';
