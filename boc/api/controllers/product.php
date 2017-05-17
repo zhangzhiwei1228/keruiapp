@@ -71,14 +71,14 @@ class product extends API_Controller {
                 $this->_error_msg('missing_required_parameter');
             }
             $where['pid'] = $id;
-            $product = $this->mproduct->get_one($id,'id,level');
+            $product = $this->mproduct->get_one($id,'id,level,pid');
         }
         // 初始化翻页
         $this->_list();
         if ($list = $this->mproduct->get_list($this->limit, $this->offset, $this->orderby, $where, $this->Fields)) {
             $psecond = explode(',',$this->userinfo['psecond']);
             foreach($list as $key=>&$row) {
-                if($product && $product['level'] == 1) {
+                if($product && ($product['level'] == 1 || !$product['pid'])) {
                     if(!in_array($row['id'],$psecond)){unset($list[$key]);}
                 } else {
                     $row[$this->data['language'].'_content'] = strip_tags($row[$this->data['language'].'_content']);
