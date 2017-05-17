@@ -90,16 +90,16 @@ class Account extends Modules_Controller
     }
 	protected function _create_data(){
 		$form=$this->input->post();
-		$form['pfrist'] = implode(',',$form['pfrist']);
-		$form['psecond'] = implode(',',$form['psecond']);
+		$form['pfrist'] = $form['psecond'] ? implode(',',$form['pfrist']) : '';
+		$form['psecond'] = $form['psecond'] ? implode(',',$form['psecond']) : '';
 		$form['pwd'] = passwd($form['pwd']);
 		$form['nickname'] = $form['phone'];
 		return $form;
 	}
 	protected function _edit_data(){
 		$form=$this->input->post();
-		$form['pfrist'] = implode(',',$form['pfrist']);
-		$form['psecond'] = implode(',',$form['psecond']);
+		$form['pfrist'] = $form['psecond'] ? implode(',',$form['pfrist']) : '';
+		$form['psecond'] = $form['psecond'] ? implode(',',$form['psecond']) : '';
 		// $form=$this->input->post(NULL,TRUE); // 获得全部并 xss_clean
 		return $form;
 	}
