@@ -33,6 +33,10 @@ class product extends API_Controller {
         $psecond = explode(',',$this->userinfo['psecond']);
         $level = isset($this->data['level']) && $this->data['level'] ? $this->data['level'] : 1;
         $pid = isset($this->data['pid']) && $this->data['pid'] ? $this->data['pid'] : 0;
+
+        $language = isset($this->data['language']) && $this->data['language'] ? $this->data['language'] : 'ZH';
+        $title = $language == 'ZH' ? 'title' : $language.'_title';
+
         $where = array();
         switch($level) {
             case 1:
@@ -50,7 +54,7 @@ class product extends API_Controller {
                 $cid = $this->pfirst_cid;
         }
         $where = array_merge($where,array('cid'=>$cid,'pid'=>$pid,'audit'=>1));
-        $first = $this->mproduct->get_all($where,'id,title');
+        $first = $this->mproduct->get_all($where,'id,'.$title);
         //echo ($this->db->last_query());
         $this->vdata['returnCode']   = '200';
         $this->vdata['returnInfo'] = '操作成功';
