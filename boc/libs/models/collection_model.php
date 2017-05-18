@@ -54,7 +54,7 @@ class Collection_model extends MY_Model {
     public function del_collection($data) {
         if(isset($data['id']) && $data['id']) {
             $query = $this->db
-                ->select('id')
+                ->select('id,type')
                 ->from($this->table)
                 ->where(array('id'=>$data['id']))
                 ->get();
@@ -62,7 +62,7 @@ class Collection_model extends MY_Model {
         } else {
             $where = array('uid'=>$data['uid'],'rid'=>$data['rid'],'cid'=>$data['cid'],'type'=>$data['type']);
             $query = $this->db
-                ->select('id')
+                ->select('id,type')
                 ->from($this->table)
                 ->where($where)
                 ->get();
@@ -72,6 +72,7 @@ class Collection_model extends MY_Model {
         if($result) {
             $this->db->where(array('id'=>$result['id']));
             $this->db->delete('collection');
+            $data['type'] = $result['type'];
             //1产品 2视频 3动态
             switch($data['type']) {
                 case 1:
